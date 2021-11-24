@@ -1,4 +1,5 @@
-﻿using Identity.Users;
+﻿using CmsA.Web.Models.Accaount;
+using Identity.Users;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.WebUtilities;
@@ -24,7 +25,7 @@ namespace CmsA.Controllers;
 
 
         [HttpGet]
-        public IActionResult Login(string? returnUrl = null)
+        public IActionResult Login(string returnUrl = null)
         {
             return View(new LoginModel { ReturnUrl = returnUrl });
         }

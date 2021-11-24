@@ -7,12 +7,13 @@ using System.Threading.Tasks;
 
 namespace CmsA.Data.Model.Base;
 
-    public class BaseModel
-    {
-        [Key]
-        public string Id { get; set; } 
-        public string Name { get; set; }  
-        public DateTime Time { get; set; } 
-          
-    }
+public class BaseModel
+{
+    [Key]
+    public string Id { get; set; }
+    public string Name { get; set; }
+    public DateTime Time { get; set; }
+   
+
+}
 

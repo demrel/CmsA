@@ -1,0 +1,150 @@
+﻿.lds-ripple {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    z-index: 9999;
+    width: 150px;
+    height: 150px;
+}
+
+    .lds-ripple div {
+        position: absolute;
+        border: 7px solid #2f941f;
+        opacity: 1;
+        border-radius: 50%;
+        animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+    }
+
+        .lds-ripple div:nth-child(2) {
+            animation-delay: -0.5s;
+        }
+
+@keyframes lds-ripple {
+    0% {
+        top: 70px;
+        left: 70px;
+        width: 0;
+        height: 0;
+        opacity: 1;
+    }
+
+    100% {
+        top: 0px;
+        left: 0px;
+        width: 140px;
+        height: 140px;
+        opacity: 0;
+    }
+}
+
+
+.tinted {
+    background-color: #fff6b2;
+}
+
+.handle {
+    cursor: grab;
+}
+
+code {
+    color: #606;
+}
+
+.toc {
+    background-color: rgb(255,255,255,0.5);
+    border: solid #444 1px;
+    padding: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    list-style: none;
+}
+
+    .toc h5 {
+        margin-top: 8px;
+    }
+
+.list-group-item:hover {
+    z-index: 0;
+}
+
+.input-section {
+    background-color: rgb(255,255,255,0.5);
+    padding: 20px;
+}
+
+.square-section {
+    background-color: rgb(255,255,255,0.5);
+}
+
+
+.square {
+    width: 20vw;
+    height: 20vw;
+    background-color: #00a2ff;
+    margin-top: 2vw;
+    margin-left: 2vw;
+    display: inline-block;
+    position: relative;
+}
+
+.swap-threshold-indicator {
+    background-color: #0079bf;
+    height: 100%;
+    display: inline-block;
+}
+
+.inverted-swap-threshold-indicator {
+    background-color: #0079bf;
+    height: 100%;
+    position: absolute;
+}
+
+.indicator-left {
+    left: 0;
+    top: 0;
+}
+
+.indicator-right {
+    right: 0;
+    bottom: 0;
+}
+
+
+
+.nested-sortable, .nested-1, .nested-2, .nested-3 {
+    margin-top: 5px;
+}
+
+.nested-1 {
+    background-color: #e6e6e6;
+}
+
+.nested-2 {
+    background-color: #cccccc;
+}
+
+.nested-3 {
+    background-color: #b3b3b3;
+}
+
+
+
+
+.blue-background-class {
+    background-color: #C8EBFB;
+}
+
+.col {
+    padding-right: 0;
+    margin-right: 15px;
+}
+
+.selected {
+    background-color: #f9c7c8;
+    border: solid red 1px !important;
+    z-index: 1 !important;
+}
+
+.highlight {
+    background-color: #B7F8C7;
+}

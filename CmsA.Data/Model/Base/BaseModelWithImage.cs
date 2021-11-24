@@ -8,7 +8,7 @@ namespace CmsA.Data.Model.Base;
 
     public class BaseModelWithImage : BaseModel
     {
-        public string AppImageId { get; set; }
-        public AppImage AppImage { get; set; }
+        public int AppImageId { get; set; }
+        public virtual AppImage AppImage { get; set; }
     }
 

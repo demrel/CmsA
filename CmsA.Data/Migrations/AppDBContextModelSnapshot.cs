@@ -24,8 +24,11 @@ namespace CmsA.Data.Migrations
 
             modelBuilder.Entity("CmsA.Data.Model.AppImage", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("text");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Name")
                         .HasColumnType("text");
@@ -35,9 +38,6 @@ namespace CmsA.Data.Migrations
 
                     b.Property<string>("PostId")
                         .HasColumnType("text");
-
-                    b.Property<DateTime>("Time")
-                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Url")
                         .HasColumnType("text");
@@ -54,8 +54,8 @@ namespace CmsA.Data.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("text");
 
-                    b.Property<string>("AppImageId")
-                        .HasColumnType("text");
+                    b.Property<int>("AppImageId")
+                        .HasColumnType("integer");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("boolean");
@@ -142,8 +142,8 @@ namespace CmsA.Data.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("text");
 
-                    b.Property<string>("AppImageId")
-                        .HasColumnType("text");
+                    b.Property<int>("AppImageId")
+                        .HasColumnType("integer");
 
                     b.Property<int>("ContentId")
                         .HasColumnType("integer");
@@ -189,8 +189,8 @@ namespace CmsA.Data.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("text");
 
-                    b.Property<string>("AppImageId")
-                        .HasColumnType("text");
+                    b.Property<int>("AppImageId")
+                        .HasColumnType("integer");
 
                     b.Property<string>("Name")
                         .HasColumnType("text");
@@ -218,8 +218,8 @@ namespace CmsA.Data.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("text");
 
-                    b.Property<string>("AppImageId")
-                        .HasColumnType("text");
+                    b.Property<int>("AppImageId")
+                        .HasColumnType("integer");
 
                     b.Property<int>("ContentId")
                         .HasColumnType("integer");
@@ -520,7 +520,9 @@ namespace CmsA.Data.Migrations
                 {
                     b.HasOne("CmsA.Data.Model.AppImage", "AppImage")
                         .WithMany()
-                        .HasForeignKey("AppImageId");
+                        .HasForeignKey("AppImageId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("CmsA.Data.Model.Localization.LocalizationSet", "Title")
                         .WithMany()
@@ -562,7 +564,9 @@ namespace CmsA.Data.Migrations
                 {
                     b.HasOne("CmsA.Data.Model.AppImage", "AppImage")
                         .WithMany()
-                        .HasForeignKey("AppImageId");
+                        .HasForeignKey("AppImageId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("CmsA.Data.Model.Localization.LocalizationSet", "Content")
                         .WithMany()
@@ -603,7 +607,9 @@ namespace CmsA.Data.Migrations
                 {
                     b.HasOne("CmsA.Data.Model.AppImage", "AppImage")
                         .WithMany()
-                        .HasForeignKey("AppImageId");
+                        .HasForeignKey("AppImageId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("CmsA.Data.Model.Localization.LocalizationSet", "Title")
                         .WithMany()
@@ -620,7 +626,9 @@ namespace CmsA.Data.Migrations
                 {
                     b.HasOne("CmsA.Data.Model.AppImage", "AppImage")
                         .WithMany()
-                        .HasForeignKey("AppImageId");
+                        .HasForeignKey("AppImageId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("CmsA.Data.Model.Localization.LocalizationSet", "Content")
                         .WithMany()

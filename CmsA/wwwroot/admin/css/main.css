@@ -1,0 +1,86 @@
+﻿.sidebar {
+    /*    background-color: #44d62c !important;*/
+    background: #4e4e4e !important;
+}
+.navbar.default-layout .navbar-brand-wrapper {
+    background: #4e4e4e !important;
+}
+.form-control.form-control-sm {
+    padding: 0.25rem 1.75rem !important;
+}
+.table td img:not(.thumb-image) {
+    border-radius: 0;
+    width: 23%;
+    height:auto;
+}
+
+.Buyed {
+    border: 1px solid #5c95ff;
+    color: #ffffff;
+    background-color: #5c95ff;
+}
+.Given {
+    border: 1px solid #2dc653;
+    color: #ffffff;
+    background-color: #2dc653;
+}
+
+.New {
+    border: 1px solid #ffaf00;
+    color: #ffffff;
+    background-color: #ffaf00;
+}
+
+.Decline {
+    border: 1px solid #ff5714;
+    color: #ffffff;
+    background-color: #ff5714;
+}
+.Accept {
+    border: 1px solid #1be7ff;
+    color: #ffffff;
+    background-color: #1be7ff;
+}
+.Prepare {
+    border: 1px solid #e4ff1a;
+    color: #ffffff;
+    background-color: #e4ff1a;
+}
+.Shipping {
+    border: 1px solid #ffb800;
+    color: #ffffff;
+    background-color: #ffb800;
+}
+.Deliverid {
+    border: 1px solid #81559b;
+    color: #ffffff;
+    background-color: #81559b;
+}
+.Payed {
+    border: 1px solid #6eeb83;
+    color: #ffffff;
+    background-color: #6eeb83;
+}
+
+.whitespace {
+    white-space:pre-wrap;
+}
+
+.navbarText {
+    height: 10px;
+    width: 10px;
+    background-color: red;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+
+.navbarIcon {
+    height: 10px;
+    width: 10px;
+    background-color: red;
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+    right: 40px;
+}

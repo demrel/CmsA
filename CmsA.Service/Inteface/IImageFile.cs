@@ -7,9 +7,9 @@ namespace CmsA.Service.Inteface
     {
         AppImage Add(IFormFile formFile, string path);
         List<AppImage> AddAll(List<IFormFile> formFiles, string path);
-        void Delete(string id);
-        AppImage Edit(IFormFile formFile, string path, string id);
-        AppImage GetById(string id);
+        void Delete(int id);
+        AppImage Edit(IFormFile formFile, string path, int id);
+        AppImage GetById(int id);
         void SaveChanges();
         void DeleteRange(List<AppImage> images);
     }

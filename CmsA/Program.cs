@@ -1,5 +1,6 @@
 using CmsA.Data.Data;
 using CmsA.Web.Dependency;
+using CmsA.Web.Mapper;
 using CmsA.Web.Resources;
 using Identity.Users;
 using Microsoft.AspNetCore.Identity;
@@ -20,6 +21,7 @@ services.AddDbContext<AppDBContext>(options =>
             options.UseNpgsql(conf.GetConnectionString("NpgSqlHeroku"));
 });
 
+services.AddAutoMapper(typeof(MappingProfile));
 services.AddServices().AddAuth();
 
 var app = builder.Build();

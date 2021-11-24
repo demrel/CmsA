@@ -1,0 +1,18 @@
+﻿.dd-content {
+    position: absolute;
+    top: 0;
+    left: 20px;
+}
+
+.dd-handle {
+    height: 50px;
+    background: #FFF;
+}
+
+.dd-expand, .dd-collapse {
+    display: none !important;
+}
+.dd-placeholder,
+.dd-empty {
+    background: #f1f1f1 !important;
+}

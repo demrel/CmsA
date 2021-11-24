@@ -1,0 +1,138 @@
+﻿@model CmsA.Web.Models.Pages.PageAddVM
+<h3 class="m-3 mb-4">Add Page</h3>
+<div class="col-md-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+
+            <div class="row mt-4">
+
+                <div class="col-md-12">
+                    <form class="forms-sample" method="post" enctype="multipart/form-data">
+                        @{
+                            int i = 0;
+                        }
+                        <div class="row mt-12">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label asp-for="Add.Name">GlobalName</label>
+                                    <input type="text" class="form-control" asp-for="Add.Name" placeholder="GlobalName">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label asp-for="Add.PostType">Type</label>
+                                    <select asp-for="Add.PostType" class="form-control border-primary" asp-items="@Html.GetEnumSelectList<PostType>()">
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <ul class="nav nav-tabs tab-simple-styled" role="tablist">
+                            @foreach (var item in Model.Cultures)
+                            {
+                                { i++; }
+                                <li class="nav-item">
+
+                                    <a class="nav-link @(i==1?"active":"")" id="tab-3-@i" data-toggle="tab" href="#@item.Code" role="tab" aria-controls="@item.Code" aria-selected="@(i==1?"true":"false")">
+                                        <i class="fas fa-language"></i> @item.Code.ToUpper()
+                                    </a>
+
+
+
+                                </li>
+                            }
+
+
+                        </ul>
+                        @{
+                            i = 0;
+                        }
+                        <div class="tab-content tab-content-basic">
+
+                            @foreach (var item in Model.Cultures)
+                            {
+                                <div class="tab-pane fade @(i==0?"show active":"")" id="@item.Code" role="tabpanel" aria-labelledby="@item.Code">
+                                    <div class="row my-3">
+                                        <div class="col-sm-12">
+
+
+
+                                            <div class="form-group">
+                                                <label asp-for="Add.Title[i].CultureCode">Title</label>
+                                                <input type="hidden" asp-for="Add.Title[i].CultureCode" value="@item.Code">
+                                                <input type="text" class="form-control" asp-for="Add.Title[i].Value" placeholder="Title">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label asp-for="Add.VideoUrl[i].CultureCode">Video Url</label>
+                                                <input type="hidden" asp-for="Add.VideoUrl[i].CultureCode" value="@item.Code">
+                                                <input type="text" class="form-control" asp-for="Add.VideoUrl[i].Value" placeholder="Url">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label asp-for="Add.Description[i].CultureCode">Description</label>
+                                                <input type="hidden" asp-for="Add.Description[i].CultureCode" value="@item.Code">
+                                                <textarea type="text" class="form-control tinyMce" asp-for="Add.Description[i].Value" placeholder="Description"></textarea>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label asp-for="Add.Description[i].CultureCode">Content</label>
+                                                <input type="hidden" asp-for="Add.Content[i].CultureCode" value="@item.Code">
+                                                <textarea type="text" class="form-control tinyMce" asp-for="Add.Content[i].Value" placeholder="Content"></textarea>
+                                            </div>
+
+
+
+
+                                            @{
+                                                i++;
+                                            }
+
+
+
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+
+
+                        </div>
+
+
+
+
+
+                        <div class="col-sm-4 pb-4">
+                            <div class="form-group">
+                                <label>File upload</label>
+                                <input type="file" asp-for="Image" class="file-upload-default">
+                                <div class="input-group col-xs-12">
+                                    <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image">
+                                    <span class="input-group-append">
+                                        <button class="file-upload-browse btn btn-info" type="button">Upload</button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" asp-controller="Page" asp-action="Add" class="btn btn-success mr-2">Submit</button>
+
+                        <input type="checkbox" asp-for="Add.ShowInMain">
+                        <label for="minimal-checkbox-1">Show In Main</label>
+
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+<script src="~/admin/js/shared/file-upload.js"></script>
+}

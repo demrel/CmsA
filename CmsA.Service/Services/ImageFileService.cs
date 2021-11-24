@@ -1,5 +1,6 @@
 ﻿using CmsA.Data.Data;
 using CmsA.Data.Model;
+using CmsA.Service.Helper;
 using CmsA.Service.Inteface;
 using Microsoft.AspNetCore.Http;
 using System;
@@ -22,6 +23,7 @@ namespace CmsA.Service.Services;
         AppImage file = AddImage(formFile, path);
         if (file != null)
         {
+          
             _context.Add(file);
             _context.SaveChanges();
             return file;
@@ -48,7 +50,7 @@ namespace CmsA.Service.Services;
     {
         if (formFile != null)
         {
-            string fileName = Guid.NewGuid().ToString() + Path.GetExtension(formFile.FileName);
+            string fileName = Guid.NewGuid().ToString().RemoveNoneAlphaNumerics() + Path.GetExtension(formFile.FileName);
 
             var p = Path.Combine(path);
             if (!Directory.Exists(p))
@@ -69,7 +71,7 @@ namespace CmsA.Service.Services;
 
 
 
-    public void Delete(string id)
+    public void Delete(int id)
     { 
         var image = GetById(id);
 
@@ -91,7 +93,7 @@ namespace CmsA.Service.Services;
 
     public void Edit(AppImage item) => _context.Update(item);
 
-    public AppImage GetById(string id) => _context.Images.Find(id);
+    public AppImage GetById(int id) => _context.Images.Find(id);
 
 
     public void SaveChanges()
@@ -99,7 +101,7 @@ namespace CmsA.Service.Services;
         _context.SaveChanges();
     }
 
-    public AppImage Edit(IFormFile formFile, string path, string id)
+    public AppImage Edit(IFormFile formFile, string path, int id)
     {
         var oldImage =  _context.Images.FirstOrDefault(i => i.Id == id);
         AppImage file =  AddImage(formFile, path);

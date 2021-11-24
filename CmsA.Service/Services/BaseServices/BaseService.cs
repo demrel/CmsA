@@ -1,5 +1,7 @@
 ﻿using CmsA.Data.Data;
 using CmsA.Data.Model.Base;
+using CmsA.Data.Model.Localization;
+using CmsA.Service.Helper;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -19,12 +21,15 @@ public  class BaseService<T> where T : BaseModel
 
     public  void Create(T item)
     {
+         item.Id = Guid.NewGuid().ToString().RemoveNoneAlphaNumerics();
+         item.Time = DateTime.UtcNow;
          _context.Add(item);
          _context.SaveChanges();
     }
 
     public  void Update(T item)
     {
+        item.Time = DateTime.UtcNow;
         _context.Update(item);
          _context.SaveChanges();
     }
@@ -51,8 +56,30 @@ public  class BaseService<T> where T : BaseModel
         return await _context.Set<T>().ToListAsync();
     }
 
-    public async Task<T> GetById(string id) => 
-        await _context.Set<T>().Where(b => b.Id == id).FirstOrDefaultAsync();
+    public async Task<T> GetById(string id)
+    {
+        var type = typeof(T);
+        var properties = type.GetProperties();
+        var queryable = _context.Set<T>().Where(b => b.Id == id);
+        foreach (var property in properties)
+        {
+            var isVirtual = property.GetGetMethod().IsVirtual;
+            if (isVirtual  )
+            {
+
+                string propertyName = property.Name;
+                propertyName += property.PropertyType.Name== "LocalizationSet" ? ".Localizations" : "";
+
+
+                queryable = queryable.Include(propertyName);
+
+                
+            }
+        }
+        
+      return  await queryable.FirstOrDefaultAsync();
+
+    }
 
     public async Task<T> GetByName(string name) =>
        await _context.Set<T>().Where(b => b.Name == name).FirstOrDefaultAsync();

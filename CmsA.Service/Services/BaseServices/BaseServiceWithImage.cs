@@ -16,12 +16,12 @@ namespace CmsA.Service.Services.BaseServices
         }
 
         public new async Task<List<T>> GetAll() =>
-             await _context.Set<T>().Include(b=>b.AppImage).ToListAsync();
-        
+             await _context.Set<T>().Include(b => b.AppImage).ToListAsync();
 
-        public new  async Task<T> GetById(string id) =>
-            await _context.Set<T>()
-            .Where(b => b.Id == id).Include(b=>b.AppImage).FirstOrDefaultAsync();
+
+        //public new  async Task<T> GetById(string id) =>
+        //    await _context.Set<T>()
+        //    .Where(b => b.Id == id).Include(b=>b.AppImage).FirstOrDefaultAsync();
 
 
     }

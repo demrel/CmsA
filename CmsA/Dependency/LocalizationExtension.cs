@@ -8,7 +8,7 @@ namespace CmsA.Web.Dependency
     {
         public static void AddLocalizationService(this IServiceCollection services)
         {
-            services.AddControllersWithViews().AddViewLocalization().AddDataAnnotationsLocalization()
+            services.AddControllersWithViews().AddRazorRuntimeCompilation().AddViewLocalization().AddDataAnnotationsLocalization()
             .AddDataAnnotationsLocalization(options => options.DataAnnotationLocalizerProvider = (t, f) => f.Create(typeof(SharedResource)));
         }
 
