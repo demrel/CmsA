@@ -68,11 +68,33 @@
             <!-- partial:partials/_sidebar.html -->
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <nav class="sidebar sidebar-offcanvas" style="position: fixed;" id="sidebar">
-                    <ul class="nav pt-5">
+                    <ul class="nav ">
 
-                        <li class="nav-item nav-category"><a class="text-white text-uppercase text-decoration-none" asp-action="Index" asp-controller="Admin">Dashboard</a> </li>
+                        <li class="nav-item nav-category pt-5 pb-2"><a class="text-white text-uppercase text-decoration-none" >Dashboard</a> </li>
+                     
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="collapse" href="#Home" aria-expanded="false" aria-controls="Home">
+                                <i class="menu-icon fas fa-home"></i>
+                                <span class="menu-title">Home</span>
+                                <i class="menu-arrow"></i>
+                            </a>
+                            <div class="collapse" id="Home">
+                                <ul class="nav flex-column sub-menu">
 
-                      
+                                    <li class="nav-item">
+                                        <a class="nav-link" asp-action="Video" asp-controller="Home">Video</a>
+                                    </li>
+
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" asp-action="MissionVission" asp-controller="Home">Mission Vission</a>
+                                    </li>
+
+
+                                </ul>
+                            </div>
+                        </li>
+
                         <li class="nav-item">
                             <a class="nav-link" data-toggle="collapse" href="#Page" aria-expanded="false" aria-controls="Page">
                                 <i class="menu-icon fas fa-file-alt"></i>
@@ -96,27 +118,96 @@
                             </div>
                         </li>
 
-                   
-
-@*
                         <li class="nav-item">
-                            <a class="nav-link" asp-action="Index" asp-controller="Order">
-                                <i class="menu-icon fas fa-shopping-cart">
-                                    <span id="orderDot" class="navbarIcon"></span>
-                                </i>
-                                <span class="menu-title ">
-                                    <span id="orderDot2" class="navbarText mr-2"></span>
-                                    Orders
-                                </span>
+                            <a class="nav-link" data-toggle="collapse" href="#Posts" aria-expanded="false" aria-controls="Posts">
+                                <i class="menu-icon fas fa-file-signature"></i>
+                                <span class="menu-title">Posts</span>
+                                <i class="menu-arrow"></i>
                             </a>
-                        </li>*@
+                            <div class="collapse" id="Posts">
+                                <ul class="nav flex-column sub-menu">
 
-                    
+                                    <li class="nav-item">
+                                        <a class="nav-link" asp-action="Add" asp-controller="Post">Add Post</a>
+                                    </li>
+
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" asp-action="Index" asp-controller="Post">Post List</a>
+                                    </li>
+
+
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="collapse" href="#Banner" aria-expanded="false" aria-controls="Banner">
+                                <i class="menu-icon fas fa-icons"></i>
+                                <span class="menu-title">Banner</span>
+                                <i class="menu-arrow"></i>
+                            </a>
+                            <div class="collapse" id="Banner">
+                                <ul class="nav flex-column sub-menu">
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" asp-action="Add" asp-controller="Banner">Add Banner</a>
+                                    </li>
+
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" asp-action="Index" asp-controller="Banner">Banner List</a>
+                                    </li>
+
+
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="collapse" href="#Partner" aria-expanded="false" aria-controls="Partner">
+                                <i class="menu-icon fas fa-copyright"></i>
+                                <span class="menu-title">Partner</span>
+                                <i class="menu-arrow"></i>
+                            </a>
+                            <div class="collapse" id="Partner">
+                                <ul class="nav flex-column sub-menu">
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" asp-action="Add" asp-controller="Partner">Add Partner</a>
+                                    </li>
+
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" asp-action="Index" asp-controller="Partner">Partner List</a>
+                                    </li>
+
+
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" asp-action="Index" asp-controller="Messages">
+                                <i class="menu-icon fas fa-envelope-open-text"></i>
+                                <span class="menu-title">Messages</span>
+                            </a>
+                        </li>
+
+                         <li class="nav-item">
+                            <a class="nav-link" asp-action="Settings" asp-controller="Home">
+                                <i class="menu-icon fas fa-cogs"></i>
+                                <span class="menu-title">Settings</span>
+                            </a>
+                        </li>
+                       
 
 
 
-                 
-                  
+
+
+
+
 
 
 

@@ -1,5 +1,5 @@
 ﻿@model CmsA.Web.Models.Pages.PageIndexVM
-<h3 class="m-3 mb-4">Add Pages</h3>
+<h3 class="m-3 mb-4">Pages</h3>
 <div class="row">
     <div class="col-md-12 grid-margin">
         <div class="card">
@@ -9,7 +9,6 @@
                         <thead>
                             <tr>
                                 <th>Name</th>
-                                <th>VideoImage</th>
                                 <th class="float-right">#</th>
                             </tr>
                         </thead>
@@ -21,12 +20,6 @@
                                         @Page.Name
                                 </td>
 
-                                <td>
-                                    @if (@Page.Image != null)
-                                    {
-                                            <img src="~/images/page/@Page.Image.Name" alt="Alternate Text" />
-                                    }
-                                </td>
 
 
                                 <td>

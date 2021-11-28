@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CmsA.Data.Model.Cms;
 
-public class Post : BaseModelWithImage
+public class Post : BaseModel
 {
     public int TitleId { get; set; }
     public virtual LocalizationSet Title { get; set; }

@@ -11,7 +11,6 @@ namespace CmsA.Data.Model.Cms;
 public class Partner : BaseModelWithImage
 {
     public string Url { get; set; }
-    public int TitleId { get; set; }
-    public virtual LocalizationSet Title { get; set; }   
+    //public string Title { get; set; }
 }
 

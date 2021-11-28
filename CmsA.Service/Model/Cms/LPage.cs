@@ -8,18 +8,15 @@ using System.Threading.Tasks;
 
 namespace CmsA.Service.Model.Cms
 {
-    public class LPage : LBaseImage
+    public class LPage : LBase
     {
-      
         public  string Title { get; set; }
         public  string Description { get; set; }
         public string  Content { get; set; }
         public string  VideoUrl { get; set; }
-        public virtual List<LKeyValueHelper> KeyValueHelpers { get; set; }
         public virtual List<LPost> LPosts { get; set; }
 
         public PostType PostType { get; set; }
-        public bool ShowInMain { get; set; }
 
     }
 }

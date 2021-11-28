@@ -12,13 +12,15 @@
   
   
 }
-
+<div class="dropdown">
 <a href="#" class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown"
-   aria-haspopup="true" aria-expanded="false"><i class="fas fa-globe-americas"></i>@requestCulture.RequestCulture.Culture.NativeName.ToLower()</a>
+   aria-haspopup="true" aria-expanded="false"><i class="fas fa-globe-americas"></i> @requestCulture.RequestCulture.Culture.Name.ToUpper()</a>
 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 
     <a class="dropdown-item" asp-controller="Preference" asp-action="SetLanguage" asp-route-returnUrl="@Context.Request.Path" asp-route-culture="en">EN</a>
     <a class="dropdown-item" asp-controller="Preference" asp-action="SetLanguage" asp-route-returnUrl="@Context.Request.Path" asp-route-culture="az">AZ</a>
     <a class="dropdown-item" asp-controller="Preference" asp-action="SetLanguage" asp-route-returnUrl="@Context.Request.Path" asp-route-culture="ru">RU</a>
-</div>
+    <a class="dropdown-item" asp-controller="Preference" asp-action="SetLanguage" asp-route-returnUrl="@Context.Request.Path" asp-route-culture="tr">TR</a>
 
+</div>
+</div>

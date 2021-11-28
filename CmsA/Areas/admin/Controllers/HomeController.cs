@@ -9,5 +9,20 @@ namespace CmsA.Web.Areas.admin.Controllers
         {
             return View();
         }
+
+        public IActionResult Video()
+        {
+            return View();
+        }
+
+        public IActionResult MissionVission()
+        {
+            return View();
+        }
+
+        public IActionResult Setting()
+        {
+            return View();
+        }
     }
 }

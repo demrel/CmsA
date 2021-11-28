@@ -11,7 +11,7 @@ namespace CmsA.Service.Helper
     {
         public static string RemoveNoneAlphaNumerics(this string str)
         {
-            Regex rgx = new Regex("[^a-zA-Z0-9]");
+            Regex rgx = new ("[^a-zA-Z0-9]");
             return  rgx.Replace(str, "");
         }
     }

@@ -1,5 +1,5 @@
 ﻿@model CmsA.Web.Models.Pages.PageAddVM
-<h3 class="m-3 mb-4">Add Page</h3>
+<h3 class="m-3 mb-4">Update Page</h3>
 <div class="col-md-12 grid-margin stretch-card">
     <div class="card">
         <div class="card-body">
@@ -64,11 +64,7 @@
                                                 <input type="text" class="form-control" asp-for="Add.Title[i].Value" placeholder="Title">
                                             </div>
 
-                                            <div class="form-group">
-                                                <label asp-for="Add.VideoUrl[i].CultureCode">Video Url</label>
-                                                <input type="hidden" asp-for="Add.VideoUrl[i].CultureCode" value="@item.Code">
-                                                <input type="text" class="form-control" asp-for="Add.VideoUrl[i].Value" placeholder="Url">
-                                            </div>
+                                          
 
                                             <div class="form-group">
                                                 <label asp-for="Add.Description[i].CultureCode">Description</label>
@@ -100,7 +96,7 @@
 
                         </div>
 
-
+@*
                         <div class="col-sm-4 pb-4">
                             <div class="form-group">
                                 <label>File upload</label>
@@ -113,12 +109,10 @@
                                     </span>
                                 </div>
                             </div>
-                        </div>
+                        </div>*@
 
                         <button type="submit" asp-controller="Page" asp-action="Update" class="btn btn-success mr-2">Submit</button>
 
-                        <input type="checkbox" asp-for="Add.ShowInMain">
-                        <label for="minimal-checkbox-1">Show In Main</label>
 
 
                     </form>

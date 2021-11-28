@@ -8,7 +8,6 @@ public class PageModel : BaseModelWithImage
     public  List<LocalizationModel> Title { get; set; }
     public  List<LocalizationModel> Description { get; set; }
     public  List<LocalizationModel> Content { get; set; }
-    public  List<LocalizationModel> VideoUrl { get; set; }
     public PostType PostType { get; set; }
     public bool ShowInMain { get; set; }
 }

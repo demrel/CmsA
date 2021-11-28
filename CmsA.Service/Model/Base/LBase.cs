@@ -10,6 +10,5 @@ namespace CmsA.Service.Model.Base
     {
         public string Id { get; set; }
         public string Name { get; set; }
-        public DateTime Time { get; set; }
     }
 }

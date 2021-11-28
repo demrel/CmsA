@@ -30,6 +30,9 @@ namespace CmsA.Data.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<bool>("IsMain")
+                        .HasColumnType("boolean");
+
                     b.Property<string>("Name")
                         .HasColumnType("text");
 
@@ -142,9 +145,6 @@ namespace CmsA.Data.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("text");
 
-                    b.Property<int>("AppImageId")
-                        .HasColumnType("integer");
-
                     b.Property<int>("ContentId")
                         .HasColumnType("integer");
 
@@ -157,9 +157,6 @@ namespace CmsA.Data.Migrations
                     b.Property<int>("PostType")
                         .HasColumnType("integer");
 
-                    b.Property<bool>("ShowInMain")
-                        .HasColumnType("boolean");
-
                     b.Property<DateTime>("Time")
                         .HasColumnType("timestamp with time zone");
 
@@ -171,15 +168,11 @@ namespace CmsA.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AppImageId");
-
                     b.HasIndex("ContentId");
 
                     b.HasIndex("DescriptionId");
 
                     b.HasIndex("TitleId");
-
-                    b.HasIndex("VideoUrlId");
 
                     b.ToTable("Pages");
                 });
@@ -198,17 +191,12 @@ namespace CmsA.Data.Migrations
                     b.Property<DateTime>("Time")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<int>("TitleId")
-                        .HasColumnType("integer");
-
                     b.Property<string>("Url")
                         .HasColumnType("text");
 
                     b.HasKey("Id");
 
                     b.HasIndex("AppImageId");
-
-                    b.HasIndex("TitleId");
 
                     b.ToTable("Partners");
                 });
@@ -217,9 +205,6 @@ namespace CmsA.Data.Migrations
                 {
                     b.Property<string>("Id")
                         .HasColumnType("text");
-
-                    b.Property<int>("AppImageId")
-                        .HasColumnType("integer");
 
                     b.Property<int>("ContentId")
                         .HasColumnType("integer");
@@ -243,8 +228,6 @@ namespace CmsA.Data.Migrations
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("AppImageId");
 
                     b.HasIndex("ContentId");
 
@@ -511,9 +494,11 @@ namespace CmsA.Data.Migrations
 
             modelBuilder.Entity("CmsA.Data.Model.AppImage", b =>
                 {
-                    b.HasOne("CmsA.Data.Model.Cms.Post", null)
+                    b.HasOne("CmsA.Data.Model.Cms.Post", "Post")
                         .WithMany("Gallery")
                         .HasForeignKey("PostId");
+
+                    b.Navigation("Post");
                 });
 
             modelBuilder.Entity("CmsA.Data.Model.Cms.Banner", b =>
@@ -562,12 +547,6 @@ namespace CmsA.Data.Migrations
 
             modelBuilder.Entity("CmsA.Data.Model.Cms.Page", b =>
                 {
-                    b.HasOne("CmsA.Data.Model.AppImage", "AppImage")
-                        .WithMany()
-                        .HasForeignKey("AppImageId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("CmsA.Data.Model.Localization.LocalizationSet", "Content")
                         .WithMany()
                         .HasForeignKey("ContentId")
@@ -586,21 +565,11 @@ namespace CmsA.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("CmsA.Data.Model.Localization.LocalizationSet", "VideoUrl")
-                        .WithMany()
-                        .HasForeignKey("VideoUrlId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("AppImage");
-
                     b.Navigation("Content");
 
                     b.Navigation("Description");
 
                     b.Navigation("Title");
-
-                    b.Navigation("VideoUrl");
                 });
 
             modelBuilder.Entity("CmsA.Data.Model.Cms.Partner", b =>
@@ -611,25 +580,11 @@ namespace CmsA.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("CmsA.Data.Model.Localization.LocalizationSet", "Title")
-                        .WithMany()
-                        .HasForeignKey("TitleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("AppImage");
-
-                    b.Navigation("Title");
                 });
 
             modelBuilder.Entity("CmsA.Data.Model.Cms.Post", b =>
                 {
-                    b.HasOne("CmsA.Data.Model.AppImage", "AppImage")
-                        .WithMany()
-                        .HasForeignKey("AppImageId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("CmsA.Data.Model.Localization.LocalizationSet", "Content")
                         .WithMany()
                         .HasForeignKey("ContentId")
@@ -651,8 +606,6 @@ namespace CmsA.Data.Migrations
                         .HasForeignKey("TitleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("AppImage");
 
                     b.Navigation("Content");
 

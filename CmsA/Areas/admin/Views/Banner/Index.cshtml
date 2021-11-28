@@ -1,0 +1,42 @@
+﻿@model CmsA.Web.Models.Banner.BannerIndexVM
+<h3 class="m-3 mb-4"> Banner </h3>
+<div class="row">
+    <div class="col-md-12 grid-margin">
+        <div class="card">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table id="order-listing" class="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Image</th>
+                                <th class="float-right">#</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var Page in Model.Banners)
+                            {
+                            <tr>
+                                <td>
+                                        @Page.Name
+                                </td>
+
+                                <td>
+                                     <img src="~/images/banner/@Page.Image?.Name" />   
+                                </td>
+
+
+                                <td>
+                                    <a class="float-right m-1" href="@Url.Action("Update", "Banner",new { id = Page.Id})"><i class="fas fa-pencil-alt"></i></a>
+                                    <a class="float-right" href="@Url.Action("Delete", "Banner",new { id = Page.Id})"><i class=" fas fa-trash"></i></a>
+                                </td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

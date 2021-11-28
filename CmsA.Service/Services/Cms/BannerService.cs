@@ -19,7 +19,19 @@ public class BannerService : BaseServiceWithImage<Banner>,IBanner
 
     public IEnumerable<LBanner> GetLocalizedAll(string cultureCode)
     {
-        throw new NotImplementedException();
+        return from b in _context.Banners
+               join Image in _context.Images on b.AppImageId equals Image.Id
+               join LUrl in _context.Localizations on b.UrlId equals LUrl.LocalizationSetId
+               join LTitle in _context.Localizations on b.TitleId equals LTitle.LocalizationSetId
+               where  LUrl.CultureCode == cultureCode
+                   && LTitle.CultureCode == cultureCode
+
+               select new LBanner()
+               {
+                   Url = LUrl.Value,
+                   Title = LTitle.Value,
+                   Image = b.AppImage.Name
+               };
     }
 
     public Task<LBanner> GetLocalizedById(string id, string cultureCode)

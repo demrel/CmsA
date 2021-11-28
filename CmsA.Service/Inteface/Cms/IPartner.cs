@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace CmsA.Service.Inteface.Cms
 {
-    public interface IPartner : IBase<Partner>, ITranslate<LPartner>
+    public interface IPartner : IBase<Partner>
     {
     }
 }

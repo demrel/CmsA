@@ -31,8 +31,8 @@ public class PageController : BaseAdminController<PageAddVM>
     public  IActionResult Add(PageAddVM model)
     {
         var data = _mapper.Map<Page>(model.Add);
-        AppImage img = _imageService.Add(model.Image, _env.WebRootPath + "/images/page/");
-        data.AppImage = img;
+      //  AppImage img = _imageService.Add(model.Image, _env.WebRootPath + "/images/page/");
+    //    data.AppImage = img;
         _pageService.Create(data);
         return RedirectToAction("Index");
     }
@@ -52,8 +52,8 @@ public class PageController : BaseAdminController<PageAddVM>
     public IActionResult Update(PageAddVM model)  
     {
         var data = _mapper.Map<Page>(model.Add);
-        AppImage img = _imageService.Edit(model.Image, _env.WebRootPath + "/images/page/", model.Add.Image.Id);
-        data.AppImage = img;
+    //    AppImage img = _imageService.Edit(model.Image, _env.WebRootPath + "/images/page/", model.Add.Image.Id);
+    //    data.AppImage = img;
         _pageService.Update(data);
         return RedirectToAction("Index");
     }

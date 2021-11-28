@@ -15,21 +15,9 @@ public class PartnerService : BaseServiceWithImage<Partner>,IPartner
 {
     public PartnerService(AppDBContext context) : base(context)
     {
+
     }
 
-    public IEnumerable<LPartner> GetLocalizedAll(string cultureCode)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task<LPartner> GetLocalizedById(string id, string cultureCode)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task<LPartner> GetLocalizedByName(string id, string cultureCode)
-    {
-        throw new NotImplementedException();
-    }
+  
 }
 
