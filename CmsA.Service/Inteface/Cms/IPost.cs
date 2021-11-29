@@ -10,11 +10,13 @@ using System.Threading.Tasks;
 
 namespace CmsA.Service.Inteface.Cms
 {
-    public interface IPost : IBase<Post>, ITranslate<LPost>
+    public interface IPost : IBase<Post>
     {
         Task<List<AppImage>> GetGallery(string id);
         void AddImageToGallery(AppImage image, string PostId);
         Task SetUnsetMain(int ImageId);
+        IEnumerable<LPost> GetLocalizedAllByPage(string name, string cultureCode);
+        IEnumerable<LPost> GetLocalizedAllStaredByPage(string name, string cultureCode);
 
     }
 }

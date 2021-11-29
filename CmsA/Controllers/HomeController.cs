@@ -25,13 +25,20 @@ public class HomeController : BaseHomeController
     public async Task<IActionResult> Index()
     {
         var cultureCode = GetCulture();
-       var banners= _bannerService.GetLocalizedAll(cultureCode);
-        var service =await _pageService.GetLocalizedByName("service", cultureCode);
-       service.LPosts=_postService.GetLocalizedByName
+        var banners = _bannerService.GetLocalizedAll(cultureCode);
+        var service = await _pageService.GetLocalizedByName("service", cultureCode);
+        service.LPosts = _postService.GetLocalizedAllStaredByPage("service", cultureCode);
+        var certificate = await _pageService.GetLocalizedByName("certificate", cultureCode);
+        certificate.LPosts = _postService.GetLocalizedAllStaredByPage("certificate", cultureCode);
+        var project = await _pageService.GetLocalizedByName("project", cultureCode);
+        project.LPosts = _postService.GetLocalizedAllStaredByPage("project", cultureCode);
         HomeVM model = new()
         {
             Banners = banners,
-            Service= service,
+            Service = service,
+            Certificate = certificate,
+            Project = project,
+
         };
         return View(model);
     }

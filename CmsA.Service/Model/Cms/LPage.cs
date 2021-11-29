@@ -14,7 +14,7 @@ namespace CmsA.Service.Model.Cms
         public  string Description { get; set; }
         public string  Content { get; set; }
         public string  VideoUrl { get; set; }
-        public virtual List<LPost> LPosts { get; set; }
+        public virtual IEnumerable<LPost> LPosts { get; set; }
 
         public PostType PostType { get; set; }
 

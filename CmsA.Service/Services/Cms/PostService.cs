@@ -2,6 +2,7 @@
 using CmsA.Data.Model;
 using CmsA.Data.Model.Cms;
 using CmsA.Service.Inteface;
+using CmsA.Service.Inteface.BaseInterface;
 using CmsA.Service.Inteface.Cms;
 using CmsA.Service.Model.Cms;
 using CmsA.Service.Services.BaseServices;
@@ -22,10 +23,7 @@ public class PostService : BaseService<Post> ,IPost
        // _imageFileService = imageFileService;
     }
 
-    public IEnumerable<LPost> GetLocalizedAll(string cultureCode)
-    {
-        throw new NotImplementedException();
-    }
+  
     public IEnumerable<LPost> GetLocalizedAllByPage(string PageName,string cultureCode)
     {
         throw new NotImplementedException();
@@ -36,9 +34,23 @@ public class PostService : BaseService<Post> ,IPost
         throw new NotImplementedException();
     }
 
-    public Task<LPost> GetLocalizedByName(string name, string cultureCode)
+    public IEnumerable<LPost> GetLocalizedAllStaredByPage(string name, string cultureCode)
     {
-        throw new NotImplementedException();
+        return from b in _context.Posts.Include(p=>p.Gallery.Where(c=>c.IsMain))
+                join LTitle in _context.Localizations on b.TitleId equals LTitle.LocalizationSetId
+                join LDescription in _context.Localizations on b.DescriptionId equals LDescription.LocalizationSetId
+             
+                where b.Page.Name == name && b.Stared
+                && LTitle.CultureCode == cultureCode
+                && LDescription.CultureCode == cultureCode
+                select new LPost()
+                {
+                    Name = b.Name,
+                    Title = LTitle.Value,
+                    Description = LDescription.Value,
+                    Image=b.Gallery.Select(c=>c.Name).FirstOrDefault(),
+                };
+     
     }
 
     public new async Task<List<Post>> GetAll() =>
@@ -64,12 +76,14 @@ public class PostService : BaseService<Post> ,IPost
         _context.SaveChanges();
     }
 
+  
+
     //public new async Task Delete(string PostId)
     //{
     //  var post=  _context.Posts.Include(c => c.Gallery).FirstOrDefaultAsync();
     //}
 
-    
+
 
 
 
