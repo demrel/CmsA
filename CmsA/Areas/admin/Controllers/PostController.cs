@@ -5,6 +5,7 @@ using CmsA.Service.Inteface;
 using CmsA.Service.Inteface.Cms;
 using CmsA.Service.Inteface.Localizations;
 using CmsA.Service.Model;
+using CmsA.Web.Models;
 using CmsA.Web.Models.Posts;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -90,9 +91,37 @@ namespace CmsA.Web.Areas.admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Gallery(string id)
         {
+            var post = await _postService.GetById(id);
             var data = await _postService.GetGallery(id);
+            PostGalleryVM model = new()
+            {
+                Images = _mapper.Map<List<AppImageModel>>(data),
+                PostId=id,
+                PostName=post.Name,
+            };
+            return View(model);
+        }
 
-            return View(data);
+        [HttpPost]
+        public  IActionResult AddImageToGallery(PostGalleryVM model)
+        {
+          var img=  _imageService.Add(model.Image, _env.WebRootPath + "/images/post/");
+          _postService.AddImageToGallery(img, model.PostId);
+          return RedirectToAction("Gallery", new { Id = model.PostId });
+        }
+
+        [HttpGet]
+        public  IActionResult DeleteImage(int id,string postId)
+        {
+            _imageService.Delete(id);
+            return RedirectToAction("Gallery", new { Id = postId });
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> SetUnsetMain(int id, string postId)
+        {
+            await _postService.SetUnsetMain(id);
+            return RedirectToAction("Gallery", new { Id = postId });
         }
 
     }

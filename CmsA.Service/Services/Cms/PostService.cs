@@ -54,19 +54,18 @@ public class PostService : BaseService<Post> ,IPost
     }
 
     public new async Task<List<Post>> GetAll() =>
-           await _context.Posts.Include(b => b.Gallery).ToListAsync();
+           await _context.Posts.Include(b => b.Page).ToListAsync();
 
     public  async Task<List<AppImage>> GetGallery(string id)=>
       await  _context.Images.Where(i => i.PostId == id).ToListAsync();
 
-   
+    
     public  void AddImageToGallery(AppImage image, string PostId)
     {
         image.PostId=PostId;
         _context.Images.Update(image);
         _context.SaveChanges();
     }
-
 
     public async Task SetUnsetMain(int ImageId)
     {

@@ -30,6 +30,8 @@ public class AppDBContext : IdentityDbContext<AppUser, AppRole, string, Identity
     public DbSet<Partner> Partners { get; set; }
     public DbSet<Message> Messages { get; set; }
 
+    public DbSet<MissionVission> MissionVissions { get; set; }
+    public DbSet<Viedo> Videos { get; set; }
 
 
     protected override void OnModelCreating(ModelBuilder builder)

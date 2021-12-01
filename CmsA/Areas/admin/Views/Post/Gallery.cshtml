@@ -1,0 +1,94 @@
+﻿@model CmsA.Web.Models.Posts.PostGalleryVM
+<h3 class="m-3 mb-4">Add Image @Model.PostName</h3>
+
+<div class="col-md-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+
+            <div class="row mt-4">
+
+                <div class="col-md-12">
+                    <form class="forms-sample" method="post" enctype="multipart/form-data">
+                        <input type="hidden" class="form-control" asp-for="PostId">
+
+                        <div class="col-sm-4 pb-4">
+                            <div class="form-group">
+                                <label>File upload</label>
+                                <input type="file" asp-for="Image" class="file-upload-default">
+                                <div class="input-group col-xs-12">
+                                    <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image">
+                                    <span class="input-group-append">
+                                        <button class="file-upload-browse btn btn-info" type="button">Upload</button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+
+
+
+                        <button type="submit" asp-controller="Post" asp-action="AddImageToGallery" class="btn btn-success mr-2">Submit</button>
+
+
+                        <label for="minimal-checkbox-1">Show In HomePage</label>
+
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<h3 class="m-3 mb-4">Gallery</h3>
+<div class="row">
+    <div class="col-md-12 grid-margin">
+        <div class="card">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table id="order-listing" class="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Stared</th>
+
+                                <th class="float-right">#</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Images)
+                            {
+                                <tr>
+                                    <td> <img src="~/images/post/@item.Name" />     </td>
+                                    <td>
+                                        @if (item.IsMain)
+                                        {
+                                           <i class="fas fa-star"></i>
+                                        }
+
+                                    </td>
+                                    <td>
+                                        <a class="float-right m-1" href="@Url.Action("DeleteImage", "Post",new { id = item.Id,postId=Model.PostId})"><i class=" fas fa-trash"></i></a>
+                                        <a class="float-right" href="@Url.Action("SetUnsetMain", "Post",new { id = item.Id,postId=Model.PostId})"> <i class="far fa-star"></i></a>
+                                        @*    <a class="float-right m-1" href="@Url.Action("Index", "PostImages",new { Pageid = Page.Id})"><i class="fas fa-stream"></i></a> *@ 
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+<script src="~/admin/js/shared/file-upload.js"></script>
+}

@@ -10,6 +10,8 @@ namespace CmsA.Web.Models.Posts;
     public List<LocalizationModel> Content { get; set; }
     public List<AppImageModel> Gallery { get; set; }
     public string PageId { get; set; }
+    public string PageName { get; set; }
+
     public bool Stared { get; set; }
 }
 

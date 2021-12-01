@@ -11,7 +11,9 @@ public class Viedo
 {
     public int Id { get; set; }
     public AppImage VideoImage { get; set; }
-    public LocalizationSet VideoURl { get; set; }
-    public LocalizationSet VideoTitle { get; set; }
+    public LocalizationSet URl { get; set; }
+    public LocalizationSet Title { get; set; }
+    public LocalizationSet Description { get; set; }
+
 }
 

@@ -9,6 +9,7 @@
                         <thead>
                             <tr>
                                 <th>Name</th>
+                                 <th>Page</th>
                                 <th class="float-right">#</th>
                             </tr>
                         </thead>
@@ -19,13 +20,15 @@
                                     <td>
                                         @item.Name
                                     </td>
-
+                                    <td>
+                                        @item.PageName
+                                    </td>
 
 
                                     <td>
                                         <a class="float-right m-1" href="@Url.Action("Update", "Post",new { id = item.Id})"><i class="fas fa-pencil-alt"></i></a>
                                         <a class="float-right" href="@Url.Action("Delete", "Post",new { id = item.Id})"><i class=" fas fa-trash"></i></a>
-                                        @*    <a class="float-right m-1" href="@Url.Action("Index", "PostImages",new { Pageid = Page.Id})"><i class="fas fa-stream"></i></a> *@
+                                            <a class="float-right m-1" href="@Url.Action("Gallery", "Post",new { id = item.Id})"><i class="far fa-file-image"></i></a> 
                                     </td>
                                 </tr>
                             }
