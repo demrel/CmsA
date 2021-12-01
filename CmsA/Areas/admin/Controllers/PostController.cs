@@ -12,15 +12,17 @@ using SelectListItem = CmsA.Service.Model.SelectListItem;
 
 namespace CmsA.Web.Areas.admin.Controllers
 {
-    public class PostController : BaseAdminController<PostAddVM>
+    public class PostController : BaseAdminController
     {
         private readonly IPost _postService;
         private readonly IPage _pageService;
+        protected readonly ICulture _cultureService;
 
-        public PostController(IMapper mapper, IImageFile imageService, IWebHostEnvironment env, ICulture cultureService, IPost postService, IPage pageService) : base(mapper, imageService, env, cultureService)
+        public PostController(IMapper mapper, IImageFile imageService, IWebHostEnvironment env, ICulture cultureService, IPost postService, IPage pageService) : base(mapper, imageService, env)
         {
             _postService = postService;
             _pageService = pageService;
+            _cultureService = cultureService;
         }
         public async Task<IActionResult> Index()
         {
@@ -32,8 +34,8 @@ namespace CmsA.Web.Areas.admin.Controllers
 
             return View(model);
         }
-
-        public new async Task<IActionResult> Add()
+        [HttpGet]
+        public  async Task<IActionResult> Add()
         {
 
             var data = await _pageService.GetMinimal();

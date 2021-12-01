@@ -21,6 +21,5 @@ public class Page : BaseModel
     public virtual List<KeyValueHelper> KeyValueHelpers { get; set; }
     public virtual List<Post> Posts { get; set; }
     public PostType PostType { get; set; }
- //   public bool ShowInMain { get; set; }
 }
 

@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CmsA.Web.Areas.admin.Controllers
 {
-    public class BannerController : BaseAdminController<BanerAddVM>
+    public class BannerController : BaseCulturalController<BanerAddVM>
     {
         private readonly IBanner _bannerService;
         public BannerController(IMapper mapper, IImageFile imageService, IWebHostEnvironment env, ICulture cultureService, IBanner bannerService) : base(mapper, imageService, env, cultureService)
@@ -30,7 +30,7 @@ namespace CmsA.Web.Areas.admin.Controllers
         [HttpPost]
         public IActionResult Add(BanerAddVM model)
         {
-            var data = _mapper.Map<Banner>(model.Add);
+            Banner data = _mapper.Map<Banner>(model.Add);
             AppImage img = _imageService.Add(model.Image, _env.WebRootPath + "/images/banner/");
             data.AppImage = img;
             _bannerService.Create(data);

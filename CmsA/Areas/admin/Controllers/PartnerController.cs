@@ -8,20 +8,16 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CmsA.Web.Areas.admin.Controllers
 {
-    [Area("admin")]
-    public class PartnerController :Controller
+    public class PartnerController : BaseAdminController
     {
-        protected readonly IMapper _mapper;
-        protected readonly IImageFile _imageService;
-        protected readonly IWebHostEnvironment _env;
+
         private readonly IPartner _partnerService;
-        public PartnerController(IMapper mapper, IImageFile imageService, IWebHostEnvironment env, IPartner partnerService)
+
+        public PartnerController(IMapper mapper, IImageFile imageService, IWebHostEnvironment env, IPartner partnerService) : base(mapper, imageService, env)
         {
-            _mapper = mapper;
-            _imageService = imageService;
-            _env = env;
             _partnerService = partnerService;
         }
+
         public async Task<IActionResult> Index()
         {
             var data = await _partnerService.GetAll();

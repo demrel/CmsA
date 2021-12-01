@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CmsA.Web.Areas.admin.Controllers;
 
-public class PageController : BaseAdminController<PageAddVM>
+public class PageController : BaseCulturalController<PageAddVM>
 {
     private readonly IPage _pageService;
     public PageController(IMapper mapper, IImageFile imageService, IWebHostEnvironment env, IPage pageService,ICulture _cultureService) : base(mapper, imageService, env,_cultureService)

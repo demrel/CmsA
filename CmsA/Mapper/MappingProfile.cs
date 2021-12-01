@@ -47,10 +47,12 @@ namespace CmsA.Web.Mapper
         {
             CreateMap<Banner, BanerModel>()
                  .ForMember(c => c.Title, m => m.MapFrom(c => c.Title.Localizations))
+                  .ForMember(c => c.Url, m => m.MapFrom(c => c.Url.Localizations))
                  .ForMember(c => c.Image, m => m.MapFrom(c => c.AppImage));
 
             CreateMap<BanerModel, Banner>()
-                .ForPath(c => c.Title.Localizations, m => m.MapFrom(c => c.Title));
+                .ForPath(c => c.Title.Localizations, m => m.MapFrom(c => c.Title))
+                .ForPath(c => c.Url.Localizations, m => m.MapFrom(c => c.Url));
         }
 
         private void Post()

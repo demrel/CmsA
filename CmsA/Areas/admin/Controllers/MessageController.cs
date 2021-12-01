@@ -1,14 +1,14 @@
-﻿using CmsA.Service.Inteface.Cms;
+﻿using AutoMapper;
+using CmsA.Service.Inteface.Cms;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CmsA.Web.Areas.admin.Controllers
 {
-    [Area("admin")]
-    public class MessageController : Controller
+    public class MessageController : BaseAdminController
     {
         private readonly IMessage _messageServie;
 
-        public MessageController(IMessage messageServie)
+        public MessageController(IMapper mapper, IMessage messageServie) : base(mapper)
         {
             _messageServie = messageServie;
         }
@@ -18,7 +18,7 @@ namespace CmsA.Web.Areas.admin.Controllers
             return View();
         }
 
-        public IActionResult View()
+        public IActionResult SeeMessage()
         {
             return View();
         }
