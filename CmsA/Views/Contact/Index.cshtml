@@ -99,12 +99,16 @@
                     @Html.Raw(Model.Page.Content)
                 </div>
             </div>
+
+       
             <div class="row">
                 @foreach (var item in Model.Page.LPosts)
                 {
-                    <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+
+                              
+                    <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
                         <!--Locations Single-->
-                    <div class="locations__single">
+                    <div class="locations__single" style='height: 90%;'>
                             <h3 class="locations__title">@item.Title</h3>
                             <h4 class="locations__mail-phone-box">
                                 <a href="@item.Description" class="locations__mail">

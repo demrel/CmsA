@@ -5,7 +5,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="table-responsive">
-                    <table id="order-listing" class="table">
+                    <table id="order-listing" class="table order-listing">
                         <thead>
                             <tr>
                                 <th>Name</th>
@@ -24,8 +24,7 @@
                                         @item.PageName
                                     </td>
 
-
-                                    <td>
+                                    <td style='display: flex; align-items: center; justify-content: flex-end;'>
                                         <a class="float-right m-1" href="@Url.Action("Update", "Post",new { id = item.Id})"><i class="fas fa-pencil-alt"></i></a>
                                         <a class="float-right" href="@Url.Action("Delete", "Post",new { id = item.Id})"><i class=" fas fa-trash"></i></a>
                                             <a class="float-right m-1" href="@Url.Action("Gallery", "Post",new { id = item.Id})"><i class="far fa-file-image"></i></a> 

@@ -13,13 +13,13 @@
   
 }
 
-  <a class=" dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+  <a class=" dropdown-toggle text-white" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
    <i class="fas fa-globe-americas"></i> @requestCulture.RequestCulture.Culture.Name.ToUpper()
   </a>
 
   <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-<li> <a class="dropdown-item" asp-controller="Preference" asp-action="SetLanguage" asp-route-returnUrl="@Context.Request.Path" asp-route-culture="en">EN</a></li>
-    <li><a class="dropdown-item" asp-controller="Preference" asp-action="SetLanguage" asp-route-returnUrl="@Context.Request.Path" asp-route-culture="az">AZ</a></li>
-    <li><a class="dropdown-item" asp-controller="Preference" asp-action="SetLanguage" asp-route-returnUrl="@Context.Request.Path" asp-route-culture="ru">RU</a></li>
-    <li><a class="dropdown-item" asp-controller="Preference" asp-action="SetLanguage" asp-route-returnUrl="@Context.Request.Path" asp-route-culture="tr">TR</a></li>
+<li> <a class="dropdown-item text-dark" asp-controller="Preference" asp-action="SetLanguage" asp-route-returnUrl="@Context.Request.Path" asp-route-culture="en">EN</a></li>
+    <li><a class="dropdown-item text-dark" asp-controller="Preference" asp-action="SetLanguage" asp-route-returnUrl="@Context.Request.Path" asp-route-culture="az">AZ</a></li>
+    <li><a class="dropdown-item text-dark" asp-controller="Preference" asp-action="SetLanguage" asp-route-returnUrl="@Context.Request.Path" asp-route-culture="ru">RU</a></li>
+    <li><a class="dropdown-item text-dark" asp-controller="Preference" asp-action="SetLanguage" asp-route-returnUrl="@Context.Request.Path" asp-route-culture="tr">TR</a></li>
   </ul>
