@@ -24,14 +24,49 @@ public class PostService : BaseService<Post> ,IPost
     }
 
   
-    public IEnumerable<LPost> GetLocalizedAllByPage(string PageName,string cultureCode)
+    public IEnumerable<LPost> GetLocalizedAllByPage(string name, string cultureCode)
     {
-        throw new NotImplementedException();
+        return from b in _context.Posts.Include(p => p.Gallery.Where(c => c.IsMain))
+               join LTitle in _context.Localizations on b.TitleId equals LTitle.LocalizationSetId
+               join LDescription in _context.Localizations on b.DescriptionId equals LDescription.LocalizationSetId
+               join Lcontent in _context.Localizations on b.ContentId equals Lcontent.LocalizationSetId
+               where b.Page.Name == name 
+               && LTitle.CultureCode == cultureCode
+               && LDescription.CultureCode == cultureCode
+               && Lcontent.CultureCode == cultureCode
+
+               select new LPost()
+               {
+                   Name = b.Name,
+                   Title = LTitle.Value,
+                   Description = LDescription.Value,
+                   Content=Lcontent.Value,
+                   Image = b.Gallery.Select(c => c.Name).FirstOrDefault(),
+               };
     }
 
-    public Task<LPost> GetLocalizedById(string id, string cultureCode)
+   
+    public async Task<LPost> GetLocalizedByName(string name, string cultureCode)
     {
-        throw new NotImplementedException();
+        var a = from b in _context.Posts.Include(p=>p.Gallery)
+                join LTitle in _context.Localizations on b.TitleId equals LTitle.LocalizationSetId
+                join LDescription in _context.Localizations on b.DescriptionId equals LDescription.LocalizationSetId
+                join LContent in _context.Localizations on b.ContentId equals LContent.LocalizationSetId
+                where b.Name == name && LTitle.CultureCode == cultureCode
+                                   && LContent.CultureCode == cultureCode
+                                   && LDescription.CultureCode == cultureCode
+                select new LPost()
+                {
+                    Name = b.Name,
+                    Title = LTitle.Value,
+                    Description = LDescription.Value,
+                    Content = LContent.Value,
+                    PageName=b.Page.Title.Localizations.Where(p=>p.CultureCode==cultureCode).Select(l=>l.Value).FirstOrDefault(),
+                    PageId=b.Page.Name,
+                    Gallery=b.Gallery.Select(b=>b.Name).ToList(),
+                    Image=b.Gallery.Where(c=>c.IsMain).Select(i=>i.Name).FirstOrDefault(),
+                };
+        return await a.FirstOrDefaultAsync();
     }
 
     public IEnumerable<LPost> GetLocalizedAllStaredByPage(string name, string cultureCode)
@@ -39,7 +74,6 @@ public class PostService : BaseService<Post> ,IPost
         return from b in _context.Posts.Include(p=>p.Gallery.Where(c=>c.IsMain))
                 join LTitle in _context.Localizations on b.TitleId equals LTitle.LocalizationSetId
                 join LDescription in _context.Localizations on b.DescriptionId equals LDescription.LocalizationSetId
-             
                 where b.Page.Name == name && b.Stared
                 && LTitle.CultureCode == cultureCode
                 && LDescription.CultureCode == cultureCode

@@ -22,7 +22,7 @@ public  class BaseService<T> where T : BaseModel
     public  void Create(T item)
     {
          item.Id = Guid.NewGuid().ToString().RemoveNoneAlphaNumerics();
-         item.Time = DateTime.UtcNow;
+         item.Time = DateTime.UtcNow.AddHours(4);
          _context.Add(item);
          _context.SaveChanges();
     }

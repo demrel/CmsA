@@ -1,0 +1,65 @@
+﻿@model CmsA.Web.Models.Front.PageVM
+<!--Page Header Start-->
+<section class="page-header">
+    <div class="page-header__bg"></div><!-- /.page-header__bg -->
+    <div class="page-header-shape-1"></div><!-- /.page-header-shape-1 -->
+    <div class="page-header-shape-2"></div><!-- /.page-header-shape-2 -->
+    <div class="page-header-shape-3"></div><!-- /.page-header-shape-3 -->
+    <div class="container">
+        <div class="page-header__inner">
+            <ul class="thm-breadcrumb list-unstyled">
+                <li><a href="/">@Localizer.GetLocalizedHtmlString("home")</a></li>
+                <li><span>/</span></li>
+                <li>@Model.Page.Title</li>
+            </ul>
+            <h2>@Model.Page.Description</h2>
+        </div>
+    </div>
+</section>
+<!--Page Header End-->
+<!--Our Mission Start-->
+<section class="our-mission">
+    <div class="our-mission-bg jarallax" data-jarallax data-speed="0.2" data-imgPosition="50% 0%"
+         style="background-image: url(/front/images/shapes/real-world-shape.png)"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="our-mission__inner">
+                    @Html.Raw(Model.Page.Content)
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Our Mission End-->
+<!--Services One Start-->
+<section class="services-one services-page">
+    <div class="container">
+        <div class="row">
+            @foreach (var post in Model.Page.LPosts)
+            {
+                <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInLeft" data-wow-delay="0ms">
+                    <!--Services One Single-->
+                <div class="services-one__single">
+                        <div class="services-one__img">
+                            <img src="~/images/post/@post.Image" alt="@post.Title">
+                        </div>
+                        <div class="services-one__content">
+                            <h3 class="services-one__title">
+                                <a href="/page/@Model.Page.Name/@post.Name">@post.Title</a>
+                            </h3>
+                            <div class="services-one__text">
+                                @Html.Raw(@post.Description)
+                            </div>
+
+                            <a href="/page/@Model.Page.Name/@post.Name" class="services-one__btn">@Localizer.GetLocalizedHtmlString("more")</a>
+                        </div>
+                    </div>
+                </div>
+            }
+
+
+        </div>
+    </div>
+</section>
+<!--Services One End-->

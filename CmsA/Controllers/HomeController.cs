@@ -1,4 +1,5 @@
 ﻿using CmsA.Models;
+using CmsA.Service.Inteface;
 using CmsA.Service.Inteface.Cms;
 using CmsA.Web.Controllers;
 using CmsA.Web.Models.Front;
@@ -9,20 +10,21 @@ namespace CmsA.Controllers;
 
 public class HomeController : BaseHomeController
 {
-    private readonly ILogger<HomeController> _logger;
     private readonly IBanner _bannerService;
     private readonly IPage _pageService;
     private readonly IPost _postService;
     private readonly IPartner _partnerService;
+    private readonly IVideo _videoService;
+    private readonly IMission _missionService;
 
-
-    public HomeController(ILogger<HomeController> logger, IBanner bannerService, IPost postService, IPage pageService, IPartner partnerService)
+    public HomeController(IBanner bannerService, IPost postService, IPage pageService, IPartner partnerService, IMission missionService, IVideo videoService)
     {
-        _logger = logger;
         _bannerService = bannerService;
         _postService = postService;
         _pageService = pageService;
         _partnerService = partnerService;
+        _missionService = missionService;
+        _videoService = videoService;
     }
 
     public async Task<IActionResult> Index()
@@ -39,6 +41,10 @@ public class HomeController : BaseHomeController
         var project = await _pageService.GetLocalizedByName("project", cultureCode);
         project.LPosts = _postService.GetLocalizedAllStaredByPage("project", cultureCode);
         var partners =await _partnerService.GetAll();
+
+        var mission = await _missionService.GetLocalized(cultureCode);
+        var video =await _videoService.GetLocalized(cultureCode);
+
         HomeVM model = new()
         {
             Banners = banners,
@@ -46,6 +52,8 @@ public class HomeController : BaseHomeController
             Certificate = certificate,
             Project = project,
             Partners= partners,
+            Video = video,
+            MissionVission=mission,
         };
         return View(model);
     }

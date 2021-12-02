@@ -1,1 +1,108 @@
-﻿
+﻿@model CmsA.Web.Models.OtherSitePref.MissionVissionModel
+<h3 class="m-3 mb-4">Mission Vission</h3>
+<div class="col-md-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+
+            <div class="row mt-4">
+
+                <div class="col-md-12">
+                    <form class="forms-sample" method="post" >
+                        <input type="hidden" class="form-control" asp-for="Id">
+                        @{
+                            int i = 0;
+                        }
+                   
+                        <ul class="nav nav-tabs tab-simple-styled" role="tablist">
+                            @foreach (var item in Model.Cultures)
+                            {
+                                { i++; }
+                                <li class="nav-item">
+
+                                    <a class="nav-link @(i==1?"active":"")" id="tab-3-@i" data-toggle="tab" href="#@item.Code" role="tab" aria-controls="@item.Code" aria-selected="@(i==1?"true":"false")">
+                                        <i class="fas fa-language"></i> @item.Code.ToUpper()
+                                    </a>
+
+
+
+                                </li>
+                            }
+
+
+                        </ul>
+                        @{
+                            i = 0;
+                        }
+                        <div class="tab-content tab-content-basic">
+
+                            @foreach (var item in Model.Cultures)
+                            {
+                                <div class="tab-pane fade @(i==0?"show active":"")" id="@item.Code" role="tabpanel" aria-labelledby="@item.Code">
+                                    <div class="row my-3">
+                                        <div class="col-sm-12">
+
+
+
+                                            <div class="form-group">
+                                                <label asp-for="MissionTitle[i].CultureCode">Mission Title</label>
+                                                <input type="hidden" asp-for="MissionTitle[i].CultureCode" value="@item.Code">
+                                                <input type="text" class="form-control" asp-for="MissionTitle[i].Value" placeholder="Mission Title">
+                                            </div>
+
+                                          
+
+                                            <div class="form-group">
+                                                <label asp-for="Mission[i].CultureCode">Mission Description</label>
+                                                <input type="hidden" asp-for="Mission[i].CultureCode" value="@item.Code">
+                                                <textarea type="text" class="form-control tinyMce" asp-for="Mission[i].Value" placeholder="Mission Description"></textarea>
+                                            </div>
+
+                                   
+
+                                            
+                                            <div class="form-group">
+                                                <label asp-for="VissionTitle[i].CultureCode">Vission Title</label>
+                                                <input type="hidden" asp-for="VissionTitle[i].CultureCode" value="@item.Code">
+                                                <input type="text" class="form-control" asp-for="VissionTitle[i].Value" placeholder="Vission Title">
+                                            </div>
+
+                                          
+
+                                            <div class="form-group">
+                                                <label asp-for="Vission[i].CultureCode">Vission Description</label>
+                                                <input type="hidden" asp-for="Vission[i].CultureCode" value="@item.Code">
+                                                <textarea type="text" class="form-control tinyMce" asp-for="Vission[i].Value" placeholder="Vission Description"></textarea>
+                                            </div>
+
+
+
+                                            @{
+                                                i++;
+                                            }
+
+
+
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+                        </div>
+
+
+
+                        <button type="submit" asp-controller="Home" asp-action="UpdateMissionVission" class="btn btn-success mr-2">Submit</button>
+
+
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+

@@ -1,1 +1,120 @@
-﻿
+﻿@model CmsA.Web.Models.OtherSitePref.VideoModel
+<h3 class="m-3 mb-4">Update Post</h3>
+<div class="col-md-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+
+            <div class="row mt-4">
+
+                <div class="col-md-12">
+                    <form class="forms-sample" method="post" enctype="multipart/form-data">
+                        <input type="hidden" asp-for="Id">
+                        @{
+                            int i = 0;
+                        }
+
+                        <ul class="nav nav-tabs tab-simple-styled" role="tablist">
+                            @foreach (var item in Model.Cultures)
+                            {
+                                { i++; }
+                                <li class="nav-item">
+
+                                    <a class="nav-link @(i==1?"active":"")" id="tab-3-@i" data-toggle="tab" href="#@item.Code" role="tab" aria-controls="@item.Code" aria-selected="@(i==1?"true":"false")">
+                                        <i class="fas fa-language"></i> @item.Code.ToUpper()
+                                    </a>
+                                </li>
+                            }
+
+
+                        </ul>
+                        @{
+                            i = 0;
+                        }
+                        <div class="tab-content tab-content-basic">
+
+                            @foreach (var item in Model.Cultures)
+                            {
+                                <div class="tab-pane fade @(i==0?"show active":"")" id="@item.Code" role="tabpanel" aria-labelledby="@item.Code">
+                                    <div class="row my-3">
+                                        <div class="col-sm-12">
+
+
+
+                                            <div class="form-group">
+                                                <label asp-for="Title[i].CultureCode">Title</label>
+                                                <input type="hidden" asp-for="Title[i].CultureCode" value="@item.Code">
+                                                <input type="text" class="form-control" asp-for="Title[i].Value" placeholder="Title">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label asp-for="URl[i].CultureCode">URl</label>
+                                                <input type="hidden" asp-for="URl[i].CultureCode" value="@item.Code">
+                                                <input type="text" class="form-control" asp-for="URl[i].Value" placeholder="URl">
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <label asp-for="Description[i].CultureCode">Description</label>
+                                                <input type="hidden" asp-for="Description[i].CultureCode" value="@item.Code">
+                                                <textarea type="text" class="form-control tinyMce" asp-for="Description[i].Value" placeholder="Description"></textarea>
+                                            </div>
+
+
+
+                                            @{
+                                                i++;
+                                            }
+
+
+
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+
+
+                        </div>
+                        <div class="row pb-4">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label>File upload</label>
+                                    <input type="file"  @(Model.VideoImage==null?"required":"") asp-for="Image" class="file-upload-default">
+
+                                    @if (Model.VideoImage != null)
+                                    {
+                                        <input type="hidden" asp-for="VideoImage.Id" class="file-upload-default">
+                                    }
+
+                                    <div class="input-group col-xs-12">
+                                        <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image">
+                                        <span class="input-group-append">
+                                            <button class="file-upload-browse btn btn-info" type="button">Upload</button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4"><img src="~/images/video/@Model.VideoImage?.Name" style="width:150px" /></div>
+
+                        </div>
+
+
+
+                        <button type="submit" asp-controller="Home" asp-action="UpdateVideo" class="btn btn-success mr-2">Submit</button>
+
+
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+<script src="~/admin/js/shared/file-upload.js"></script>
+}

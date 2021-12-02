@@ -10,10 +10,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Behruz mmc</title>
     <!-- favicons Icons -->
-    <link rel="apple-touch-icon" sizes="180x180" href="~/frontend/images/favicons/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="~/frontend/images/favicons/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="~/frontend/images/favicons/favicon-16x16.png" />
-    <link rel="manifest" href="~/frontend/images/favicons/site.webmanifest" />
+    <link rel="apple-touch-icon" sizes="180x180" href="~/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="~/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="~/favicon-16x16.png" />
+    <link rel="manifest" href="~/site.webmanifest" />
     <meta name="description" content=">Behruz mmc" />
 
     <!-- fonts -->
@@ -55,7 +55,7 @@
                 <div class="main-menu-wrapper">
                     <div class="main-menu-wrapper__left">
                         <div class="main-menu-wrapper__logo">
-                            <a href="index.html"><img src="logo.png" alt=""></a>
+                            <a href="/"><img src="~/logo.png" alt=""></a>
                         </div>
                         <div class="main-menu-wrapper__main-menu">
                             <a href="#" class="mobile-nav__toggler">
@@ -64,10 +64,10 @@
                                 <span class="mobile-nav__toggler-bar"></span>
                             </a>
                             <ul class="main-menu__list">
-                                <li class="current"><a href="contact.html">Xidmətlərimiz</a></li>
-                                <li class=""><a href="contact.html">Sertifikatlarımız</a></li>
-                                <li class=""><a href="contact.html">Layihələrimiz</a></li>
-                                <li class=""><a href="contact.html">Əlaqə</a></li>
+                                <li class="current"><a href="/page/service">Xidmətlərimiz</a></li>
+                                <li class=""><a href="/page/certificate">Sertifikatlarımız</a></li>
+                                <li class=""><a href="/page/project">Layihələrimiz</a></li>
+                                <li class=""><a href="/contact">Əlaqə</a></li>
                             </ul>
                         </div>
                     </div>
@@ -170,7 +170,7 @@
         <div class="search-popup__content">
             <form action="#">
                 <label for="search" class="sr-only">search here</label><!-- /.sr-only -->
-                <input type="text" id="search" placeholder="Search Here..." />
+                <input type="text" id="search" placeholder="@Localizer.GetLocalizedHtmlString("search")" />
                 <button type="submit" aria-label="search submit" class="thm-btn">
                     <i class="icon-magnifying-glass"></i>
                 </button>

@@ -118,42 +118,42 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="contactus" xml:space="preserve">
-    <value>СВЯЗАТЬСЯ С НАМИ</value>
+    <value>BİZE ULAŞIN</value>
   </data>
   <data name="fmail" xml:space="preserve">
-    <value>электронная почта</value>
+    <value>E-posta</value>
   </data>
   <data name="fmesage" xml:space="preserve">
-    <value>Сообщение</value>
+    <value>İleti</value>
   </data>
   <data name="fname" xml:space="preserve">
-    <value>Имя Фамиля Отчество</value>
+    <value>İsim Soyisim Baba ismi</value>
   </data>
   <data name="fphone" xml:space="preserve">
-    <value>Номер телефона</value>
+    <value>Telefon numarası</value>
   </data>
   <data name="fsend" xml:space="preserve">
-    <value>Отправить</value>
+    <value>Gönder</value>
   </data>
   <data name="ftitle" xml:space="preserve">
-    <value>Загаловка</value>
+    <value>Başlık</value>
   </data>
   <data name="gallery" xml:space="preserve">
-    <value>Галерия</value>
+    <value>Qaleri</value>
   </data>
   <data name="home" xml:space="preserve">
-    <value>Главная Страница</value>
+    <value>Ana Sayfa</value>
   </data>
   <data name="more" xml:space="preserve">
-    <value>более</value>
+    <value>daha fazla</value>
   </data>
   <data name="partner" xml:space="preserve">
-    <value>С нами сотрудничают</value>
+    <value>Bizimle işbirliği yapıyorlar</value>
   </data>
   <data name="search" xml:space="preserve">
-    <value>Поиск</value>
+    <value>Ara</value>
   </data>
   <data name="writeus" xml:space="preserve">
-    <value>Напишите нам</value>
+    <value>Bize yazın</value>
   </data>
 </root>

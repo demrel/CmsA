@@ -1,0 +1,73 @@
+﻿@model CmsA.Web.Models.Front.PostVM
+<!--Page Header Start-->
+<section class="page-header">
+    <div class="page-header__bg"></div><!-- /.page-header__bg -->
+    <div class="page-header-shape-1"></div><!-- /.page-header-shape-1 -->
+    <div class="page-header-shape-2"></div><!-- /.page-header-shape-2 -->
+    <div class="page-header-shape-3"></div><!-- /.page-header-shape-3 -->
+    <div class="container">
+        <div class="page-header__inner">
+            <ul class="thm-breadcrumb list-unstyled">
+                <li><a href="/">@Localizer.GetLocalizedHtmlString("home")</a></li>
+                <li><span>/</span></li>
+                <li><a href="/page/@Model.Post.PageId">@Model.Post.PageName</a></li>
+                <li><span>/</span></li>
+                <li>@Model.Post.Title</li>
+            </ul>
+            <div class="mt-3">
+                @Html.Raw(Model.Post.Description)
+            </div>
+        </div>
+    </div>
+</section>
+<!--Page Header End-->
+<!--Services Details Start-->
+<section class="services-details">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-8 col-lg-12">
+                <div class="services-details__left">
+                    <div class="services-details__img">
+                        <img src="~/images/post/@Model.Post.Image" alt="">
+                    </div>
+                    <div class="services-details__top-content">
+                        @Html.Raw(Model.Post.Content)
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!--Services Details End-->
+
+<!--Gallery Start-->
+<section class="team-one">
+    <div class="team-one__container">
+        <div class="section-title text-center">
+            <h2 class="section-title__title">@Localizer.GetLocalizedHtmlString("gallery")</h2>
+        </div>
+        <div class="row">
+            @foreach (var item in Model.Post.Gallery)
+            {
+                <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="0ms"
+                 data-wow-duration="1500ms">
+                    <!--Team One Single-->
+                <div class="team-one__single">
+                        <div class="team-one__img">
+                            <img src="~/images/post/@item" alt="">
+                            <div class="team-one__hover-content">
+                            </div>
+                            <div class="team-one__bottom">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+
+        </div>
+    </div>
+</section>
+<!--Gallery End-->

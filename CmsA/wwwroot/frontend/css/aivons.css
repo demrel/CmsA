@@ -5775,7 +5775,7 @@ ul {
 }
 
 .page-header__bg {
-    background-image: url(../images/backgrounds/page-header-bg.jpg);
+    background-color: #0f0d1d;
     background-size: cover;
     background-color: var(--thm-black);
     background-blend-mode: luminosity;

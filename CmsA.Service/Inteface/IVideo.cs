@@ -11,7 +11,7 @@ namespace CmsA.Service.Inteface
     public interface IVideo
     {
         void Update(Viedo video);
-        LVideo GetLocalized();
+        Task<LVideo> GetLocalized(string cultureCode);
         Task<Viedo> Get();
     }
 }

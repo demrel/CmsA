@@ -33,7 +33,7 @@
                             <div class="col-lg-8">
                                 <div class="main-slider__content">
                                     <h2>@item.Title</h2>
-                                    <a href="@item.Url" class="thm-btn">@Localizer["more"]</a>
+                                    <a href="@item.Url" class="thm-btn">@Localizer.GetLocalizedHtmlString("more")</a>
                                 </div>
                             </div>
                         </div>
@@ -72,9 +72,8 @@
                     <!--Real World Single-->
                 <div class="real-world__single">
                         <h2 class="real-world__title">
-                            <a href="business-growth.html">@item.Title</a>
+                            <a href="/page/service/@item.Name">@item.Title</a>
                         </h2>
-                        <a href="/service/@item.Name" class="real-world__btn">@Localizer["more"]</a>
                     </div>
                 </div>
             }
@@ -87,7 +86,7 @@
 <!--Brand One Start-->
 <section class="brand-one">
     <div class="container">
-        <h4 class="brand-one__title">@Localizer["partners"]</h4>
+        <h4 class="brand-one__title">@Localizer.GetLocalizedHtmlString("partner")</h4>
         <div class="thm-swiper__slider swiper-container" data-swiper-options='{"spaceBetween": 100, "slidesPerView": 5, "autoplay": { "delay": 5000 }, "breakpoints": {
                     "0": {
                         "spaceBetween": 30,
@@ -150,7 +149,7 @@
             <div class="col-xl-6 col-lg-6">
                 <div class="welcome-one__right">
                     <h2 class="welcome-one__title">@Model.Video?.Title</h2>
-                    @Html.Raw(Model.Video.Description)
+                    @Html.Raw(Model.Video?.Description)
                     <div class="welcome-one__progress">
                     </div>
 
@@ -262,8 +261,8 @@
                         <h3 class="news-one__title">
                             <a href="/page/project/@item.Name">@item.Title</a>
                         </h3>
-                      @Html.Raw(item.Description)
-                        <a href="/page/project/@item.Name" class="news-one__btn">@Localizer["more"]</a>
+                    <div class="services-one__text">@Html.Raw(item.Description)</div>  
+                        <a href="/page/project/@item.Name" class="news-one__btn">@Localizer.GetLocalizedHtmlString("more")</a>
 
                     </div>
                 </div>

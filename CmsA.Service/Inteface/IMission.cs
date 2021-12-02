@@ -11,7 +11,7 @@ namespace CmsA.Service.Inteface
     public interface IMission
     {
         void Update(MissionVission video);
-        LMV GetLocalized();
+        Task<LMV> GetLocalized(string cultureCode);
         Task<MissionVission> Get();
     }
 }

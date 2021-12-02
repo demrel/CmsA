@@ -3,6 +3,7 @@ using System;
 using CmsA.Data.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace CmsA.Data.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    partial class AppDBContextModelSnapshot : ModelSnapshot
+    [Migration("20211201213149_SitePrefSetting")]
+    partial class SitePrefSetting
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -126,9 +128,6 @@ namespace CmsA.Data.Migrations
                     b.Property<string>("FullName")
                         .HasColumnType("text");
 
-                    b.Property<bool>("IsRead")
-                        .HasColumnType("boolean");
-
                     b.Property<string>("Name")
                         .HasColumnType("text");
 
@@ -151,16 +150,16 @@ namespace CmsA.Data.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("MissionId")
+                    b.Property<int?>("MissionId")
                         .HasColumnType("integer");
 
-                    b.Property<int>("MissionTitleId")
+                    b.Property<int?>("MissionTitleId")
                         .HasColumnType("integer");
 
-                    b.Property<int>("VissionId")
+                    b.Property<int?>("VissionId")
                         .HasColumnType("integer");
 
-                    b.Property<int>("VissionTitleId")
+                    b.Property<int?>("VissionTitleId")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
@@ -284,16 +283,16 @@ namespace CmsA.Data.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("DescriptionId")
+                    b.Property<int?>("DescriptionId")
                         .HasColumnType("integer");
 
-                    b.Property<int>("TitleId")
+                    b.Property<int?>("TitleId")
                         .HasColumnType("integer");
 
-                    b.Property<int>("URlId")
+                    b.Property<int?>("URlId")
                         .HasColumnType("integer");
 
-                    b.Property<int>("VideoImageId")
+                    b.Property<int?>("VideoImageId")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
@@ -618,27 +617,19 @@ namespace CmsA.Data.Migrations
                 {
                     b.HasOne("CmsA.Data.Model.Localization.LocalizationSet", "Mission")
                         .WithMany()
-                        .HasForeignKey("MissionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("MissionId");
 
                     b.HasOne("CmsA.Data.Model.Localization.LocalizationSet", "MissionTitle")
                         .WithMany()
-                        .HasForeignKey("MissionTitleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("MissionTitleId");
 
                     b.HasOne("CmsA.Data.Model.Localization.LocalizationSet", "Vission")
                         .WithMany()
-                        .HasForeignKey("VissionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("VissionId");
 
                     b.HasOne("CmsA.Data.Model.Localization.LocalizationSet", "VissionTitle")
                         .WithMany()
-                        .HasForeignKey("VissionTitleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("VissionTitleId");
 
                     b.Navigation("Mission");
 
@@ -724,27 +715,19 @@ namespace CmsA.Data.Migrations
                 {
                     b.HasOne("CmsA.Data.Model.Localization.LocalizationSet", "Description")
                         .WithMany()
-                        .HasForeignKey("DescriptionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("DescriptionId");
 
                     b.HasOne("CmsA.Data.Model.Localization.LocalizationSet", "Title")
                         .WithMany()
-                        .HasForeignKey("TitleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("TitleId");
 
                     b.HasOne("CmsA.Data.Model.Localization.LocalizationSet", "URl")
                         .WithMany()
-                        .HasForeignKey("URlId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("URlId");
 
                     b.HasOne("CmsA.Data.Model.AppImage", "VideoImage")
                         .WithMany()
-                        .HasForeignKey("VideoImageId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("VideoImageId");
 
                     b.Navigation("Description");
 

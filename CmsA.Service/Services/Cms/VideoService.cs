@@ -9,9 +9,9 @@ using System.Text;
 using System.Threading.Tasks;
 using cmsData = CmsA.Data.Model.Cms;
 
-namespace CmsA.Service.Services.Cms 
+namespace CmsA.Service.Services.Cms
 {
-    public  class VideoService : IVideo
+    public class VideoService : IVideo
     {
         private readonly AppDBContext _context;
 
@@ -23,24 +23,37 @@ namespace CmsA.Service.Services.Cms
         public void Update(cmsData.Viedo video)
         {
             _context.Videos.Update(video);
-            _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
 
-        public LVideo GetLocalized()
+        public async Task<LVideo> GetLocalized(string cultureCode)
         {
-           // _context.Videos.Update();
-            _context.SaveChangesAsync();
-            return null;
+            var a = from b in _context.Videos.Include(v=>v.VideoImage)
+                    join LTitle in _context.Localizations on b.TitleId equals LTitle.LocalizationSetId
+                    join LDescription in _context.Localizations on b.DescriptionId equals LDescription.LocalizationSetId
+                    join LUrl in _context.Localizations on b.URlId equals LUrl.LocalizationSetId
+                    where LTitle.CultureCode == cultureCode
+                          && LUrl.CultureCode == cultureCode
+                          && LDescription.CultureCode == cultureCode
+                    select new LVideo()
+                    {
+                        Title = LTitle.Value,
+                        Description = LDescription.Value,
+                        URl=LUrl.Value,
+                        Image=b.VideoImage.Name
+                    };
+            return await a.FirstOrDefaultAsync();
         }
 
-        public async Task<cmsData.Viedo> Get()=>
-          await  _context.Videos
+        public async Task<cmsData.Viedo> Get() =>
+          await _context.Videos
                 .Include(v => v.VideoImage)
-                .Include(v => v.URl)
-                .Include(v => v.Title)
-                .Include(v => v.Description).FirstOrDefaultAsync();
+                .Include(v => v.URl).ThenInclude(s => s.Localizations)
+                .Include(v => v.Title).ThenInclude(s => s.Localizations)
+                .Include(v => v.Description).ThenInclude(s => s.Localizations)
+            .FirstOrDefaultAsync();
 
 
-        
+
     }
 }

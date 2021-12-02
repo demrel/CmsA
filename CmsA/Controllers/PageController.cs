@@ -1,18 +1,39 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using CmsA.Service.Inteface.Cms;
+using CmsA.Web.Models.Front;
+using Microsoft.AspNetCore.Mvc;
 
 namespace CmsA.Web.Controllers
 {
     public class PageController : BaseHomeController
     {
-        public IActionResult Index()
+        private readonly IPage _pageService;
+        private readonly IPost _postService;
+
+        public PageController(IPage pageService, IPost postService)
         {
-            return View();
+            _pageService = pageService;
+            _postService = postService;
         }
 
-        [HttpGet("/{controller}/{name}/{post}")]
-        public IActionResult Post(string name,string post)
+        [HttpGet("/{controller}/{name}")]
+        public async Task<IActionResult> Index(string name)
         {
-            return View();
+            var cultureCode = GetCulture();
+            var page = await _pageService.GetLocalizedByName(name, cultureCode);
+            if (page == null) return NotFound();
+            page.LPosts = _postService.GetLocalizedAllByPage(name, cultureCode);
+            PageVM model=new PageVM() { Page=page};
+            return View(model);
+        }
+
+        [HttpGet("/{controller}/{pagename}/{name}")]
+        public async Task<IActionResult> Post(string pagename, string name)
+        {
+            var cultureCode = GetCulture();
+            var post = await _postService.GetLocalizedByName(name, cultureCode);
+            if (post == null) return NotFound();
+            PostVM model = new PostVM() { Post = post,PageName=pagename };
+            return View(model);
         }
     }
 }

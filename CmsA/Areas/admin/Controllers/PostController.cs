@@ -60,8 +60,10 @@ namespace CmsA.Web.Areas.admin.Controllers
         public async Task<IActionResult> Update(string id)
         {
             var data = await _postService.GetById(id);
+            var pagelist = await _pageService.GetMinimal();
             PostAddVM model = new()
             {
+                Pages = new SelectList(pagelist, nameof(SelectListItem.Id), nameof(SelectListItem.Name),data.PageId),
                 Add = _mapper.Map<PostModel>(data),
                 Cultures = _cultureService.GetAll(),
             };

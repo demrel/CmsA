@@ -117,7 +117,43 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="contactus" xml:space="preserve">
+    <value>CONTACT US</value>
+  </data>
+  <data name="fmail" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="fmesage" xml:space="preserve">
+    <value>Message</value>
+  </data>
+  <data name="fname" xml:space="preserve">
+    <value>Full Name</value>
+  </data>
+  <data name="fphone" xml:space="preserve">
+    <value>Phone Number</value>
+  </data>
+  <data name="fsend" xml:space="preserve">
+    <value>Send</value>
+  </data>
+  <data name="ftitle" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="gallery" xml:space="preserve">
+    <value>Gallery</value>
+  </data>
+  <data name="home" xml:space="preserve">
+    <value>Home</value>
+  </data>
   <data name="more" xml:space="preserve">
     <value>more</value>
+  </data>
+  <data name="partner" xml:space="preserve">
+    <value>Cooperate with us</value>
+  </data>
+  <data name="search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="writeus" xml:space="preserve">
+    <value>Write Us</value>
   </data>
 </root>

@@ -1,6 +1,8 @@
 ﻿using CmsA.Web.Resources;
+using CmsA.Web.Services;
 using Microsoft.AspNetCore.Localization;
 using System.Globalization;
+using System.Reflection;
 
 namespace CmsA.Web.Dependency
 {
@@ -8,8 +10,18 @@ namespace CmsA.Web.Dependency
     {
         public static void AddLocalizationService(this IServiceCollection services)
         {
-            services.AddControllersWithViews().AddRazorRuntimeCompilation().AddViewLocalization().AddDataAnnotationsLocalization()
-            .AddDataAnnotationsLocalization(options => options.DataAnnotationLocalizerProvider = (t, f) => f.Create(typeof(SharedResource)));
+            services.AddSingleton<LocService>();
+            services.AddLocalization(options => options.ResourcesPath = "Resources");
+
+            services.AddControllersWithViews().AddRazorRuntimeCompilation().AddViewLocalization()
+            .AddDataAnnotationsLocalization(
+                options =>
+                  options.DataAnnotationLocalizerProvider = (type, factory) =>
+                  {
+                      var assemblyName = new AssemblyName(typeof(SharedResource).GetTypeInfo().Assembly.FullName);
+                      return factory.Create("SharedResource", assemblyName.Name);
+                  }
+                );
         }
 
         public static void AddLocalization(this WebApplication app)

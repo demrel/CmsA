@@ -24,6 +24,9 @@ public static class ServiceCollectionExtensions
         services.AddScoped<IPartner, PartnerService>();
         services.AddScoped<IKeyValueHelper, KeyValueHelperService>();
         services.AddScoped<IMessage, MessageService>();
+        services.AddScoped<IVideo, VideoService>();
+        services.AddScoped<IMission , MissionVissionService>();
+        services.AddScoped<ISiteSetting, SettingService>();
 
         return services;   
     }
