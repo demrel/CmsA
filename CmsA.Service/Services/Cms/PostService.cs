@@ -45,6 +45,18 @@ public class PostService : BaseService<Post> ,IPost
                };
     }
 
+    public IEnumerable<LPostMenu> GetLocaliezedNameByPage(string name,string cultureCode)
+    {
+        return from b in _context.Posts.Include(p => p.Gallery.Where(c => c.IsMain))
+               join LTitle in _context.Localizations on b.TitleId equals LTitle.LocalizationSetId
+               where b.Page.Name == name
+               && LTitle.CultureCode == cultureCode
+               select new LPostMenu()
+               {
+                   Name = b.Name,
+                   Title = LTitle.Value
+               };
+    }
    
     public async Task<LPost> GetLocalizedByName(string name, string cultureCode)
     {

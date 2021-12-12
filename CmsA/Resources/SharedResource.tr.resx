@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="certificate" xml:space="preserve">
+    <value>Sertifikalar</value>
+  </data>
+  <data name="contact" xml:space="preserve">
+    <value>İletişim</value>
+  </data>
   <data name="contactus" xml:space="preserve">
     <value>BİZE ULAŞIN</value>
   </data>
@@ -150,8 +156,14 @@
   <data name="partner" xml:space="preserve">
     <value>Bizimle işbirliği yapıyorlar</value>
   </data>
+  <data name="project" xml:space="preserve">
+    <value>Projeler</value>
+  </data>
   <data name="search" xml:space="preserve">
     <value>Ara</value>
+  </data>
+  <data name="service" xml:space="preserve">
+    <value>Hizmetler</value>
   </data>
   <data name="writeus" xml:space="preserve">
     <value>Bize yazın</value>

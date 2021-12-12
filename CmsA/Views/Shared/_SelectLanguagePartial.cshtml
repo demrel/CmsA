@@ -3,13 +3,11 @@
 @using Microsoft.Extensions.Options
 @using Microsoft.AspNetCore.Localization
 
-@inject IViewLocalizer Localizer
 @inject IOptions<RequestLocalizationOptions> LocOptions
 
 @{
 
     var requestCulture = Context.Features.Get<IRequestCultureFeature>();
-  
   
 }
 

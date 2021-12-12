@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
-
+builder.WebHost.ConfigureKestrel(op=>op.ListenLocalhost(5010));
 // Add services to the container.
 var services=builder.Services;
 var conf=builder.Configuration;
@@ -34,7 +34,7 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
