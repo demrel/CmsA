@@ -4,9 +4,9 @@
 
 
     /*Tinymce editor*/
-    if ($("#tinyMce").length) {
+    if ($(".tinyMce").length) {
         tinymce.init({
-            selector: '#tinyMce',
+            selector: '.tinyMce',
             height: 500,
             theme: 'silver',
             isTouch: false,
@@ -32,5 +32,5 @@
         });
     }
 
-  
+
 })(jQuery);
