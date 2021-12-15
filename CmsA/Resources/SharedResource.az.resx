@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="certificate" xml:space="preserve">
-    <value>SERTİFİKATLAR</value>
+    <value>Sertifikatlar</value>
   </data>
   <data name="contact" xml:space="preserve">
     <value>Əlaqə</value>
@@ -157,13 +157,13 @@
     <value>Bizimlə əməkdaşlıq edirlər</value>
   </data>
   <data name="project" xml:space="preserve">
-    <value>LAYİHƏLƏR</value>
+    <value>Layihələr</value>
   </data>
   <data name="search" xml:space="preserve">
     <value>Axtar</value>
   </data>
   <data name="service" xml:space="preserve">
-    <value>XİDMƏTLƏRİMİZ</value>
+    <value>Xidmətlərimiz</value>
   </data>
   <data name="writeus" xml:space="preserve">
     <value>Bizə yazın</value>
