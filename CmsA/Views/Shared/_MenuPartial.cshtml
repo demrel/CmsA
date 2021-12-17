@@ -27,8 +27,65 @@
             <span class="mobile-nav__toggler-bar"></span>
             <span class="mobile-nav__toggler-bar"></span>
         </a>
+
+
         <ul class="main-menu__list">
-            <li class=""><a href="/page/service">@Localizer.GetLocalizedHtmlString("service")</a>
+
+<a class="btn px-0 border-0 text-start text-white bg-transparent my-3 d-flex align-items-center justify-content-between  d-xl-none " data-bs-toggle="collapse" href="#service" role="button" aria-expanded="false" aria-controls="collapseExample">@Localizer.GetLocalizedHtmlString("service") <i class="fas fa-sort-down"></i></a>
+ 
+<div class="collapse " id="service">
+  <div class=" card-body">
+  <ul class='d-block d-xl-none '>
+       @foreach (var cert in servicePost)
+                    {
+                        <li id="menu-item-63" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-63">
+                            <a href="/page/service/@cert.Name">@cert.Title</a>
+                        </li>
+
+                    }
+  </ul>  
+  </div>
+</div>
+
+
+<a class="btn px-0 border-0 text-start text-white bg-transparent my-3 d-flex align-items-center justify-content-between d-xl-none " data-bs-toggle="collapse" href="#certificate" role="button" aria-expanded="false" aria-controls="collapseExample">@Localizer.GetLocalizedHtmlString("certificate")<i class="fas fa-sort-down"></i></a>
+ 
+<div class="collapse " id="certificate">
+  <div class=" card-body">
+  <ul class='d-block d-xl-none '>
+       @foreach (var cert in certificatePost)
+                    {
+                        <li id="menu-item-63" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-63">
+                            <a href="/page/service/@cert.Name">@cert.Title</a>
+                        </li>
+
+                    }
+  </ul>  
+  </div>
+</div>
+
+
+<a class="btn px-0 border-0 text-start text-white bg-transparent my-3 d-flex align-items-center justify-content-between d-xl-none " data-bs-toggle="collapse" href="#project" role="button" aria-expanded="false" aria-controls="collapseExample">@Localizer.GetLocalizedHtmlString("certificate")<i class="fas fa-sort-down"></i></a>
+ 
+<div class="collapse " id="project">
+  <div class=" card-body">
+  <ul class='d-block d-xl-none '>
+       @foreach (var cert in projectPost)
+                    {
+                        <li id="menu-item-63" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-63">
+                            <a href="/page/service/@cert.Name">@cert.Title</a>
+                        </li>
+
+                    }
+  </ul>  
+  </div>
+</div>
+
+
+
+
+            <li class="d-none  d-xl-block "><a href="/page/service">@Localizer.GetLocalizedHtmlString("service")</a>
+ 
                  <ul class="sub-menu">
                     @foreach (var cert in servicePost)
                     {
@@ -39,7 +96,8 @@
                     }
                 </ul>
             </li>
-            <li class="">
+
+            <li class="d-none d-xl-block ">
                 <a href="/page/certificate">@Localizer.GetLocalizedHtmlString("certificate")</a>
                 <ul class="sub-menu">
                     @foreach (var cert in certificatePost)
@@ -52,17 +110,19 @@
 
                 </ul>
             </li>
-            <li class=""><a href="/page/project">@Localizer.GetLocalizedHtmlString("project")</a>
+            <li class="d-none d-xl-block "><a href="/page/project">@Localizer.GetLocalizedHtmlString("project")</a>
                   <ul class="sub-menu">
                      @foreach (var cert in projectPost)
                     {
                         <li id="menu-item-63" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-63">
                             <a href="/page/project/@cert.Name">@cert.Title</a>
+
                         </li>
 
                     }
                   </ul>
             </li>
+
             <li class=""><a href="/contact">@Localizer.GetLocalizedHtmlString("contact")</a></li>
         </ul>
     </div>
