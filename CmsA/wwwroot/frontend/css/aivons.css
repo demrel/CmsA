@@ -195,7 +195,7 @@ ul {
     font-size: 14px;
     font-weight: 700;
     text-transform: uppercase;
-    padding: 18px 50px;
+    padding: 9px 25px;
     transition: 500ms;
     letter-spacing: 0.1em;
 }
@@ -1602,17 +1602,17 @@ ul {
 
 .main-slider h2 {
     margin: 0;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
     color: #fff;
-    font-weight: 900;
+    font-weight: 600;
     letter-spacing: var(--thm-letter-space-small);
     opacity: 0;
     visibility: hidden;
     transform: translateY(120px);
     transition-delay: 1000ms;
     transition: transform 2000ms ease, opacity 2000ms ease;
-    font-size: 90px;
-    line-height: 105px;
+    font-size: 50px;
+    line-height: 80px;
     text-transform: uppercase;
     padding-top: 32px;
 }
@@ -2067,7 +2067,7 @@ ul {
 
 .brand-one .swiper-slide img {
     transition: 500ms;
-    opacity: 0.15;
+    opacity: 1;
     max-width: 100%;
 }
 

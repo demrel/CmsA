@@ -39,9 +39,9 @@ namespace CmsA.Web.Mapper
         private void Page()
         {
             CreateMap<Page, PageModel>()
-                    .ForMember(c => c.Title, m => m.MapFrom(c => c.Title.Localizations))
-                       .ForMember(c => c.Description, m => m.MapFrom(c => c.Description.Localizations))
-                    .ForMember(c => c.Content, m => m.MapFrom(c => c.Content.Localizations));
+                    .ForMember(c => c.Title, m => m.MapFrom(c => c.Title.Localizations.OrderBy(c => c.CultureCode)))
+                       .ForMember(c => c.Description, m => m.MapFrom(c => c.Description.Localizations.OrderBy(c => c.CultureCode)))
+                    .ForMember(c => c.Content, m => m.MapFrom(c => c.Content.Localizations.OrderBy(c => c.CultureCode)));
 
 
 
@@ -57,8 +57,8 @@ namespace CmsA.Web.Mapper
         private void Banner()
         {
             CreateMap<Banner, BanerModel>()
-                 .ForMember(c => c.Title, m => m.MapFrom(c => c.Title.Localizations))
-                  .ForMember(c => c.Url, m => m.MapFrom(c => c.Url.Localizations))
+                 .ForMember(c => c.Title, m => m.MapFrom(c => c.Title.Localizations.OrderBy(c => c.CultureCode)))
+                  .ForMember(c => c.Url, m => m.MapFrom(c => c.Url.Localizations.OrderBy(c => c.CultureCode)))
                  .ForMember(c => c.Image, m => m.MapFrom(c => c.AppImage));
 
             CreateMap<BanerModel, Banner>()
@@ -70,9 +70,9 @@ namespace CmsA.Web.Mapper
         {
             CreateMap<Post, PostModel>()
                 .ForMember(c => c.PageName, m => m.MapFrom(c => c.Page.Name))
-                .ForMember(c => c.Title, m => m.MapFrom(c => c.Title.Localizations))
-                .ForMember(c => c.Description, m => m.MapFrom(c => c.Description.Localizations))
-                .ForMember(c => c.Content, m => m.MapFrom(c => c.Content.Localizations));
+                .ForMember(c => c.Title, m => m.MapFrom(c => c.Title.Localizations.OrderBy(c=>c.CultureCode)))
+                .ForMember(c => c.Description, m => m.MapFrom(c => c.Description.Localizations.OrderBy(c => c.CultureCode)))
+                .ForMember(c => c.Content, m => m.MapFrom(c => c.Content.Localizations.OrderBy(c => c.CultureCode)));
 
 
 
@@ -91,10 +91,10 @@ namespace CmsA.Web.Mapper
         private void OtherSettings()
         {
             CreateMap<MissionVission, MissionVissionModel>()
-                 .ForMember(c => c.Mission, m => m.MapFrom(c => c.Mission.Localizations))
-                .ForMember(c => c.Vission, m => m.MapFrom(c => c.Vission.Localizations))
-                .ForMember(c => c.MissionTitle, m => m.MapFrom(c => c.MissionTitle.Localizations))
-                .ForMember(c => c.VissionTitle, m => m.MapFrom(c => c.VissionTitle.Localizations));
+                 .ForMember(c => c.Mission, m => m.MapFrom(c => c.Mission.Localizations.OrderBy(c => c.CultureCode)))
+                .ForMember(c => c.Vission, m => m.MapFrom(c => c.Vission.Localizations.OrderBy(c => c.CultureCode)))
+                .ForMember(c => c.MissionTitle, m => m.MapFrom(c => c.MissionTitle.Localizations.OrderBy(c => c.CultureCode)))
+                .ForMember(c => c.VissionTitle, m => m.MapFrom(c => c.VissionTitle.Localizations.OrderBy(c => c.CultureCode)));
 
 
             CreateMap<MissionVissionModel, MissionVission>()
@@ -104,9 +104,9 @@ namespace CmsA.Web.Mapper
                 .ForPath(c => c.VissionTitle.Localizations, m => m.MapFrom(c => c.VissionTitle));
 
             CreateMap<Viedo, VideoModel>()
-               .ForMember(c => c.URl, m => m.MapFrom(c => c.URl.Localizations))
-              .ForMember(c => c.Title, m => m.MapFrom(c => c.Title.Localizations))
-              .ForMember(c => c.Description, m => m.MapFrom(c => c.Description.Localizations))
+               .ForMember(c => c.URl, m => m.MapFrom(c => c.URl.Localizations.OrderBy(c => c.CultureCode)))
+              .ForMember(c => c.Title, m => m.MapFrom(c => c.Title.Localizations.OrderBy(c => c.CultureCode)))
+              .ForMember(c => c.Description, m => m.MapFrom(c => c.Description.Localizations.OrderBy(c => c.CultureCode)))
                 .ForMember(c => c.VideoImage, m => m.MapFrom(c => c.VideoImage)).ReverseMap();
 
 

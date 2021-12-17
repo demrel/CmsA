@@ -154,6 +154,41 @@
             },
         });
     }
+
+
+    if ($(".postgallery").length) {
+        $(".postgallery").owlCarousel({
+            loop: true,
+            margin: 30,
+            nav: false,
+            smartSpeed: 500,
+            autowidth: true,
+            autoplay: true,
+            dots: true,
+            autoplayTimeout: 10000,
+            navText: [
+                '<span class="icon-right-arrow left"></span>',
+                '<span class="icon-right-arrow"></span>',
+            ],
+            responsive: {
+                0: {
+                    items: 2,
+                },
+                600: {
+                    items: 2,
+                },
+                800: {
+                    items: 4,
+                },
+                1024: {
+                    items: 4,
+                },
+                1200: {
+                    items: 4,
+                },
+            },
+        });
+    }
     
 
   if ($(".scroll-to-target").length) {

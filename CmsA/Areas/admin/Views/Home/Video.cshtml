@@ -81,7 +81,14 @@
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <label>File upload</label>
-                                    <input type="file"  @(Model.VideoImage==null?"required":"") asp-for="Image" class="file-upload-default">
+                                    @if((Model.VideoImage==null)){
+                                    <input type="file" asp-for="Image" class="file-upload-default"  required >
+                                        
+                                    }
+                                    else
+                                    {
+                                          <input type="file" asp-for="Image" class="file-upload-default"  >
+                                    }
 
                                     @if (Model.VideoImage != null)
                                     {

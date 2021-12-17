@@ -50,7 +50,6 @@ namespace CmsA.Web.Areas.admin.Controllers
             AppImage img = _imageService.Edit(model.Image, _env.WebRootPath + "/images/video/", model.VideoImage?.Id??0);
             data.VideoImage = img;
             _videoService.Update(data);
-
             return RedirectToAction("Video");
         }
         [HttpGet]

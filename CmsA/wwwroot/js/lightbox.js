@@ -1,4 +1,4 @@
-﻿lightGallery(document.getElementById('animated-thumbnails'), {
+﻿lightGallery(document.getElementById('postgallery'), {
     thumbnail: true,
     animateThumb: false,
     zoomFromOrigin: false,

@@ -117,7 +117,7 @@
                 @foreach (var item in Model.Partners)
                 {
                     <div class="swiper-slide">
-                        <img class='w-100 ' height='100px' src="~/images/partner/@item.AppImage.Name" alt="@item.Name">
+                      <a href="@item.Url"> <img class='w-100 ' height='100px' src="~/images/partner/@item.AppImage.Name" alt="@item.Name"></a>
                     </div> <!-- /.swiper-slide -->
                 }
             </div>

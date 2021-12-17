@@ -64,11 +64,11 @@ public  class BaseService<T> where T : BaseModel
         foreach (var property in properties)
         {
             var isVirtual = property.GetGetMethod().IsVirtual;
-            if (isVirtual  )
+            if (isVirtual)
             {
 
                 string propertyName = property.Name;
-                propertyName += property.PropertyType.Name== "LocalizationSet" ? ".Localizations" : "";
+                propertyName += property.PropertyType.Name== "LocalizationSet" ? ".Localizations.Culture" : "";
 
 
                 queryable = queryable.Include(propertyName);

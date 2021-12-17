@@ -41,29 +41,24 @@
     </div>
 </section>
 <!--Services Details End-->
-
 <!--Gallery Start-->
 <section class="team-one">
     <div class="team-one__container">
         <div class="section-title text-center">
             <h2 class="section-title__title">@Localizer.GetLocalizedHtmlString("gallery")</h2>
         </div>
-        <div class="row">
+
+
+        <div id="postgallery" class="postgallery owl-carousel owl-theme animated-thumbnails">
             @foreach (var item in Model.Post.Gallery)
             {
-                <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="0ms"
-                 data-wow-duration="1500ms">
-                    <!--Team One Single-->
-               
-                      <div id="animated-thumbnails">
-                        <a href="~/images/post/@item">
-                            <img src="~/images/post/@item" />
-                        </a>
-            
-                    </div>
-                </div>
-            }
+                    <a class="item " href="~/images/post/@item">
+                        <img src="~/images/post/@item" style="max-height: 200px; ;object-fit:cover"/>
+                    </a>
 
+
+
+            }
 
         </div>
     </div>
