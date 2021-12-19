@@ -7567,3 +7567,22 @@ ul {
     background-color: var(--thm-black);
     color: var(--thm-base);
 }
+
+#postgallery .item img {
+    height: 160px;
+    object-fit: cover;
+}
+
+#postgallery .owl-prev:hover {
+    background-color: transparent;
+    color: black
+}
+
+#postgallery .owl-next:hover {
+    background-color: transparent;
+    color: black
+}
+
+button:focus {
+    outline: none !important;
+}

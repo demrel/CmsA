@@ -52,8 +52,8 @@
         <div id="postgallery" class="postgallery owl-carousel owl-theme animated-thumbnails">
             @foreach (var item in Model.Post.Gallery)
             {
-                    <a class="item " href="~/images/post/@item">
-                        <img src="~/images/post/@item" style="max-height: 200px; ;object-fit:cover"/>
+                    <a class="item " href="~/images/post/@item" >
+                        <img src="~/images/post/@item" /> @*style="max-height: 200px; ;object-fit:cover"*@
                     </a>
 
 

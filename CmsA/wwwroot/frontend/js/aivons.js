@@ -160,15 +160,15 @@
         $(".postgallery").owlCarousel({
             loop: true,
             margin: 30,
-            nav: false,
+            nav: true,
             smartSpeed: 500,
             autowidth: true,
             autoplay: true,
             dots: true,
             autoplayTimeout: 10000,
             navText: [
-                '<span class="icon-right-arrow left"></span>',
-                '<span class="icon-right-arrow"></span>',
+                '<i class="fas fa-chevron-left left-navImg"></i>',
+                '<i class="fas fa-chevron-right"></i>',
             ],
             responsive: {
                 0: {
