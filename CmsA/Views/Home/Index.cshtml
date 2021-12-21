@@ -125,6 +125,7 @@
     </div>
 </section>
 <!--Brand One End-->
+
 <!--Welcome One Start-->
 <section class="welcome-one">
     <div class="container">
@@ -159,40 +160,7 @@
     </div>
 </section>
 <!--Welcome One End-->
-<!--Two Boxes Start-->
-<section class="two-boxes">
-    <div class="container">
-        <div class="row">
-            <div class="col-xl-6 col-lg-6">
-                <div class="two-boxes__single">
-                    <div class="two-boxes__single-content">
-                        <div class="two-boxes__count">
-                            <span></span>
-                        </div>
-                        <div class="two-boxes__content">
-                            <h3 class="two-boxes__title">@Model.MissionVission?.MissionTitle</h3>
-                            @Html.Raw(Model.MissionVission?.Mission)
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-6 col-lg-6">
-                <div class="two-boxes__single">
-                    <div class="two-boxes__single-content">
-                        <div class="two-boxes__count">
-                            <span></span>
-                        </div>
-                        <div class="two-boxes__content">
-                            <h3 class="two-boxes__title">@Model.MissionVission?.VissionTitle</h3>
-                             @Html.Raw(Model.MissionVission?.Vission)
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!--Two Boxes End-->
+
 <!--Cases One Start-->
 <section class="cases-one">
     <div class="container">
@@ -227,6 +195,79 @@
     </div>
 </section>
 <!--Cases One End-->
+
+
+<!--Two Boxes Start-->
+<section class="two-boxes">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-6 col-lg-6">
+                <div class="two-boxes__single">
+                    <div class="two-boxes__single-content">
+                        <div class="two-boxes__count">
+                            <span></span>
+                        </div>
+                        <div class="two-boxes__content">
+                            <h3 class="two-boxes__title">@Model.MissionVission?.MissionTitle</h3>
+                            @Html.Raw(Model.MissionVission?.Mission)
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-6">
+                <div class="two-boxes__single">
+                    <div class="two-boxes__single-content">
+                        <div class="two-boxes__count">
+                            <span></span>
+                        </div>
+                        <div class="two-boxes__content">
+                            <h3 class="two-boxes__title">@Model.MissionVission?.VissionTitle</h3>
+                             @Html.Raw(Model.MissionVission?.Vission)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Two Boxes End-->
+
+<!--Welcome One Start-->
+
+<section class="welcome-one">
+    <div class="container">
+         <div class="section-title text-center">
+            <h2 class="section-title__title">@Model.Product?.Title</h2>
+            <span class="section-title__tagline">@Html.Raw(Model.Product?.Description)</span>
+        </div>
+        <div class="row">
+            @foreach (var item in Model.Product.LPosts)
+            {
+                  <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+                <!--Cases One Single-->
+                <div class="cases-one__single">
+                    <div class="cases-one__img-box">
+                        <div class="cases-one__img">
+                            <img src="~/images/post/@item.Image" alt="@item.Name">
+                        </div>
+                        <div class="cases-one__content w-100 text-center">
+                            @*<div class="cases-one__icon">
+                                <span class="icon-mobile-analytics"></span>
+                            </div>*@
+                          @*  <p class="cases-one__tagline">@item.Name</p>*@
+                            <h2 class="cases-one__tilte"><a href="/page/product/@item.Name">@item.Title</a></h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            }
+          
+          
+        </div>
+    </div>
+</section>
+<!--Welcome One End-->
+
 <!--googl map-->
 <section class="counters-one">
     <div class="counters-one-bg" style="background-image: url(frontend/images/backgrounds/counter-one-bg.jpg)">

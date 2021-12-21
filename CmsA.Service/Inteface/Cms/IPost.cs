@@ -19,5 +19,7 @@ namespace CmsA.Service.Inteface.Cms
         IEnumerable<LPost> GetLocalizedAllStaredByPage(string name, string cultureCode);
         Task<LPost> GetLocalizedByName(string name, string cultureCode);
         IEnumerable<LPostMenu> GetLocaliezedNameByPage(string name, string cultureCode);
+        IEnumerable<LPost> GetChildePost(string id, string cultureCode);
+        Task<Post> GetMinimal(string id);
     }
 }

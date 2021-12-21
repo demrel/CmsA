@@ -17,10 +17,15 @@ public class Post : BaseModel
     public int ContentId { get; set; }
     public virtual LocalizationSet Content { get; set; }
     public List<AppImage> Gallery { get; set; }
+    public virtual LocalizationSet Pdf { get; set; }
 
     public string PageId { get; set; }
     public Page Page { get; set; }
     public bool Stared { get; set; }
+
+    public string ParentID { get; set; }
+    public virtual Post Parent { get; set; }
+    public virtual List<Post> Children { get; set; }
 
 }
 

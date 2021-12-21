@@ -70,6 +70,7 @@ namespace CmsA.Web.Mapper
         {
             CreateMap<Post, PostModel>()
                 .ForMember(c => c.PageName, m => m.MapFrom(c => c.Page.Name))
+                .ForMember(c => c.ParentName, m => m.MapFrom(c => c.Parent.Name))
                 .ForMember(c => c.Title, m => m.MapFrom(c => c.Title.Localizations.OrderBy(c=>c.CultureCode)))
                 .ForMember(c => c.Description, m => m.MapFrom(c => c.Description.Localizations.OrderBy(c => c.CultureCode)))
                 .ForMember(c => c.Content, m => m.MapFrom(c => c.Content.Localizations.OrderBy(c => c.CultureCode)));

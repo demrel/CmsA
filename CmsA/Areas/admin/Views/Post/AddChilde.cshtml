@@ -1,5 +1,5 @@
 ﻿@model CmsA.Web.Models.Posts.PostAddVM
-<h3 class="m-3 mb-4">Update Post</h3>
+<h3 class="m-3 mb-4">Add Post</h3>
 <div class="col-md-12 grid-margin stretch-card">
     <div class="card">
         <div class="card-body">
@@ -8,38 +8,21 @@
 
                 <div class="col-md-12">
                     <form class="forms-sample" method="post" enctype="multipart/form-data">
-                        <input type="hidden" asp-for="Add.Id">
-                        <input type="hidden" asp-for="Add.Time">
+                      <input type="hidden" class="form-control" asp-for="Add.PageId" >
+                      <input type="hidden" class="form-control" asp-for="Add.ParentID" >
 
-                        @{
-                            int i = 0;
-                        }
                         <div class="row mt-12">
-                            <div class="col-sm-6">
+                            <div class="col-sm-12">
                                 <div class="form-group">
                                     <label asp-for="Add.Name">GlobalName</label>
                                     <input type="text" class="form-control" asp-for="Add.Name" placeholder="GlobalName">
                                 </div>
                             </div>
-
-                            @if (string.IsNullOrEmpty(Model.Add.ParentID))
-                            {
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label asp-for="Add.PageId">Page</label>
-                                        <select asp-for="Add.PageId" class="form-control border-primary" asp-items="@Model.Pages">
-                                        </select>
-                                    </div>
-                                </div>
-                            }
-                            else
-                            {
-                                <input type="hidden" class="form-control" asp-for="Add.PageId">
-                                <input type="hidden" class="form-control" asp-for="Add.ParentID">
-                            }
-
                         </div>
                         <ul class="nav nav-tabs tab-simple-styled" role="tablist">
+                            @{
+                                int i = 0;
+                            }
                             @foreach (var item in Model.Cultures)
                             {
                                 { i++; }
@@ -48,6 +31,9 @@
                                     <a class="nav-link @(i==1?"active":"")" id="tab-3-@i" data-toggle="tab" href="#@item.Code" role="tab" aria-controls="@item.Code" aria-selected="@(i==1?"true":"false")">
                                         <i class="fas fa-language"></i> @item.Code.ToUpper()
                                     </a>
+
+
+
                                 </li>
                             }
 
@@ -106,17 +92,7 @@
 
                         </div>
 
-
-
-                        <button type="submit" asp-controller="Post" asp-action="Update" class="btn btn-success mr-2">Submit</button>
-                        @if (string.IsNullOrEmpty(Model.Add.ParentID))
-                        {
-                            <input type="checkbox" asp-for="Add.Stared">
-                            <label for="minimal-checkbox-1">Show In HomePage</label>
-                        }
-
-
-
+                        <button type="submit" asp-controller="Post" asp-action="Add" class="btn btn-success mr-2">Submit</button>
                     </form>
                 </div>
 

@@ -120,6 +120,9 @@
   <data name="certificate" xml:space="preserve">
     <value>Sertifikalar</value>
   </data>
+  <data name="childeCategories" xml:space="preserve">
+    <value>Alt Grubu</value>
+  </data>
   <data name="contact" xml:space="preserve">
     <value>İletişim</value>
   </data>
@@ -155,6 +158,9 @@
   </data>
   <data name="partner" xml:space="preserve">
     <value>Bizimle işbirliği yapıyorlar</value>
+  </data>
+  <data name="product" xml:space="preserve">
+    <value>Ürün</value>
   </data>
   <data name="project" xml:space="preserve">
     <value>Projeler</value>

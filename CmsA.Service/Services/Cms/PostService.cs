@@ -26,7 +26,7 @@ public class PostService : BaseService<Post> ,IPost
   
     public IEnumerable<LPost> GetLocalizedAllByPage(string name, string cultureCode)
     {
-        return from b in _context.Posts.Include(p => p.Gallery.Where(c => c.IsMain))
+        return from b in _context.Posts.Where(p=>string.IsNullOrEmpty(p.ParentID)).Include(p => p.Gallery.Where(c => c.IsMain))
                join LTitle in _context.Localizations on b.TitleId equals LTitle.LocalizationSetId
                join LDescription in _context.Localizations on b.DescriptionId equals LDescription.LocalizationSetId
                join Lcontent in _context.Localizations on b.ContentId equals Lcontent.LocalizationSetId
@@ -47,16 +47,27 @@ public class PostService : BaseService<Post> ,IPost
 
     public IEnumerable<LPostMenu> GetLocaliezedNameByPage(string name,string cultureCode)
     {
-        return from b in _context.Posts.Include(p => p.Gallery.Where(c => c.IsMain))
+        var data= from b in _context.Posts.Where(c=>string.IsNullOrEmpty(c.ParentID))
                join LTitle in _context.Localizations on b.TitleId equals LTitle.LocalizationSetId
                where b.Page.Name == name
                && LTitle.CultureCode == cultureCode
                select new LPostMenu()
                {
                    Name = b.Name,
-                   Title = LTitle.Value
+                   Title = LTitle.Value,
+                   Menu=b.Children.Select(p=>new LPostMenu()
+                   {
+                       Name=p.Name,
+                       Title=p.Title.Localizations.Where(c=>c.CultureCode==cultureCode).FirstOrDefault().Value
+                   }).ToList()
+                   
                };
+        return data;
     }
+
+    public async Task<Post> GetMinimal(string id)=>
+      await  _context.Posts.Where(p=>p.Id==id).Select(p => new Post{Id = p.Id, PageId =p.PageId }).FirstOrDefaultAsync();
+    
    
     public async Task<LPost> GetLocalizedByName(string name, string cultureCode)
     {
@@ -69,6 +80,7 @@ public class PostService : BaseService<Post> ,IPost
                                    && LDescription.CultureCode == cultureCode
                 select new LPost()
                 {
+                    Id= b.Id,
                     Name = b.Name,
                     Title = LTitle.Value,
                     Description = LDescription.Value,
@@ -81,9 +93,24 @@ public class PostService : BaseService<Post> ,IPost
         return await a.FirstOrDefaultAsync();
     }
 
+    public IEnumerable<LPost> GetChildePost(string id, string cultureCode)
+    {
+        return from b in _context.Posts
+               join LTitle in _context.Localizations on b.TitleId equals LTitle.LocalizationSetId
+               join LDescription in _context.Localizations on b.DescriptionId equals LDescription.LocalizationSetId
+               where string.Equals(b.ParentID,id) && LTitle.CultureCode == cultureCode && LDescription.CultureCode == cultureCode
+               select new LPost()
+               {
+                   Name = b.Name,
+                   Title = LTitle.Value,
+                   Description = LDescription.Value,
+                   Image = b.Gallery.Where(c=>c.IsMain).Select(c => c.Name).FirstOrDefault(),
+               };
+    }
+
     public IEnumerable<LPost> GetLocalizedAllStaredByPage(string name, string cultureCode)
     {
-        return from b in _context.Posts.Include(p=>p.Gallery.Where(c=>c.IsMain))
+        return from b in _context.Posts.Where(p=>string.IsNullOrEmpty(p.ParentID)).Include(p=>p.Gallery.Where(c=>c.IsMain))
                 join LTitle in _context.Localizations on b.TitleId equals LTitle.LocalizationSetId
                 join LDescription in _context.Localizations on b.DescriptionId equals LDescription.LocalizationSetId
                 where b.Page.Name == name && b.Stared
@@ -94,13 +121,12 @@ public class PostService : BaseService<Post> ,IPost
                     Name = b.Name,
                     Title = LTitle.Value,
                     Description = LDescription.Value,
-                    Image=b.Gallery.Select(c=>c.Name).FirstOrDefault(),
+                    Image=b.Gallery.Where(c => c.IsMain).Select(c=>c.Name).FirstOrDefault(),
                 };
-     
     }
 
     public new async Task<List<Post>> GetAll() =>
-           await _context.Posts.Include(b => b.Page).ToListAsync();
+           await _context.Posts.Include(b=>b.Parent).Include(b => b.Page).ToListAsync();
 
     public  async Task<List<AppImage>> GetGallery(string id)=>
       await  _context.Images.Where(i => i.PostId == id).ToListAsync();

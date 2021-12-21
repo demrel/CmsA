@@ -1469,7 +1469,7 @@ ul {
     transition: transform 7000ms ease;
     z-index: 1;
     background-color: var(--thm-black);
-    background-blend-mode: luminosity;
+    /*background-blend-mode: luminosity;*/
     opacity: 0.7;
     background-position: center center;
 }
@@ -2101,7 +2101,7 @@ ul {
 
 .welcome-one__img-1>img {
     width: 100%;
-    mix-blend-mode: luminosity;
+    /*mix-blend-mode: luminosity;*/
 }
 
 .welcome-one__img-2 {
@@ -2114,7 +2114,7 @@ ul {
 }
 
 .welcome-one__img-2>img {
-    mix-blend-mode: luminosity;
+    /*mix-blend-mode: luminosity;*/
 }
 
 
@@ -2455,7 +2455,7 @@ ul {
 
 .cases-one__img>img {
     width: 100%;
-    mix-blend-mode: luminosity;
+    /*mix-blend-mode: luminosity;*/
     transform: scale(1);
     opacity: .7;
     transition: all 500ms ease;
@@ -2560,7 +2560,7 @@ ul {
     background-repeat: no-repeat;
     background-size: cover;
     background-color: var(--thm-black);
-    background-blend-mode: luminosity;
+    /*background-blend-mode: luminosity;*/
     opacity: 0.5;
 }
 
@@ -2733,7 +2733,7 @@ ul {
 
 .faq-one__img>img {
     width: 100%;
-    mix-blend-mode: luminosity;
+    /*mix-blend-mode: luminosity;*/
 }
 
 .faq-one__bottom {
@@ -3238,7 +3238,7 @@ ul {
 
 .financial-advice__img>img {
     width: 100%;
-    mix-blend-mode: luminosity;
+    /*mix-blend-mode: luminosity;*/
 }
 
 
@@ -3302,7 +3302,7 @@ ul {
     width: 100%;
     transform: scale(1);
     transition: all 500ms ease;
-    mix-blend-mode: luminosity;
+    /*mix-blend-mode: luminosity;*/
 }
 
 .news-one__single:hover .news-one__img>img {
@@ -3955,7 +3955,7 @@ ul {
 
 .services-one__img>img {
     width: 100%;
-    mix-blend-mode: luminosity;
+    /*mix-blend-mode: luminosity;*/
     transition: all 500ms ease;
     transform: scale(1);
 }
@@ -4068,7 +4068,7 @@ ul {
     height: 100%;
     background-size: cover;
     background-color: var(--thm-black);
-    background-blend-mode: luminosity;
+    /*background-blend-mode: luminosity;*/
 }
 
 .largest-business__left {
@@ -4176,7 +4176,7 @@ ul {
 
 .video-two__img-box>img {
     width: 100%;
-    mix-blend-mode: luminosity;
+    /*mix-blend-mode: luminosity;*/
 }
 
 
@@ -4405,7 +4405,7 @@ ul {
 
 .team-one__img>img {
     width: 100%;
-    mix-blend-mode: luminosity;
+    /*mix-blend-mode: luminosity;*/
 }
 
 .team-one__hover-content {
@@ -4762,7 +4762,7 @@ ul {
 .two-section-img>img {
     max-width: 300px;
     width: 100%;
-    mix-blend-mode: luminosity;
+    /*mix-blend-mode: luminosity;*/
 }
 
 .two-section__points {
@@ -5160,7 +5160,7 @@ ul {
 
 .feature__img>img {
     width: 100%;
-    mix-blend-mode: luminosity;
+    /*mix-blend-mode: luminosity;*/
     transition: all 500ms ease;
     transform: scale(1);
 }
@@ -5190,7 +5190,7 @@ ul {
 
 .feature-bottom__call>img {
     width: 67px;
-    mix-blend-mode: luminosity;
+    /*mix-blend-mode: luminosity;*/
 }
 
 .feature-bottom__icon {
@@ -5263,7 +5263,7 @@ ul {
 
 .cases-two__img>img {
     width: 100%;
-    mix-blend-mode: luminosity;
+    /*mix-blend-mode: luminosity;*/
     transform: scale(1);
     transition: all 500ms ease;
     opacity: 0.7;
@@ -5507,7 +5507,7 @@ ul {
 
 .financial__left-img>img {
     width: 100%;
-    mix-blend-mode: luminosity;
+    /*mix-blend-mode: luminosity;*/
 }
 
 .financial__left-note-box {
@@ -5731,7 +5731,7 @@ ul {
 
 .reasons__img>img {
     width: 100%;
-    mix-blend-mode: luminosity;
+    /*mix-blend-mode: luminosity;*/
 }
 
 /*--------------------------------------------------------------
@@ -5778,7 +5778,7 @@ ul {
     background-color: #0f0d1d;
     background-size: cover;
     background-color: var(--thm-black);
-    background-blend-mode: luminosity;
+    /*background-blend-mode: luminosity;*/
     opacity: 0.5;
     position: absolute;
     top: 0;
@@ -5894,7 +5894,7 @@ ul {
 
 .services-details__img>img {
     width: 100%;
-    mix-blend-mode: luminosity;
+    /*mix-blend-mode: luminosity;*/
 }
 
 .services-details__top-content {
@@ -5927,7 +5927,7 @@ ul {
 
 .services-details__planning-img>img {
     width: 354px;
-    mix-blend-mode: luminosity;
+    /*mix-blend-mode: luminosity;*/
 }
 
 .services-details__planning-content {
@@ -6132,7 +6132,7 @@ ul {
     background-repeat: no-repeat;
     z-index: 1;
     background-color: var(--thm-primary);
-    background-blend-mode: luminosity;
+    /*background-blend-mode: luminosity;*/
     opacity: 0.1;
 }
 
@@ -6197,7 +6197,7 @@ ul {
 
 .cases-details__img>img {
     width: 100%;
-    mix-blend-mode: luminosity;
+    /*mix-blend-mode: luminosity;*/
 }
 
 
@@ -6350,7 +6350,7 @@ ul {
 
 .blog-single__content-img>img {
     width: 100%;
-    mix-blend-mode: luminosity;
+    /*mix-blend-mode: luminosity;*/
 }
 
 .blog-single__date-box {
@@ -6669,7 +6669,7 @@ ul {
 .sidebar__post-image>img {
     width: 70px;
     border-radius: 0px;
-    mix-blend-mode: luminosity;
+    /*mix-blend-mode: luminosity;*/
 }
 
 .sidebar__post-content h3 {
@@ -6881,7 +6881,7 @@ ul {
 
 .news-details__img>img {
     width: 100%;
-    mix-blend-mode: luminosity;
+    /*mix-blend-mode: luminosity;*/
 }
 
 .news-details__date-box {
@@ -7048,7 +7048,7 @@ ul {
 
 .author-one__image img {
     width: 172px;
-    mix-blend-mode: luminosity;
+    /*mix-blend-mode: luminosity;*/
 }
 
 .author-one__content {
@@ -7136,7 +7136,7 @@ ul {
 
 .comment-one__image img {
     border-radius: 50%;
-    mix-blend-mode: luminosity;
+    /*mix-blend-mode: luminosity;*/
 }
 
 .comment-form .comment-form__title {
@@ -7370,7 +7370,7 @@ ul {
 
 .about-img>img {
     width: 100%;
-    mix-blend-mode: luminosity;
+    /*mix-blend-mode: luminosity;*/
 }
 
 .about__right {

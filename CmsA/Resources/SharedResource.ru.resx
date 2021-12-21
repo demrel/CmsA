@@ -120,6 +120,9 @@
   <data name="certificate" xml:space="preserve">
     <value>Сертификаты</value>
   </data>
+  <data name="childeCategories" xml:space="preserve">
+    <value>Подгруппа</value>
+  </data>
   <data name="contact" xml:space="preserve">
     <value>Контакт</value>
   </data>
@@ -155,6 +158,9 @@
   </data>
   <data name="partner" xml:space="preserve">
     <value>С нами сотрудничают</value>
+  </data>
+  <data name="product" xml:space="preserve">
+    <value>Продукт</value>
   </data>
   <data name="project" xml:space="preserve">
     <value>Проекты</value>

@@ -35,6 +35,7 @@ namespace CmsA.Web.Areas.admin.Controllers
 
             return View(model);
         }
+      
         [HttpGet]
         public  async Task<IActionResult> Add()
         {
@@ -124,6 +125,19 @@ namespace CmsA.Web.Areas.admin.Controllers
         {
             await _postService.SetUnsetMain(id);
             return RedirectToAction("Gallery", new { Id = postId });
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> AddChilde(string id)
+        {
+           var data =   await _postService.GetMinimal(id);
+            if (data == null) return NotFound();
+            PostAddVM model = new();
+            model.Add = new ();
+            model.Add.PageId = data.PageId;
+            model.Add.ParentID = data.Id;
+            model.Cultures = _cultureService.GetAll();
+            return View(model);
         }
 
     }

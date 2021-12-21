@@ -9,7 +9,9 @@
                         <thead>
                             <tr>
                                 <th>Name</th>
-                                 <th>Page</th>
+                                <th>Page</th>
+                                <th>Parent</th>
+
                                 <th class="float-right">#</th>
                             </tr>
                         </thead>
@@ -17,17 +19,16 @@
                             @foreach (var item in Model.Posts)
                             {
                                 <tr>
-                                    <td>
-                                        @item.Name
-                                    </td>
-                                    <td>
-                                        @item.PageName
-                                    </td>
+                                    <td>  @item.Name     </td>
+                                    <td>  @item.PageName </td>
+                                    <td> @(string.IsNullOrEmpty(item.ParentName)?"Main":item.ParentName)  </td>
 
                                     <td style='display: flex; align-items: center; justify-content: flex-end;'>
                                         <a class="float-right m-1" href="@Url.Action("Update", "Post",new { id = item.Id})"><i class="fas fa-pencil-alt"></i></a>
                                         <a class="float-right" href="@Url.Action("Delete", "Post",new { id = item.Id})"><i class=" fas fa-trash"></i></a>
-                                            <a class="float-right m-1" href="@Url.Action("Gallery", "Post",new { id = item.Id})"><i class="far fa-file-image"></i></a> 
+                                        <a class="float-right m-1" href="@Url.Action("Gallery", "Post",new { id = item.Id})"><i class="far fa-file-image"></i></a> 
+                                        <a class="float-right m-1" href="@Url.Action("AddChilde", "Post",new { id = item.Id})"><i class="fas fa-plus"></i></a> 
+
                                     </td>
                                 </tr>
                             }

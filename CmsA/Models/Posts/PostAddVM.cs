@@ -9,6 +9,8 @@ namespace CmsA.Web.Models.Posts;
 
     public SelectList Pages { get; set; }
     public IFormFile Image { get; set; }
+    public Dictionary<string,IFormFile> Pdf { get; set; }
+
     public List<IFormFile> Gallery { get; set; }
 
 }

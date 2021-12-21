@@ -42,6 +42,9 @@ public class HomeController : BaseHomeController
         project.LPosts = _postService.GetLocalizedAllStaredByPage("project", cultureCode);
         var partners =await _partnerService.GetAll();
 
+        var product = await _pageService.GetLocalizedByName("product", cultureCode);
+        product.LPosts = _postService.GetLocalizedAllStaredByPage("product", cultureCode);
+
         var mission = await _missionService.GetLocalized(cultureCode);
         var video =await _videoService.GetLocalized(cultureCode);
 
@@ -51,6 +54,7 @@ public class HomeController : BaseHomeController
             Service = service,
             Certificate = certificate,
             Project = project,
+            Product = product,
             Partners= partners,
             Video = video,
             MissionVission=mission,

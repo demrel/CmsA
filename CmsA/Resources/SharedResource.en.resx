@@ -120,6 +120,9 @@
   <data name="certificate" xml:space="preserve">
     <value>Certificates</value>
   </data>
+  <data name="childeCategories" xml:space="preserve">
+    <value>Subgroup</value>
+  </data>
   <data name="contact" xml:space="preserve">
     <value>Contact</value>
   </data>
@@ -155,6 +158,9 @@
   </data>
   <data name="partner" xml:space="preserve">
     <value>Cooperate with us</value>
+  </data>
+  <data name="product" xml:space="preserve">
+    <value>Product</value>
   </data>
   <data name="project" xml:space="preserve">
     <value>Projects</value>

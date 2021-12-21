@@ -32,7 +32,10 @@ namespace CmsA.Web.Controllers
             var cultureCode = GetCulture();
             var post = await _postService.GetLocalizedByName(name, cultureCode);
             if (post == null) return NotFound();
-            PostVM model = new PostVM() { Post = post,PageName=pagename };
+
+            var childePosts = _postService.GetChildePost(post.Id, cultureCode);
+          
+            PostVM model = new PostVM() { Post = post,PageName=pagename,ChildePosts=childePosts };
             return View(model);
         }
     }
