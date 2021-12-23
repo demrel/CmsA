@@ -66,22 +66,39 @@
     <!-- /.preloader -->
     <div class="page-wrapper">
         <header class="main-header clearfix">
+
+            <nav class="main-menu clearfix">
+                <div class="main-menu-wrapper">
+                    <div class="main-menu-wrapper__left">
+    <div class="main-menu-wrapper__logo border-0">
+        <a href="/"><h3 class='text-white'>Logo</h3></a>
+    </div>
+    
+</div>
+                    <div class="main-menu-wrapper__right d-block">
+                        <div class="">
+                            <div class="main-menu-wrapper__social">
+                                <a href="https://www.facebook.com/bahruzmmc" class="clr-fb"><i class="fab fa-facebook"></i></a>
+                                <a href="https://instagram.com/behruz_mmc" class="clr-ins"><i class="fab fa-instagram"></i></a>
+                                 <a href="#" class=" search-toggler icon-magnifying-glass1"></a>
+                            </div>
+                        </div>
+                        
+                       
+                    </div>
+                </div>
+            </nav>
+
+
             <nav class="main-menu clearfix">
                 <div class="main-menu-wrapper">
                     @await Html.PartialAsync("_MenuPartial")
                     <div class="main-menu-wrapper__right">
-                        <div class="main-menu-wrapper__social-box">
-                            <div class="main-menu-wrapper__social">
-                                <a href="https://www.facebook.com/bahruzmmc" class="clr-fb"><i class="fab fa-facebook"></i></a>
-                                <a href="https://instagram.com/behruz_mmc" class="clr-ins"><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                        <div class="main-menu-wrapper__search-box">
+                        
+                        <div class="main-menu-wrapper__search-box" style='margin: 0 0 0 0'>
                             @await Html.PartialAsync("_SelectLanguagePartial")
                         </div>
-                        <div class="main-menu-wrapper__phone-contact">
-                            <a href="#" class="main-menu-wrapper__search search-toggler icon-magnifying-glass1"></a>
-                        </div>
+                        
                     </div>
                 </div>
             </nav>
