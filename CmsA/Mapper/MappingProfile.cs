@@ -73,6 +73,7 @@ namespace CmsA.Web.Mapper
                 .ForMember(c => c.ParentName, m => m.MapFrom(c => c.Parent.Name))
                 .ForMember(c => c.Title, m => m.MapFrom(c => c.Title.Localizations.OrderBy(c=>c.CultureCode)))
                 .ForMember(c => c.Description, m => m.MapFrom(c => c.Description.Localizations.OrderBy(c => c.CultureCode)))
+                .ForMember(c => c.Pdf, m => m.MapFrom(c => c.Pdf.Localizations.OrderBy(c => c.CultureCode)))
                 .ForMember(c => c.Content, m => m.MapFrom(c => c.Content.Localizations.OrderBy(c => c.CultureCode)));
 
 
@@ -80,7 +81,9 @@ namespace CmsA.Web.Mapper
             CreateMap<PostModel, Post>()
                    .ForPath(c => c.Title.Localizations, m => m.MapFrom(c => c.Title))
                    .ForPath(c => c.Description.Localizations, m => m.MapFrom(c => c.Description))
-                    .ForPath(c => c.Content.Localizations, m => m.MapFrom(c => c.Content));
+                   .ForPath(c => c.Pdf.Localizations, m => m.MapFrom(c => c.Pdf))
+
+                   .ForPath(c => c.Content.Localizations, m => m.MapFrom(c => c.Content));
         }
 
         private void Partner()

@@ -1,11 +1,15 @@
 ﻿using CmsA.Data.Data;
 using CmsA.Data.Model;
 using CmsA.Data.Model.Cms;
+using CmsA.Data.Model.Localization;
+using CmsA.Service.Helper;
 using CmsA.Service.Inteface;
 using CmsA.Service.Inteface.BaseInterface;
 using CmsA.Service.Inteface.Cms;
+using CmsA.Service.Model;
 using CmsA.Service.Model.Cms;
 using CmsA.Service.Services.BaseServices;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -75,9 +79,12 @@ public class PostService : BaseService<Post> ,IPost
                 join LTitle in _context.Localizations on b.TitleId equals LTitle.LocalizationSetId
                 join LDescription in _context.Localizations on b.DescriptionId equals LDescription.LocalizationSetId
                 join LContent in _context.Localizations on b.ContentId equals LContent.LocalizationSetId
+                join LPdf in _context.Localizations on b.PdfId equals LPdf.LocalizationSetId
                 where b.Name == name && LTitle.CultureCode == cultureCode
-                                   && LContent.CultureCode == cultureCode
-                                   && LDescription.CultureCode == cultureCode
+                                     && LContent.CultureCode == cultureCode
+                                     && LDescription.CultureCode == cultureCode
+                                     && LPdf.CultureCode == cultureCode
+
                 select new LPost()
                 {
                     Id= b.Id,
@@ -85,6 +92,7 @@ public class PostService : BaseService<Post> ,IPost
                     Title = LTitle.Value,
                     Description = LDescription.Value,
                     Content = LContent.Value,
+                    PDf=LPdf.Value,
                     PageName=b.Page.Title.Localizations.Where(p=>p.CultureCode==cultureCode).Select(l=>l.Value).FirstOrDefault(),
                     PageId=b.Page.Name,
                     Gallery=b.Gallery.Select(b=>b.Name).ToList(),
@@ -137,6 +145,65 @@ public class PostService : BaseService<Post> ,IPost
         image.PostId=PostId;
         _context.Images.Update(image);
         _context.SaveChanges();
+    }
+
+    public LocalizationSet AddFile(List<PostFileModel> files,string path)
+    {
+        LocalizationSet loc = new();
+        List<Localization> localizations = new();
+        foreach (var item in files)
+        {
+            localizations.Add(new Localization() { CultureCode = item.Local, Value = AddPdf(item.File, path) });
+        }
+        loc.Localizations = localizations;
+        return loc;
+    }
+
+
+    public async Task<LocalizationSet> UpdateFile(List<PostFileModel> files, string path,string id)
+    {
+        LocalizationSet loc = new();
+        List<Localization> localizations = new();
+        int locsetId =await _context.Posts.Where(p => p.Id == id).Select(p => p.PdfId).FirstOrDefaultAsync();
+        var oldpdf =await   _context.Localizations.Where(ls=>ls.LocalizationSetId== locsetId).ToDictionaryAsync(ls=>ls.CultureCode,ls=>ls.Value);
+      //  var cultures =await _context.Cultures.ToDictionaryAsync(c=>c.Code,c=>c);
+        foreach (var item in files)
+        {
+            if (item.File != null)
+            {
+                if (File.Exists(path+ oldpdf[item.Local])) File.Delete(path + oldpdf[item.Local]);
+                localizations.Add(new Localization() { CultureCode = item.Local, Value = AddPdf(item.File, path)  });
+            }
+            else
+            {
+                localizations.Add(new Localization() { CultureCode = item.Local, Value = oldpdf[item.Local] });
+            }
+        }
+        loc.Localizations = localizations;
+        return loc;
+    }
+
+    private static string AddPdf(IFormFile formFile, string path)
+    {
+        if (formFile != null)
+        {
+            string fileName = Guid.NewGuid().ToString().RemoveNoneAlphaNumerics() + Path.GetExtension(formFile.FileName);
+
+            var p = Path.Combine(path);
+
+            if (!Directory.Exists(p))
+                Directory.CreateDirectory(p);
+            
+
+            using (var fileStream = new FileStream(Path.Combine(p, fileName), FileMode.Create))
+            {
+
+                formFile.CopyTo(fileStream);
+            }
+         
+            return fileName;
+        }
+        return "";
     }
 
     public async Task SetUnsetMain(int ImageId)

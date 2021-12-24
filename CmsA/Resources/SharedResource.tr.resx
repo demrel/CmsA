@@ -129,6 +129,12 @@
   <data name="contactus" xml:space="preserve">
     <value>BİZE ULAŞIN</value>
   </data>
+  <data name="detail" xml:space="preserve">
+    <value>Teknik detaylar için</value>
+  </data>
+  <data name="download" xml:space="preserve">
+    <value>İndirmek</value>
+  </data>
   <data name="fmail" xml:space="preserve">
     <value>E-posta</value>
   </data>

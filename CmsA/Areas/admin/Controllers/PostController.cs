@@ -54,9 +54,11 @@ namespace CmsA.Web.Areas.admin.Controllers
         public IActionResult Add(PostAddVM model)
         {
             var data = _mapper.Map<Post>(model.Add);
+            data.Pdf = _postService.AddFile(model.Pdf, _env.WebRootPath + "/file/docs/");
             _postService.Create(data);
             return RedirectToAction("Index");
         }
+
         [HttpGet]
         public async Task<IActionResult> Update(string id)
         {
@@ -72,9 +74,10 @@ namespace CmsA.Web.Areas.admin.Controllers
             return View(model);
         }
         [HttpPost]
-        public IActionResult Update(PostAddVM model)
+        public async Task<IActionResult> Update(PostAddVM model)
         {
             var data = _mapper.Map<Post>(model.Add);
+            data.Pdf =await _postService.UpdateFile(model.Pdf, _env.WebRootPath + "/file/docs/",data.Id);
             _postService.Update(data);
             return RedirectToAction("Index");
         }

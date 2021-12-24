@@ -25,7 +25,7 @@
 <section class="services-details">
     <div class="container">
         <div class="row">
-            <div class="col-xl-8 col-lg-12">
+            <div class="col-xl-12 col-lg-12">
                 <div class="services-details__left">
                     <div class="services-details__img">
                         <img src="~/images/post/@Model.Post.Image" alt="">
@@ -33,75 +33,83 @@
                     <div class="services-details__top-content">
                         @Html.Raw(Model.Post.Content)
                     </div>
+                    @if (!string.IsNullOrWhiteSpace(@Model.Post?.PDf))
+                    {
+                          <div class="news-details__bottom">
+                        <p class="news-details__tags">
+                            <span>@Localizer.GetLocalizedHtmlString("detail"):</span>
+                            <a href="~/file/docs/@Model.Post?.PDf" class="ml-4" download="@Model.Post?.Title">@Localizer.GetLocalizedHtmlString("download")</a>
+                        </p>
+
+                    </div>
+                    }
+                  
                 </div>
             </div>
         </div>
     </div>
 </section>
 <!--Services Details End-->
-
 <!--ChildeCategpries start-->
 @if (Model.ChildePosts.Count() > 0)
 {
     <section class="welcome-one">
-    <div class="container">
-         <div class="section-title text-center">
-           <h2 class="section-title__title">@Localizer.GetLocalizedHtmlString("childeCategories")</h2>
-        </div>
-        <div class="row">
-            @foreach (var item in Model.ChildePosts)
-            {
-                  <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
-                <!--Cases One Single-->
+        <div class="container">
+            <div class="section-title text-center">
+                <h2 class="section-title__title">@Localizer.GetLocalizedHtmlString("childeCategories")</h2>
+            </div>
+            <div class="row">
+                @foreach (var item in Model.ChildePosts)
+                {
+                    <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+                        <!--Cases One Single-->
                 <div class="cases-one__single">
-                    <div class="cases-one__img-box">
-                        <div class="cases-one__img">
-                            <img src="~/images/post/@item.Image" alt="@item.Name">
-                        </div>
-                        <div class="cases-one__content w-100 text-center">
-                            @*<div class="cases-one__icon">
-                                <span class="icon-mobile-analytics"></span>
-                            </div>*@
-                          @*  <p class="cases-one__tagline">@item.Name</p>*@
-                            <h2 class="cases-one__tilte"><a href="/page/product/@item.Name">@item.Title</a></h2>
+                            <div class="cases-one__img-box">
+                                <div class="cases-one__img">
+                                    <img src="~/images/post/@item.Image" alt="@item.Name">
+                                </div>
+                                <div class="cases-one__content w-100 text-center">
+                                    @*<div class="cases-one__icon">
+                                        <span class="icon-mobile-analytics"></span>
+                                        </div>*@
+                                    @*  <p class="cases-one__tagline">@item.Name</p>*@
+                                    <h2 class="cases-one__tilte"><a href="/page/product/@item.Name">@item.Title</a></h2>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
+                }
+
+
             </div>
-            }
-          
-          
         </div>
-    </div>
-</section>
+    </section>
 }
 <!--ChildeCategpries end-->
-
-
 <!--Gallery Start-->
 @if (Model.Post.Gallery.Count() > 0)
 {
     <section class="team-one">
-    <div class="team-one__container">
-        <div class="section-title text-center">
-            <h2 class="section-title__title">@Localizer.GetLocalizedHtmlString("gallery")</h2>
-        </div>
+        <div class="team-one__container">
+            <div class="section-title text-center">
+                <h2 class="section-title__title">@Localizer.GetLocalizedHtmlString("gallery")</h2>
+            </div>
 
 
-        <div id="postgallery" class="postgallery owl-carousel owl-theme animated-thumbnails">
-            @foreach (var item in Model.Post.Gallery)
-            {
-                    <a class="item " href="~/images/post/@item" >
+            <div id="postgallery" class="postgallery owl-carousel owl-theme animated-thumbnails">
+                @foreach (var item in Model.Post.Gallery)
+                {
+                    <a class="item " href="~/images/post/@item">
                         <img src="~/images/post/@item" /> @*style="max-height: 200px; ;object-fit:cover"*@
                     </a>
 
 
 
-            }
+                }
 
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 }
 
 <!--Gallery End-->

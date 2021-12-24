@@ -22,7 +22,7 @@ namespace CmsA.Web.Controllers
             var page = await _pageService.GetLocalizedByName(name, cultureCode);
             if (page == null) return NotFound();
             page.LPosts = _postService.GetLocalizedAllByPage(name, cultureCode);
-            PageVM model=new PageVM() { Page=page};
+            PageVM model=new () { Page=page};
             return View(model);
         }
 
@@ -35,7 +35,7 @@ namespace CmsA.Web.Controllers
 
             var childePosts = _postService.GetChildePost(post.Id, cultureCode);
           
-            PostVM model = new PostVM() { Post = post,PageName=pagename,ChildePosts=childePosts };
+            PostVM model = new () { Post = post,PageName=pagename,ChildePosts=childePosts };
             return View(model);
         }
     }

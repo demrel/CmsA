@@ -1,6 +1,8 @@
 ﻿using CmsA.Data.Model;
 using CmsA.Data.Model.Cms;
+using CmsA.Data.Model.Localization;
 using CmsA.Service.Inteface.BaseInterface;
+using CmsA.Service.Model;
 using CmsA.Service.Model.Cms;
 using System;
 using System.Collections.Generic;
@@ -21,5 +23,7 @@ namespace CmsA.Service.Inteface.Cms
         IEnumerable<LPostMenu> GetLocaliezedNameByPage(string name, string cultureCode);
         IEnumerable<LPost> GetChildePost(string id, string cultureCode);
         Task<Post> GetMinimal(string id);
+        LocalizationSet AddFile(List<PostFileModel> files, string path);
+        Task<LocalizationSet> UpdateFile(List<PostFileModel> files, string path, string id);
     }
 }

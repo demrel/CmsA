@@ -15,6 +15,7 @@ namespace CmsA.Service.Model.Cms
         public string  Description { get; set; }
         public string  Content { get; set; }
         public List<string> Gallery { get; set; }
+        public string PDf { get; set; }
 
         public string PageId { get; set; }
         public string PageName { get; set; }

@@ -129,6 +129,12 @@
   <data name="contactus" xml:space="preserve">
     <value>СВЯЗАТЬСЯ С НАМИ</value>
   </data>
+  <data name="detail" xml:space="preserve">
+    <value>Для подробностей и технических деталей</value>
+  </data>
+  <data name="download" xml:space="preserve">
+    <value>Загрузить</value>
+  </data>
   <data name="fmail" xml:space="preserve">
     <value>электронная почта</value>
   </data>
