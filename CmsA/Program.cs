@@ -18,7 +18,7 @@ services.AddLocalizationService();
 
 services.AddDbContext<AppDBContext>(options =>
 {
-            options.UseNpgsql(conf.GetConnectionString("NpgSqlHeroku"));
+            options.UseNpgsql(conf.GetConnectionString("InDRop"));
 });
 
 services.AddAutoMapper(typeof(MappingProfile));
