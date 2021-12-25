@@ -12,7 +12,9 @@
                 <li><span>/</span></li>
                 <li>@Model.Page.Title</li>
             </ul>
-            <h2>@Model.Page.Description</h2>
+          <div class="mt-2">
+                @Html.Raw(Model.Page.Description)
+            </div>
         </div>
     </div>
 </section>
