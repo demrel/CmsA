@@ -18,6 +18,8 @@ public class Post : BaseModel
     public virtual LocalizationSet Content { get; set; }
     public List<AppImage> Gallery { get; set; }
     public int  PdfId { get; set; }
+    public int MenuPosition { get; set; }
+
     public virtual LocalizationSet Pdf { get; set; }
 
     public string PageId { get; set; }

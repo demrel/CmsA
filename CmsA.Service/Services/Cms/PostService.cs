@@ -51,7 +51,7 @@ public class PostService : BaseService<Post> ,IPost
 
     public IEnumerable<LPostMenu> GetLocaliezedNameByPage(string name,string cultureCode)
     {
-        var data= from b in _context.Posts.Where(c=>string.IsNullOrEmpty(c.ParentID))
+        var data= from b in _context.Posts.Where(c=>string.IsNullOrEmpty(c.ParentID)).OrderBy(c=>c.MenuPosition)
                join LTitle in _context.Localizations on b.TitleId equals LTitle.LocalizationSetId
                where b.Page.Name == name
                && LTitle.CultureCode == cultureCode
