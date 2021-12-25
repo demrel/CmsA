@@ -25,7 +25,6 @@ services.AddAutoMapper(typeof(MappingProfile));
 services.AddServices().AddAuth();
 
 var app = builder.Build();
-
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {

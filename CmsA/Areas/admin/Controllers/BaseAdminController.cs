@@ -2,12 +2,14 @@
 using CmsA.Service.Inteface;
 using CmsA.Service.Inteface.Localizations;
 using CmsA.Web.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CmsA.Web.Areas.admin.Controllers
 {
  
     [Area("admin")]
+    [Authorize]
     public class BaseAdminController: Controller
     {
        protected readonly IMapper _mapper;

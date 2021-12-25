@@ -57,6 +57,7 @@
         }
 
     </style>
+      @await RenderSectionAsync("Styles", required: false)
 </head>
 
 <body>
@@ -211,7 +212,7 @@
 
 
     <script src="~/frontend/js/aivons.js"></script>
-
+      @await RenderSectionAsync("Scripts", required: false)
       <!-- color switcher language -->
 
 </body>
