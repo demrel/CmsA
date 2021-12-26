@@ -58,5 +58,13 @@ public class PageController : BaseCulturalController<PageAddVM>
         return RedirectToAction("Index");
     }
 
+    [HttpGet]
+    public async Task<IActionResult> Delete(string id)
+    {
+        await _pageService.Delete(id);
+
+        return RedirectToAction("Index");
+    }
+
 }
         

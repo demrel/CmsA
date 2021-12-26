@@ -3,6 +3,7 @@ using CmsA.Data.Model.Cms;
 using CmsA.Service.Inteface.Cms;
 using CmsA.Service.Model.Cms;
 using CmsA.Service.Services.BaseServices;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,6 +33,25 @@ public class BannerService : BaseServiceWithImage<Banner>,IBanner
                    Title = LTitle.Value,
                    Image = b.AppImage.Name
                };
+    }
+
+    public new async Task Delete(string id)
+    {
+        var post = await _context.Banners.Where(c => c.Id == id)
+           .Include(c => c.Url).ThenInclude(d => d.Localizations)
+           .Include(c => c.Title).ThenInclude(d => d.Localizations)
+           .Include(c => c.AppImage)
+           .FirstOrDefaultAsync();
+
+            RemoveFile(""+post.AppImage?.Url + post.AppImage?.Name);
+        
+
+        _context.Images.Remove(post.AppImage);
+        _context.LocalizationSets.Remove(post.Title);
+        _context.LocalizationSets.Remove(post.Url);
+
+        _context.Remove(post);
+        _context.SaveChanges();
     }
 
     public Task<LBanner> GetLocalizedById(string id, string cultureCode)

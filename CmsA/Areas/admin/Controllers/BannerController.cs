@@ -64,12 +64,7 @@ namespace CmsA.Web.Areas.admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Delete(string id)
         {
-            var data = await _bannerService.GetById(id);
-            if (data == null) return NotFound();
-          
-            _imageService.Delete(data.AppImageId);
-            _bannerService.Delete(data);
-
+             await _bannerService.Delete(id);
             return RedirectToAction("Index");
         }
 

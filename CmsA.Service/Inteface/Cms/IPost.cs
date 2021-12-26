@@ -25,5 +25,7 @@ namespace CmsA.Service.Inteface.Cms
         Task<Post> GetMinimal(string id);
         LocalizationSet AddFile(List<PostFileModel> files, string path);
         Task<LocalizationSet> UpdateFile(List<PostFileModel> files, string path, string id);
+        Task Delete(string PostId, string path);
+        Task<List<Post>> GetAll(string id);
     }
 }

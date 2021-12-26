@@ -51,7 +51,31 @@ public class PageService : BaseService<Page> ,IPage
 
     public async Task<List<SelectListItem>> GetMinimal()=>
          await _context.Pages.Select(p => new SelectListItem(p.Id, p.Name)).ToListAsync();
+
+    public new  async Task Delete(string PostId)
+    {
+
+        var page = await _context.Pages.Where(c => c.Id == PostId)
+            .Include(p => p.Posts)
+            .Include(c => c.Title).ThenInclude(d => d.Localizations)
+            .Include(c => c.Content).ThenInclude(d => d.Localizations)
+            .Include(c => c.Description).ThenInclude(d => d.Localizations).FirstOrDefaultAsync();
+        if (page == null) return;
        
-    
+
+        foreach (var item in page.Posts)
+        {
+            item.PageId = null;
+        }
+
+        _context.LocalizationSets.Remove(page.Title);
+        _context.LocalizationSets.Remove(page.Description);
+        _context.LocalizationSets.Remove(page.Content);
+
+       
+        _context.Remove(page);
+        _context.SaveChanges();
+    }
+
 }
 

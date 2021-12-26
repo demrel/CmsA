@@ -49,7 +49,10 @@ public  class BaseService<T> where T : BaseModel
         _context.SaveChanges();
     }
 
- 
+    protected static void RemoveFile(string Path)
+    {
+        if (File.Exists(Path)) File.Delete(Path);
+    }
 
     public async Task<List<T>> GetAll()
     {

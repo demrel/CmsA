@@ -25,12 +25,16 @@ namespace CmsA.Web.Areas.admin.Controllers
             _pageService = pageService;
             _cultureService = cultureService;
         }
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string id)
         {
-            var data = await _postService.GetAll();
+          
+            var data =  !string.IsNullOrWhiteSpace(id) ? await _postService.GetAll(id) : await _postService.GetAll();
+            var pageName=await _pageService.GetById(id);
             PostIndexVM model = new()
             {
                 Posts = _mapper.Map<List<PostModel>>(data),
+                PageName=pageName?.Name??"All",
+                PageId=id,
             };
 
             return View(model);
@@ -56,7 +60,7 @@ namespace CmsA.Web.Areas.admin.Controllers
             var data = _mapper.Map<Post>(model.Add);
             data.Pdf = _postService.AddFile(model.Pdf, _env.WebRootPath + "/file/docs/");
             _postService.Create(data);
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", new { id = data.PageId });
         }
 
         [HttpGet]
@@ -79,19 +83,14 @@ namespace CmsA.Web.Areas.admin.Controllers
             var data = _mapper.Map<Post>(model.Add);
             data.Pdf =await _postService.UpdateFile(model.Pdf, _env.WebRootPath + "/file/docs/",data.Id);
             _postService.Update(data);
-            return RedirectToAction("Index");
+            return RedirectToAction("Index",new { id=data.PageId});
         }
 
         [HttpGet]
-        public async Task<IActionResult> Delete(string id)
+        public async Task<IActionResult> Delete(string id, string pageId)
         {
-            var data = await _postService.GetById(id);
-            if (data == null) return NotFound();
-
-            //_imageService.Delete(data.AppImageId);
-            _postService.Delete(data);
-
-            return RedirectToAction("Index");
+            await _postService.Delete(id, _env.WebRootPath + "/file/docs/");
+            return RedirectToAction("Index",new { id=pageId});
         }
 
         [HttpGet]
