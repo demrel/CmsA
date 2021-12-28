@@ -46,7 +46,14 @@
                                 <ul>
                                     @foreach (var childItem in item.Menu)
                                     {
-                                        <li><a href="/page/service/@childItem.Name">@childItem.Title</a></li>
+                                        <li class="dropdown">
+                                            <a href="/page/service/@childItem.Name">@childItem.Title</a>
+                                             <ul>
+                                                 <li >
+                                                   <a href="#">ss</a>
+                                                 </li>
+                                             </ul>
+                                        </li>
                                     }
 
                                 </ul>

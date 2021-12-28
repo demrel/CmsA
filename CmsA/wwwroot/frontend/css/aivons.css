@@ -607,10 +607,10 @@ ul {
     right: 100%;
 }
 
-.main-menu .main-menu__list li ul li>ul ul,
+/*.main-menu .main-menu__list li ul li>ul ul,
 .stricky-header .main-menu__list li ul li>ul ul {
     display: none;
-}
+}*/
 
 .stricky-header {
     position: fixed;
