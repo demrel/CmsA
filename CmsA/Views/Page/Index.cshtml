@@ -1,4 +1,5 @@
-﻿@model CmsA.Web.Models.Front.PageVM
+﻿@using System.Text.RegularExpressions
+@model CmsA.Web.Models.Front.PageVM
 <!--Page Header Start-->
 <section class="page-header">
     <div class="page-header__bg"></div><!-- /.page-header__bg -->
@@ -43,15 +44,15 @@
                 <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInLeft" data-wow-delay="0ms">
                     <!--Services One Single-->
                 <div class="services-one__single">
-                        <div class="services-one__img">
-                            <img src="~/images/post/@post.Image" alt="@post.Title">
+                        <div class="services-one__img postChilde">
+                            <img class="postChilde" src="~/images/post/@post.Image" alt="@post.Title">
                         </div>
                         <div class="services-one__content">
                             <h3 class="services-one__title fs-6">
                                 <a  href="/page/@Model.Page.Name/@post.Name">@post.Title</a>
                             </h3>
                             <div class="services-one__text">
-                                @Html.Raw(@post.Description)
+                               @Regex.Replace(post.Description, "<.*?>", String.Empty)
                             </div>
 
                             <a href="/page/@Model.Page.Name/@post.Name" class="services-one__btn">@Localizer.GetLocalizedHtmlString("more")</a>
