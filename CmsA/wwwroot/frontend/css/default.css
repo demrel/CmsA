@@ -4,8 +4,9 @@
 }
 
 .pagePadding {
-    padding-bottom: 50px !important;
-    padding-top: 50px !important;
+    padding-bottom: 28px !important;
+    padding-top: 28px !important;
+    background: #070c39;
 }
 .bg-gray {
     background: #f2f4f8 !important;
