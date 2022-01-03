@@ -4,5 +4,7 @@ public class LocalizationModel
 {
     public string CultureCode { get; set; }
     public string Value { get; set; }
+    public int LocalizationSetId { get; set; }
+
 }
 

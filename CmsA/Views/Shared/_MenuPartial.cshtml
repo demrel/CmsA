@@ -41,19 +41,30 @@
                         }
                         else
                         {
-                            <li class="dropdown">
+                            @*  <li class="dropdown">
                                 <a href="/page/service/@item.Name">@item.Title</a>
+                                <ul>
+                                @foreach (var childItem in item.Menu)
+                                {
+                                <li class="dropdown">
+                                <a href="/page/service/@childItem.Name">@childItem.Title</a>
+                                <ul>
+                                <li >
+                                <a href="#">ss</a>
+                                </li>
+                                </ul>
+                                </li>
+                                }
+
+                                </ul>
+                                </li>*@
+
+                            <li class="dropdown">
+                                <a href="/page/project/@item.Name">@item.Title</a>
                                 <ul>
                                     @foreach (var childItem in item.Menu)
                                     {
-                                        <li class="dropdown">
-                                            <a href="/page/service/@childItem.Name">@childItem.Title</a>
-                                             <ul>
-                                                 <li >
-                                                   <a href="#">ss</a>
-                                                 </li>
-                                             </ul>
-                                        </li>
+                                        <li><a href="/page/project/@childItem.Name">@childItem.Title</a></li>
                                     }
 
                                 </ul>
@@ -125,7 +136,7 @@
                 </ul>
             </li>
 
-              <li class="dropdown">
+            <li class="dropdown">
                 <a href="/page/product">@Localizer.GetLocalizedHtmlString("product")</a>
                 <ul>
                     @foreach (var item in productPost)
@@ -157,110 +168,5 @@
             <li class=""><a href="/contact">@Localizer.GetLocalizedHtmlString("contact")</a></li>
 
         </ul>
-        @*    <ul class="main-menu__list">
-
-            <a class="btn px-0 border-0 text-start text-white bg-transparent my-3 d-flex align-items-center justify-content-between  d-xl-none " data-bs-toggle="collapse" href="#service" role="button" aria-expanded="false" aria-controls="collapseExample">@Localizer.GetLocalizedHtmlString("service") <i class="fas fa-sort-down"></i></a>
-
-            <div class="collapse " id="service">
-            <div class=" card-body">
-            <ul class='d-block d-xl-none '>
-            @foreach (var cert in servicePost)
-            {
-            <li id="menu-item-63" class="menu-item menu-item-type-post_type menu-item-object-page dropdown">
-            <a href="/page/service/@cert.Name" >@cert.Title</a>
-
-            <ul>
-            <li><a href="index.html">Header One</a></li>
-            <li><a href="index.html">Header Two</a></li>
-            <li><a href="index.html">Header Three</a></li>
-            </ul>
-
-            </li>
-
-            }
-            </ul>
-            </div>
-            </div>
-
-
-            <a class="btn px-0 border-0 text-start text-white bg-transparent my-3 d-flex align-items-center justify-content-between d-xl-none " data-bs-toggle="collapse" href="#certificate" role="button" aria-expanded="false" aria-controls="collapseExample">@Localizer.GetLocalizedHtmlString("certificate")<i class="fas fa-sort-down"></i></a>
-
-            <div class="collapse " id="certificate">
-            <div class=" card-body">
-            <ul class='d-block d-xl-none '>
-            @foreach (var cert in certificatePost)
-            {
-            <li id="menu-item-63" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-63">
-            <a href="/page/service/@cert.Name">@cert.Title</a>
-            </li>
-
-            }
-            </ul>
-            </div>
-            </div>
-
-
-            <a class="btn px-0 border-0 text-start text-white bg-transparent my-3 d-flex align-items-center justify-content-between d-xl-none " data-bs-toggle="collapse" href="#project" role="button" aria-expanded="false" aria-controls="collapseExample">@Localizer.GetLocalizedHtmlString("certificate")<i class="fas fa-sort-down"></i></a>
-
-            <div class="collapse " id="project">
-            <div class=" card-body">
-            <ul class='d-block d-xl-none '>
-            @foreach (var cert in projectPost)
-            {
-            <li id="menu-item-63" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-63">
-            <a href="/page/service/@cert.Name">@cert.Title</a>
-            </li>
-
-            }
-            </ul>
-            </div>
-            </div>
-
-
-
-
-            <li class="d-none  d-xl-block ">
-            <a href="/page/service">@Localizer.GetLocalizedHtmlString("service")</a>
-
-            <ul class="sub-menu">
-            @foreach (var cert in servicePost)
-            {
-            <li id="menu-item-63" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-63">
-            <a href="/page/service/@cert.Name">@cert.Title</a>
-            </li>
-
-            }
-            </ul>
-            </li>
-
-            <li class="d-none d-xl-block ">
-            <a href="/page/certificate">@Localizer.GetLocalizedHtmlString("certificate")</a>
-            <ul class="sub-menu">
-            @foreach (var cert in certificatePost)
-            {
-            <li id="menu-item-63" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-63">
-            <a href="/page/certificate/@cert.Name">@cert.Title</a>
-            </li>
-
-            }
-
-            </ul>
-            </li>
-            <li class="d-none d-xl-block ">
-            <a href="/page/project">@Localizer.GetLocalizedHtmlString("project")</a>
-            <ul class="sub-menu">
-            @foreach (var cert in projectPost)
-            {
-            <li id="menu-item-63" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-63">
-            <a href="/page/project/@cert.Name">@cert.Title</a>
-
-            </li>
-
-            }
-            </ul>
-            </li>
-
-            <li class=""><a href="/contact">@Localizer.GetLocalizedHtmlString("contact")</a></li>
-            </ul>*@
     </div>
 </div>

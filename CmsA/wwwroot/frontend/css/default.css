@@ -7,6 +7,18 @@
 }
 
 .postChilde {
-    height: 200px;
+    height: 250px;
     object-fit: cover;
+}
+@media screen and (max-width: 500px)  {
+    .hide{
+        display:none !important;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .m-fs {
+        font-size: 14px !important;
+        padding-top: 3px !important;
+    }
 }

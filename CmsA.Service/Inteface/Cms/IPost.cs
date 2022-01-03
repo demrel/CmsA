@@ -27,5 +27,6 @@ namespace CmsA.Service.Inteface.Cms
         Task<LocalizationSet> UpdateFile(List<PostFileModel> files, string path, string id);
         Task Delete(string PostId, string path);
         Task<List<Post>> GetAll(string id);
+        Task ClearUnusedIds();
     }
 }

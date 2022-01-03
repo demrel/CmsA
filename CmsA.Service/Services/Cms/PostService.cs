@@ -250,6 +250,34 @@ public class PostService : BaseService<Post>, IPost
         _context.SaveChanges();
     }
 
+    public async Task ClearUnusedIds()
+    {
+
+       var loc= await _context.LocalizationSets.Where(s => !s.Localizations.Select(l => l.LocalizationSetId).Contains(s.Id)).ToListAsync();
+        _context.LocalizationSets.RemoveRange(loc);
+        _context.SaveChanges();
+
+        //List<int> locsetids = new List<int>();
+
+        //var postsContentId = _context.Posts.Select(s => s.ContentId).ToList();
+        //var postsDescriptionId = _context.Posts.Select(s => s.DescriptionId).ToList();
+        //var postsTitleId = _context.Posts.Select(s => s.TitleId).ToList();
+        //var postsPdfId = _context.Posts.Select(s => s.PdfId).ToList();
+
+
+
+        //locsetids.AddRange(postsContentId);
+        //locsetids.AddRange(postsDescriptionId);
+        //locsetids.AddRange(postsTitleId);
+        //locsetids.AddRange(postsPdfId);
+
+        //var loc2  = await _context.LocalizationSets.Where(s => !locsetids.Contains(s.Id)).ToListAsync();
+
+
+
+       
+    }
+
 
 
 

@@ -81,6 +81,7 @@ namespace CmsA.Web.Areas.admin.Controllers
         public async Task<IActionResult> Update(PostAddVM model)
         {
             var data = _mapper.Map<Post>(model.Add);
+
             data.Pdf =await _postService.UpdateFile(model.Pdf, _env.WebRootPath + "/file/docs/",data.Id);
             _postService.Update(data);
             return RedirectToAction("Index",new { id=data.PageId});
@@ -140,6 +141,15 @@ namespace CmsA.Web.Areas.admin.Controllers
             model.Add.ParentID = data.Id;
             model.Cultures = _cultureService.GetAll();
             return View(model);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> RemoveUnsued(string id)
+        {
+            if (id != "611347") return NotFound();
+          await _postService.ClearUnusedIds();
+            return Ok("deleted");
+            
         }
 
     }

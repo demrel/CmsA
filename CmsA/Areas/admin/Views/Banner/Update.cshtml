@@ -55,12 +55,14 @@
                                             <div class="form-group">
                                                 <label asp-for="Add.Title[i].CultureCode">Title</label>
                                                 <input type="hidden" asp-for="Add.Title[i].CultureCode" value="@item.Code">
+                                                <input type="hidden" asp-for="Add.Title[i].LocalizationSetId">
                                                 <input type="text" class="form-control" asp-for="Add.Title[i].Value" placeholder="Title">
                                             </div>
 
                                             <div class="form-group">
                                                 <label asp-for="Add.Title[i].CultureCode">Url</label>
                                                 <input type="hidden" asp-for="Add.Url[i].CultureCode" value="@item.Code">
+                                                <input type="hidden" asp-for="Add.Url[i].LocalizationSetId">
                                                 <input type="text" class="form-control" asp-for="Add.Url[i].Value" placeholder="Url">
                                             </div>
 
