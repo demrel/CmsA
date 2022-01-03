@@ -5,3 +5,8 @@
 .bg-gray {
     background: #e1e1e1b0 !important;
 }
+
+.postChilde {
+    height: 200px;
+    object-fit: cover;
+}
