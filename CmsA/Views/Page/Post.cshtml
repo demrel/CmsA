@@ -53,7 +53,7 @@
 <!--ChildeCategpries start-->
 @if (Model.ChildePosts.Count() > 0)
 {
-    <section class="welcome-one">
+    <section class="welcome-one bg-gray postPadding">
         <div class="container">
             <div class="section-title text-center">
                 <h2 class="section-title__title">@Localizer.GetLocalizedHtmlString("childeCategories")</h2>
@@ -89,7 +89,7 @@
 <!--Gallery Start-->
 @if (Model.Post.Gallery.Count() > 0)
 {
-    <section class="team-one">
+    <section class="team-one postPadding">
         <div class="team-one__container">
             <div class="section-title text-center">
                 <h2 class="section-title__title">@Localizer.GetLocalizedHtmlString("gallery")</h2>
