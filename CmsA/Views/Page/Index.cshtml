@@ -52,7 +52,7 @@
                                 <a  href="/page/@Model.Page.Name/@post.Name">@post.Title</a>
                             </h3>
                             <div class="services-one__text">
-                               @Regex.Replace(post.Description, "<.*?>", String.Empty)
+                               @Regex.Replace(post.Description.ToString(), "<.*?>", String.Empty)
                             </div>
 
                             <a href="/page/@Model.Page.Name/@post.Name" class="services-one__btn">@Localizer.GetLocalizedHtmlString("more")</a>
