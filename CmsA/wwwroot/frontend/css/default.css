@@ -2,6 +2,11 @@
     padding-bottom: 75px !important;
     padding-top: 75px !important;
 }
+
+.pagePadding {
+    padding-bottom: 50px !important;
+    padding-top: 50px !important;
+}
 .bg-gray {
     background: #f2f4f8 !important;
 }
