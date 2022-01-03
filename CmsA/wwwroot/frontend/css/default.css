@@ -26,4 +26,17 @@
 .mdText * {
     font-size: 14px !important;
     color: #3a3a3a !important;
+    line-height: 20px;
+    font-weight: 400;
+}
+
+
+.al-b20 {
+    position: absolute;
+    bottom: 20px;
+}
+
+.he-200 {
+    position: absolute;
+    bottom: 20px;
 }
