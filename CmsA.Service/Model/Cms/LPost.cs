@@ -19,6 +19,8 @@ namespace CmsA.Service.Model.Cms
 
         public string PageId { get; set; }
         public string PageName { get; set; }
+        public string PageTitle { get; set; }
+
 
         public bool Stared { get; set; }
 

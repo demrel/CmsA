@@ -49,8 +49,22 @@ public class PageService : BaseService<Page> ,IPage
           return await a.FirstOrDefaultAsync();
     }
 
+    public IEnumerable<LPageMenu> GetLocaliezedName(string cultureCode)
+    {
+        var data = from b in _context.Pages.OrderBy(c => c.Position).Where(c=>c.PostType!=Data.Enums.PostType.DontShowInMenu)
+                   join LTitle in _context.Localizations on b.TitleId equals LTitle.LocalizationSetId
+                   where  LTitle.CultureCode == cultureCode
+                   select new LPageMenu()
+                   {
+                       Name = b.Name,
+                       Title = LTitle.Value,
+
+                   };
+        return data;
+    }
+
     public async Task<List<SelectListItem>> GetMinimal()=>
-         await _context.Pages.Select(p => new SelectListItem(p.Id, p.Name)).ToListAsync();
+         await _context.Pages.Where(c => c.PostType != Data.Enums.PostType.DontShowInMenu).Select(p => new SelectListItem(p.Id, p.Name)).ToListAsync();
 
     public new  async Task Delete(string PostId)
     {

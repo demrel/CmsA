@@ -61,7 +61,16 @@ public class HomeController : BaseHomeController
         };
         return View(model);
     }
-
+    public async Task<IActionResult> Search(string key)
+    {
+        var cultureCode = GetCulture();
+        var page = await _pageService.GetLocalizedByName("search", cultureCode);
+        if (page == null) return NotFound();
+        page.LPosts = _postService.Search(key, cultureCode);
+        SearchVM model = new() { Page = page,Search= key };
+        return View(model);
+       
+    }
     public IActionResult Privacy()
     {
         return View();

@@ -9,6 +9,7 @@ public class PageModel : BaseModelWithImage
     public  List<LocalizationModel> Description { get; set; }
     public  List<LocalizationModel> Content { get; set; }
     public PostType PostType { get; set; }
+    public int Position { get; set; }
     public bool ShowInMain { get; set; }
 }
 

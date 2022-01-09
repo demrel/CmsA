@@ -17,6 +17,8 @@ namespace CmsA.Web.Controllers
             _postService = postService;
             _mesagService = mesagService;
         }
+
+        [HttpGet("page/contact")]
         public async Task<IActionResult> Index()
         {
             var cultureCode = GetCulture();

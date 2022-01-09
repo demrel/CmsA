@@ -90,7 +90,7 @@
                             <a href="https://wa.me/9940552480800?text=Bəhruz%20MMC%20saytından%20bura%20daxil%20oldum.%20Zəhmət%20olmasa%20mənə%20köməklik%20edin." class="clr-ins"><i class="fab fa-whatsapp"></i></a>
                             <a href="https://www.facebook.com/bahruzmmc " class="clr-fb hide"><i class="fab fa-facebook"></i></a>
                             <a href="https://instagram.com/behruz_mmc " class="clr-ins hide"><i class="fab fa-instagram"></i></a>
-                            <a href="#" class="hide search-toggler icon-magnifying-glass1"></a>
+                            <a href="#" class="search-toggler icon-magnifying-glass1"></a>
                         </div>
                     </div>
                 </div>
@@ -129,10 +129,11 @@
                                     <p>© Copyright 2021 by <a href="#">49 group</a></p>
                                 </div>
                                 <div class="site-footer__social">
-                                    <a href="mailto:info@behruzmmc.az" class="clr-fb"><i class="fas fa-at"></i></a>
+                                    <a href="mailto:info@behruzmmc.az" class="clr-fb hide"><i class="fas fa-at"></i></a>
                                     <a href="https://wa.me/9940552480800?text=Bəhruz%20MMC%20saytından%20bura%20daxil%20oldum.%20Zəhmət%20olmasa%20mənə%20köməklik%20edin." class="clr-ins"><i class="fab fa-whatsapp"></i></a>
-                                    <a href="https://www.facebook.com/bahruzmmc" class="clr-fb"><i class="fab fa-facebook"></i></a>
-                                    <a href="https://instagram.com/behruz_mmc" class="clr-ins"><i class="fab fa-instagram"></i></a>
+                                    <a href="https://www.facebook.com/bahruzmmc " class="clr-fb hide"><i class="fab fa-facebook"></i></a>
+                                    <a href="https://instagram.com/behruz_mmc " class="clr-ins hide"><i class="fab fa-instagram"></i></a>
+                                    <a href="#" class="hide search-toggler icon-magnifying-glass1"></a>
                                 </div>
                             </div>
                         </div>
@@ -153,7 +154,7 @@
             <span class="mobile-nav__close mobile-nav__toggler"><i class="fa fa-times"></i></span>
 
             <div class="logo-box">
-                <a href="index-2.html" aria-label="logo image">
+                <a href="/" aria-label="logo image">
                     <img src="~/logo.png" width="100" alt="" />
                 </a>
             </div>
@@ -169,7 +170,8 @@
             </ul><!-- /.mobile-nav__contact -->
             <div class="mobile-nav__top">
                 <div class="mobile-nav__social">
-                    <a href="https://wa.me/9940552480800?text=Bəhruz%20MMC%20saytından%20bura%20daxil%20oldum.%20Zəhmət%20olmasa%20mənə%20köməklik%20edin." class="clr-ins"><i class="fab fa-whatsapp"></i></a>
+                    <a href="mailto:info@behruzmmc.az" class="fas fa-at text-white"></a>
+                    <a href="https://wa.me/9940552480800?text=Bəhruz%20MMC%20saytından%20bura%20daxil%20oldum.%20Zəhmət%20olmasa%20mənə%20köməklik%20edin." class="fab fa-whatsapp text-white"></a>
                     <a href="https://www.facebook.com/bahruzmmc" class="fab fa-facebook-square text-white"></a>
                     <a href="https://instagram.com/behruz_mmc" class="fab fa-instagram text-white"></a>
                 </div><!-- /.mobile-nav__social -->
@@ -186,9 +188,9 @@
         <div class="search-popup__overlay search-toggler"></div>
         <!-- /.search-popup__overlay -->
         <div class="search-popup__content">
-            <form action="#">
-                <label for="search" class="sr-only">search here</label><!-- /.sr-only -->
-                <input type="text" id="search" placeholder="@Localizer.GetLocalizedHtmlString("search")" />
+            <form asp-controller="Home" asp-action="Search" method="get">
+                <label for="search" class="sr-only">@Localizer.GetLocalizedHtmlString("search")</label><!-- /.sr-only -->
+                <input type="text" id="search" name="key" placeholder="@Localizer.GetLocalizedHtmlString("search")" />
                 <button type="submit" aria-label="search submit" class="thm-btn">
                     <i class="icon-magnifying-glass"></i>
                 </button>

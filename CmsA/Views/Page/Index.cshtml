@@ -12,7 +12,7 @@
                 <li><span>/</span></li>
                 <li>@Model.Page.Title</li>
             </ul>
-          <div class="mt-2 ">
+            <div class="mt-2 ">
                 @Html.Raw(Model.Page.Description)
             </div>
         </div>
@@ -20,48 +20,78 @@
 </section>
 <!--Page Header End-->
 <!--Our Mission Start-->
-<section class="our-mission pagePadding">
-    <div class="our-mission-bg jarallax" data-jarallax data-speed="0.2" data-imgPosition="50% 0%"
+@if (Model.Page.PostType == PostType.Content)
+{
+    <section class="our-mission pagePadding">
+        <div class="our-mission-bg jarallax" data-jarallax data-speed="0.2" data-imgPosition="50% 0%"
          style="background-image: url(/front/images/shapes/real-world-shape.png)"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="our-mission__inner">
+                        @Html.Raw(Model.Page.Content)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+} 
+else
+{
+    <section class="services-details postPadding" >
     <div class="container">
         <div class="row">
-            <div class="col-xl-12">
-                <div class="our-mission__inner">
-                    @Html.Raw(Model.Page.Content)
+            <div class="col-xl-12 col-lg-12">
+                <div class="services-details__left">
+                 
+                    <div class="services-details__top-content">
+                        <h2 class="services-details__top-title">@Model.Page.Title</h2>
+                        @Html.Raw(Model.Page.Content)
+                    </div>
+                
+                  
                 </div>
             </div>
         </div>
     </div>
 </section>
-<!--Our Mission End-->
-<!--Services One Start-->
-<section class="services-one services-page">
-    <div class="container">
-        <div class="row">
-            @foreach (var post in Model.Page.LPosts)
-            {
-                <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInLeft" data-wow-delay="0ms">
-                    <!--Services One Single-->
-                <div class="services-one__single">
-                        <div class="services-one__img postChilde">
-                            <img class="postChilde" src="~/images/post/@post.Image" alt="@post.Title">
-                        </div>
-                        <div class="services-one__content he-200">
-                            <h3 class="services-one__title fs-6">
-                                <a  href="/page/@Model.Page.Name/@post.Name">@post.Title</a>
-                            </h3>
-                            <div class="services-one__text mdText" >
-                                @Html.Raw(@post.Description)
-                            </div>
 
-                            <a href="/page/@Model.Page.Name/@post.Name" class="services-one__btn al-b20">@Localizer.GetLocalizedHtmlString("more")</a>
+}
+
+
+
+<!--Services One Start-->
+@if (Model.Page.LPosts.Count() > 0)
+{
+    <section class="services-one services-page">
+        <div class="container">
+            <div class="row">
+                @foreach (var post in Model.Page.LPosts)
+                {
+                    <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInLeft" data-wow-delay="0ms">
+                        <!--Services One Single-->
+                <div class="services-one__single">
+                            <div class="services-one__img postChilde">
+                                <img class="postChilde" src="~/images/post/@post.Image" alt="@post.Title">
+                            </div>
+                            <div class="services-one__content he-200">
+                                <h3 class="services-one__title fs-6">
+                                    <a href="/page/@Model.Page.Name/@post.Name">@post.Title</a>
+                                </h3>
+                                <div class="services-one__text mdText">
+                                    @Html.Raw(@post.Description)
+                                </div>
+
+                                <a href="/page/@Model.Page.Name/@post.Name" class="services-one__btn al-b20">@Localizer.GetLocalizedHtmlString("more")</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-            }
+                }
 
 
+            </div>
         </div>
-    </div>
-</section>
+    </section>
+}
+
 <!--Services One End-->

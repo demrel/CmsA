@@ -8,6 +8,14 @@
     padding-top: 28px !important;
     background: #070c39;
 }
+
+.pagePadding2 {
+    padding-bottom: 0px !important;
+    padding-left: 20px !important;
+    padding-left: 20px !important;
+    margin-bottom: 20px !important;
+}
+
 .bg-gray {
     background: #f2f4f8 !important;
 }

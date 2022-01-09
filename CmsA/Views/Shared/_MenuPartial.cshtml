@@ -6,13 +6,20 @@
 
 @inject IOptions<RequestLocalizationOptions> LocOptions
 @inject IPost _postService
+@inject IPage _pageService
+
 
 @{
+
+
     var requestCulture = Context.Features.Get<IRequestCultureFeature>().RequestCulture.Culture.Name;
-    var servicePost = _postService.GetLocaliezedNameByPage("service", requestCulture);
-    var projectPost = _postService.GetLocaliezedNameByPage("project", requestCulture);
-    var certificatePost = _postService.GetLocaliezedNameByPage("certificate", requestCulture);
-    var productPost = _postService.GetLocaliezedNameByPage("product", requestCulture);
+    var pages = _pageService.GetLocaliezedName(requestCulture).ToList();
+
+    //var servicePost = _postService.GetLocaliezedNameByPage("service", requestCulture);
+    //var projectPost = _postService.GetLocaliezedNameByPage("project", requestCulture);
+    //var certificatePost = _postService.GetLocaliezedNameByPage("certificate", requestCulture);
+    //var productPost = _postService.GetLocaliezedNameByPage("product", requestCulture);
+
 }
 
 
@@ -28,144 +35,58 @@
         </a>
 
         <ul class="main-menu__list">
-            <li class="dropdown">
-                <a href="/page/service">@Localizer.GetLocalizedHtmlString("service")</a>
-                <ul>
-                    @foreach (var item in servicePost)
+
+            @foreach (var pageItem in pages)
+            {
+                var posts = _postService.GetLocaliezedNameByPage(pageItem.Name, requestCulture).ToList();
+
+                <li class="@(posts.Count()>0?"dropdown":"")">
+                    <a href="/page/@pageItem.Name">@pageItem.Title</a>
+                    @if (posts.Count() > 0)
                     {
-                        @if (item.Menu == null || item.Menu.Count <= 0)
-                        {
-                            <li>
-                                <a href="/page/service/@item.Name">@item.Title</a>
-                            </li>
-                        }
-                        else
-                        {
-                            @*  <li class="dropdown">
-                                <a href="/page/service/@item.Name">@item.Title</a>
-                                <ul>
-                                @foreach (var childItem in item.Menu)
-                                {
-                                <li class="dropdown">
-                                <a href="/page/service/@childItem.Name">@childItem.Title</a>
-                                <ul>
-                                <li >
-                                <a href="#">ss</a>
+                        <ul>
+                            @foreach (var post in posts)
+                            {
+                                //  @if (post.Menu == null || post.Menu.Count <= 0)
+                                <li class="@((post.Menu==null||post.Menu.Count()<=0)?"":"dropdown")">
+                                    <a href="/page/project/@post.Name">@post.Title</a>
+                                    @if (post.Menu != null && post.Menu.Count() > 0)
+                                    {
+                                        <ul>
+                                            @foreach (var childItem in post.Menu)
+                                            {
+                                                var childItemItems = _postService.GetLocaliezedNameByParent(childItem.Id, requestCulture).ToList();
+                                                <li class="@((childItemItems == null || childItemItems.Count() <= 0)?"":"dropdown")">
+                                                    <a href="/page/project/@childItem.Name">@childItem.Title</a>
+                                                    @if (childItemItems != null && childItemItems.Count() > 0)
+                                                    {
+                                                        <ul>
+                                                            @foreach (var chidleChileItem in childItemItems)
+                                                            {
+                                                                <li> <a href="/page/project/@chidleChileItem.Name">@chidleChileItem.Title</a></li>
+                                                            }
+                                                        </ul>
+                                                    }
+                                                </li>
+                                            }
+
+                                        </ul>
+                                    }
+
                                 </li>
-                                </ul>
-                                </li>
-                                }
+                            }
 
-                                </ul>
-                                </li>*@
-
-                            <li class="dropdown">
-                                <a href="/page/project/@item.Name">@item.Title</a>
-                                <ul>
-                                    @foreach (var childItem in item.Menu)
-                                    {
-                                        <li><a href="/page/project/@childItem.Name">@childItem.Title</a></li>
-                                    }
-
-                                </ul>
-                            </li>
-                        }
-
-                    }
-
-                </ul>
-
-            </li>
-            <li class="dropdown">
-                <a href="/page/project">@Localizer.GetLocalizedHtmlString("project")</a>
-                <ul>
-                    @foreach (var item in projectPost)
-                    {
-                        @if (item.Menu == null || item.Menu.Count <= 0)
-                        {
-                            <li>
-                                <a href="/page/project/@item.Name">@item.Title</a>
-                            </li>
-                        }
-                        else
-                        {
-                            <li class="dropdown">
-                                <a href="/page/project/@item.Name">@item.Title</a>
-                                <ul>
-                                    @foreach (var childItem in item.Menu)
-                                    {
-                                        <li><a href="/page/project/@childItem.Name">@childItem.Title</a></li>
-                                    }
-
-                                </ul>
-                            </li>
-                        }
-
+                        </ul>
                     }
 
 
-                </ul>
-            </li>
+                </li>
+            }
 
-            <li class="dropdown">
-                <a href="/page/certificate">@Localizer.GetLocalizedHtmlString("certificate")</a>
-                <ul>
-                    @foreach (var item in certificatePost)
-                    {
-                        @if (item.Menu == null || item.Menu.Count <= 0)
-                        {
-                            <li>
-                                <a href="/page/certificate/@item.Name">@item.Title</a>
-                            </li>
-                        }
-                        else
-                        {
-                            <li class="dropdown">
-                                <a href="/page/certificate/@item.Name">@item.Title</a>
-                                <ul>
-                                    @foreach (var childItem in item.Menu)
-                                    {
-                                        <li><a href="/page/certificate/@childItem.Name">@childItem.Title</a></li>
-                                    }
 
-                                </ul>
-                            </li>
-                        }
+          
 
-                    }
-                </ul>
-            </li>
-
-            <li class="dropdown">
-                <a href="/page/product">@Localizer.GetLocalizedHtmlString("product")</a>
-                <ul>
-                    @foreach (var item in productPost)
-                    {
-                        @if (item.Menu == null || item.Menu.Count <= 0)
-                        {
-                            <li>
-                                <a href="/page/product/@item.Name">@item.Title</a>
-                            </li>
-                        }
-                        else
-                        {
-                            <li class="dropdown">
-                                <a href="/page/product/@item.Name">@item.Title</a>
-                                <ul>
-                                    @foreach (var childItem in item.Menu)
-                                    {
-                                        <li><a href="/page/product/@childItem.Name">@childItem.Title</a></li>
-                                    }
-
-                                </ul>
-                            </li>
-                        }
-
-                    }
-                </ul>
-            </li>
-
-            <li class=""><a href="/contact">@Localizer.GetLocalizedHtmlString("contact")</a></li>
+            @*<li class=""><a href="/page/contact">@Localizer.GetLocalizedHtmlString("contact")</a></li>*@
 
         </ul>
     </div>

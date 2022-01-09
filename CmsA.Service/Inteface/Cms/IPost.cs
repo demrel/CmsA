@@ -21,10 +21,12 @@ namespace CmsA.Service.Inteface.Cms
         IEnumerable<LPost> GetLocalizedAllStaredByPage(string name, string cultureCode);
         Task<LPost> GetLocalizedByName(string name, string cultureCode);
         IEnumerable<LPostMenu> GetLocaliezedNameByPage(string name, string cultureCode);
+        IEnumerable<LPostMenu> GetLocaliezedNameByParent(string parentID, string cultureCode);
         IEnumerable<LPost> GetChildePost(string id, string cultureCode);
         Task<Post> GetMinimal(string id);
         LocalizationSet AddFile(List<PostFileModel> files, string path);
         Task<LocalizationSet> UpdateFile(List<PostFileModel> files, string path, string id);
+        IEnumerable<LPost> Search(string search, string cultureCode);
         Task Delete(string PostId, string path);
         Task<List<Post>> GetAll(string id);
         Task ClearUnusedIds();

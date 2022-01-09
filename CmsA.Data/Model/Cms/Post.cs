@@ -10,6 +10,9 @@ namespace CmsA.Data.Model.Cms;
 
 public class Post : BaseModel
 {
+    public int MenuPosition { get; set; }
+    public bool ShowInMenu { get; set; }
+
     public int TitleId { get; set; }
     public virtual LocalizationSet Title { get; set; }
     public int DescriptionId { get; set; }
@@ -18,8 +21,6 @@ public class Post : BaseModel
     public virtual LocalizationSet Content { get; set; }
     public List<AppImage> Gallery { get; set; }
     public int  PdfId { get; set; }
-    public int MenuPosition { get; set; }
-
     public virtual LocalizationSet Pdf { get; set; }
 
     public string PageId { get; set; }
@@ -29,6 +30,11 @@ public class Post : BaseModel
     public string ParentID { get; set; }
     public virtual Post Parent { get; set; }
     public virtual List<Post> Children { get; set; }
+
+    public Post()
+    {
+        MenuPosition = 50;
+    }
 
 }
 

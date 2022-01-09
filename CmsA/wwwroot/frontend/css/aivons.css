@@ -3373,7 +3373,7 @@ ul {
     position: relative;
     background-color: var(--thm-base);
     display: block;
-    margin-top: -100px;
+    margin-top: -50px;
     margin-left: 40px;
     padding: 30px 36px 37px;
     transition: all 500ms ease;

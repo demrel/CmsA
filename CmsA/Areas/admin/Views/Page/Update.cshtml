@@ -12,7 +12,7 @@
                         @{
                             int i = 0;
                         }
-                        <div class="row mt-12">
+                        <div class="row mt-4">
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label asp-for="Add.Name">GlobalName</label>
@@ -20,11 +20,18 @@
                                 </div>
                             </div>
 
-                            <div class="col-sm-6">
+                            <div class="col-sm-4">
                                 <div class="form-group">
                                     <label asp-for="Add.PostType">Type</label>
                                     <select asp-for="Add.PostType" class="form-control border-primary" asp-items="@Html.GetEnumSelectList<PostType>()">
                                     </select>
+                                </div>
+                            </div>
+
+                             <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label asp-for="Add.Position">Menu Position</label>
+                                    <input type="number" class="form-control" asp-for="Add.Position" placeholder="MenuPosition">
                                 </div>
                             </div>
                         </div>

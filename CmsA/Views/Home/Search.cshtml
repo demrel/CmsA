@@ -1,0 +1,92 @@
+﻿@model CmsA.Web.Models.Front.SearchVM
+<!--Page Header Start-->
+<section class="page-header">
+    <div class="page-header__bg"></div><!-- /.page-header__bg -->
+    <div class="page-header-shape-1"></div><!-- /.page-header-shape-1 -->
+    <div class="page-header-shape-2"></div><!-- /.page-header-shape-2 -->
+    <div class="page-header-shape-3"></div><!-- /.page-header-shape-3 -->
+    <div class="colortantcontainer">
+        <div class="page-header__inner">
+            <ul class="thm-breadcrumb list-unstyled">
+                <li><a href="/">@Localizer.GetLocalizedHtmlString("home")</a></li>
+                <li><span>/</span></li>
+                <li>@Model.Page.Title</li>
+            </ul>
+            <div class="mt-2 ">
+                @Html.Raw(Model.Page.Description)
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!--Page Header End-->
+<!--Our Mission Start-->
+
+
+<section class="services-details postPadding">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12">
+                <div class="services-details__left ">
+                    <div class="services-details__top-content pagePadding2">
+                        <h2 class="services-details__top-title text-center">@Model.Page.Title</h2>
+                        @Html.Raw(Model.Page.Content)
+                    </div>
+                    <div class="sidebar__single sidebar__search">
+                        <form asp-controller="Home" asp-action="Search" method="get" class="sidebar__search-form">
+                            <input type="search" name="key" placeholder="@Localizer.GetLocalizedHtmlString("search")" value="@Model.Search">
+                            <button type="submit"><i class="icon-magnifying-glass"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!--Services One Start-->
+    <section class="services-one services-page postPadding2">
+        <div class="container">
+            <div class="row">
+                @foreach (var post in Model.Page.LPosts)
+                {
+
+                    <div class="col-xl-4 col-lg-4 wow fadeInUp animated" data-wow-delay="0ms" data-wow-duration="1500ms" style="visibility: visible; animation-duration: 1500ms; animation-delay: 0ms; animation-name: fadeInUp;">
+                        <!--News One Single-->
+                        <div class="news-one__single">
+                            <div class="news-one__img">
+                                <img class="postChilde" src="~/images/post/@post.Image" alt="@post.Title">
+                                <a href="/page/@Model.Page.Name/@post.Name">
+                                    <span class="news-one__plus"></span>
+                                </a>
+                            </div>
+                            <div class="news-one__content" style="margin-left:0">
+                                <ul class="list-unstyled news-one__meta">
+                                    <li><a href="/page/@post.PageName"><i class="fas fa-tag"></i> @post.PageTitle</a> </li>
+                                </ul>
+                                <h3 class="news-one__title">
+                                    <a href="/page/@Model.Page.Name/@post.Name">@post.Title</a>
+                                </h3>
+                                <div class="services-one__text mdText">@Html.Raw(@post.Description)</div>
+                                <a href="/page/@Model.Page.Name/@post.Name" class="news-one__btn">@Localizer.GetLocalizedHtmlString("more")</a>
+
+                            </div>
+                        </div>
+                    </div>
+                }
+                @if(Model.Page.LPosts==null||Model.Page.LPosts.Count()<=0){
+                    <div class="col-xl-12 col-lg-12 wow fadeInUp animated" data-wow-delay="0ms" data-wow-duration="1500ms" style="visibility: visible; animation-duration: 1500ms; animation-delay: 0ms; animation-name: fadeInUp;">
+                        <!--News One Single-->
+                         <h2 class="text-center">@Localizer.GetLocalizedHtmlString("searchnotfound")</h2>
+                    </div>
+                }
+
+
+            </div>
+        </div>
+    </section>
+
+
+<!--Services One End-->

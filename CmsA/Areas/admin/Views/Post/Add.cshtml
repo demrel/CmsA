@@ -12,6 +12,7 @@
                             int i = 0;
                         }
                         <div class="row mt-12">
+
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label asp-for="Add.Name">GlobalName</label>
@@ -26,6 +27,26 @@
                                     </select>
                                 </div>
                             </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label asp-for="Add.MenuPosition">Menu Position</label>
+                                    <input type="number" class="form-control" asp-for="Add.MenuPosition" placeholder="Menu Position">
+                                </div>
+                            </div>
+
+                             <div class="col-sm-6">
+                                <div class="form-group">
+                                   <label asp-for="Add">Show In Menu</label>
+                                   <select asp-for="Add.ShowInMenu" class="form-control border-primary">
+                                       <option selected value="false">Show</option>
+                                       <option  value="true">NotShow</option>
+                                    </select>
+                                </div>
+                            </div>
+
+
+
                         </div>
                         <ul class="nav nav-tabs tab-simple-styled" role="tablist">
                             @foreach (var item in Model.Cultures)

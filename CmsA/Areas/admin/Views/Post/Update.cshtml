@@ -37,6 +37,32 @@
                                 <input type="hidden" class="form-control" asp-for="Add.PageId">
                                 <input type="hidden" class="form-control" asp-for="Add.ParentID">
                             }
+                               <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label asp-for="Add.MenuPosition">Menu Position</label>
+                                    <input type="number" class="form-control" asp-for="Add.MenuPosition" placeholder="Menu Position">
+                                </div>
+                            </div>
+
+                             <div class="col-sm-6">
+                                <div class="form-group">
+                                   <label asp-for="Add">Show In Menu</label>
+                                   <select asp-for="Add.ShowInMenu" class="form-control border-primary">
+                                        @if (Model.Add.ShowInMenu)
+                                        {
+                                            <option  value="false">Show</option>
+                                            <option  selected value="true">NotShow</option>
+                                        }
+                                        else
+                                        {
+                                            <option selected value="false">Show</option>
+                                            <option  value="true">NotShow</option>
+                                        }
+
+                                      
+                                    </select>
+                                </div>
+                            </div>
 
                         </div>
                         <ul class="nav nav-tabs tab-simple-styled" role="tablist">

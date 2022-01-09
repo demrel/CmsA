@@ -17,9 +17,15 @@ public class Page : BaseModel
     public virtual LocalizationSet Description { get; set; }
     public int ContentId { get; set; }
     public virtual LocalizationSet Content { get; set; }
+
     public int VideoUrlId { get; set; }
+    public int Position { get; set; }
     public virtual List<KeyValueHelper> KeyValueHelpers { get; set; }
     public virtual List<Post> Posts { get; set; }
     public PostType PostType { get; set; }
+    public Page()
+    {
+        Position = 11;
+    }
 }
 

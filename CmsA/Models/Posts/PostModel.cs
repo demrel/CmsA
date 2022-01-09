@@ -14,7 +14,12 @@ namespace CmsA.Web.Models.Posts;
     public string ParentID { get; set; }
     public string PageId { get; set; }
     public string PageName { get; set; }
+
     public string ParentName { get; set; }
     public bool Stared { get; set; }
+    public bool ShowInMenu { get; set; }
+    public int MenuPosition { get; set; }
+
+
 }
 

@@ -9,6 +9,8 @@ namespace CmsA.Data.Enums
     public enum PostType
     {
         Content,
-        Url
+        Url,
+        SimplePage,
+        DontShowInMenu
     }
 }

@@ -3,6 +3,7 @@ using System;
 using CmsA.Data.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace CmsA.Data.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    partial class AppDBContextModelSnapshot : ModelSnapshot
+    [Migration("20220108154108_ShowINMenuPost")]
+    partial class ShowINMenuPost
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -49,7 +51,7 @@ namespace CmsA.Data.Migrations
 
                     b.HasIndex("PostId");
 
-                    b.ToTable("Images", (string)null);
+                    b.ToTable("Images");
                 });
 
             modelBuilder.Entity("CmsA.Data.Model.Cms.Banner", b =>
@@ -83,7 +85,7 @@ namespace CmsA.Data.Migrations
 
                     b.HasIndex("UrlId");
 
-                    b.ToTable("Banners", (string)null);
+                    b.ToTable("Banners");
                 });
 
             modelBuilder.Entity("CmsA.Data.Model.Cms.KeyValueHelper", b =>
@@ -109,7 +111,7 @@ namespace CmsA.Data.Migrations
 
                     b.HasIndex("ValueId");
 
-                    b.ToTable("KeyValueHelpers", (string)null);
+                    b.ToTable("KeyValueHelpers");
                 });
 
             modelBuilder.Entity("CmsA.Data.Model.Cms.Message", b =>
@@ -140,7 +142,7 @@ namespace CmsA.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Messages", (string)null);
+                    b.ToTable("Messages");
                 });
 
             modelBuilder.Entity("CmsA.Data.Model.Cms.MissionVission", b =>
@@ -173,7 +175,7 @@ namespace CmsA.Data.Migrations
 
                     b.HasIndex("VissionTitleId");
 
-                    b.ToTable("MissionVissions", (string)null);
+                    b.ToTable("MissionVissions");
                 });
 
             modelBuilder.Entity("CmsA.Data.Model.Cms.Page", b =>
@@ -213,7 +215,7 @@ namespace CmsA.Data.Migrations
 
                     b.HasIndex("TitleId");
 
-                    b.ToTable("Pages", (string)null);
+                    b.ToTable("Pages");
                 });
 
             modelBuilder.Entity("CmsA.Data.Model.Cms.Partner", b =>
@@ -237,7 +239,7 @@ namespace CmsA.Data.Migrations
 
                     b.HasIndex("AppImageId");
 
-                    b.ToTable("Partners", (string)null);
+                    b.ToTable("Partners");
                 });
 
             modelBuilder.Entity("CmsA.Data.Model.Cms.Post", b =>
@@ -292,7 +294,7 @@ namespace CmsA.Data.Migrations
 
                     b.HasIndex("TitleId");
 
-                    b.ToTable("Posts", (string)null);
+                    b.ToTable("Posts");
                 });
 
             modelBuilder.Entity("CmsA.Data.Model.Cms.Viedo", b =>
@@ -325,7 +327,7 @@ namespace CmsA.Data.Migrations
 
                     b.HasIndex("VideoImageId");
 
-                    b.ToTable("Videos", (string)null);
+                    b.ToTable("Videos");
                 });
 
             modelBuilder.Entity("CmsA.Data.Model.Localization.Culture", b =>
@@ -340,7 +342,7 @@ namespace CmsA.Data.Migrations
 
                     b.HasKey("Code");
 
-                    b.ToTable("Cultures", (string)null);
+                    b.ToTable("Cultures");
                 });
 
             modelBuilder.Entity("CmsA.Data.Model.Localization.Localization", b =>
@@ -358,7 +360,7 @@ namespace CmsA.Data.Migrations
 
                     b.HasIndex("CultureCode");
 
-                    b.ToTable("Localizations", (string)null);
+                    b.ToTable("Localizations");
                 });
 
             modelBuilder.Entity("CmsA.Data.Model.Localization.LocalizationSet", b =>
@@ -371,7 +373,7 @@ namespace CmsA.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("LocalizationSets", (string)null);
+                    b.ToTable("LocalizationSets");
                 });
 
             modelBuilder.Entity("Identity.Users.AppRole", b =>

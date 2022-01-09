@@ -13,5 +13,6 @@ namespace CmsA.Service.Inteface.Cms
     public interface IPage : IBase<Page>, ITranslate<LPage>
     {
         Task<List<SelectListItem>> GetMinimal();
+        IEnumerable<LPageMenu> GetLocaliezedName(string cultureCode);
     }
 }

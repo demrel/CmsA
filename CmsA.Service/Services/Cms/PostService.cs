@@ -49,11 +49,57 @@ public class PostService : BaseService<Post>, IPost
                };
     }
 
+    public IEnumerable<LPost> Search(string search, string cultureCode)
+    {
+        return from b in _context.Posts.Where(p => string.IsNullOrEmpty(p.ParentID)).Include(p => p.Gallery.Where(c => c.IsMain))
+               join LTitle in _context.Localizations on b.TitleId equals LTitle.LocalizationSetId
+               join LDescription in _context.Localizations on b.DescriptionId equals LDescription.LocalizationSetId
+               join Lcontent in _context.Localizations on b.ContentId equals Lcontent.LocalizationSetId
+               join LPageTitle in _context.Localizations on b.Page.TitleId equals LPageTitle.LocalizationSetId
+               where LTitle.CultureCode == cultureCode && LDescription.CultureCode == cultureCode  && Lcontent.CultureCode == cultureCode && LPageTitle.CultureCode==cultureCode
+                      &&(EF.Functions.ILike(LTitle.Value, $"%{search}%") || EF.Functions.ILike(LDescription.Value, $"%{search}%") || EF.Functions.ILike(Lcontent.Value, $"%{search}%"))
+               select new LPost()
+               {
+                   Name = b.Name,
+                   Title = LTitle.Value,
+                   Description = LDescription.Value,
+                   Content = Lcontent.Value,
+                   PageName=b.Page.Name,
+                   PageTitle= LPageTitle.Value,
+                   Image = b.Gallery.Select(c => c.Name).FirstOrDefault()
+
+               };
+      
+    }
+
     public IEnumerable<LPostMenu> GetLocaliezedNameByPage(string name, string cultureCode)
     {
         var data = from b in _context.Posts.Where(c => string.IsNullOrEmpty(c.ParentID)).OrderBy(c => c.MenuPosition)
                    join LTitle in _context.Localizations on b.TitleId equals LTitle.LocalizationSetId
-                   where b.Page.Name == name
+                   where b.Page.Name == name && !b.ShowInMenu
+                   && LTitle.CultureCode == cultureCode
+                   select new LPostMenu()
+                   {
+                       Name = b.Name,
+                       Title = LTitle.Value,
+                       Menu = b.Children.Select(p => new LPostMenu()
+                       {
+                           Id=p.Id,
+                           Name = p.Name,
+                           Title = p.Title.Localizations.Where(c => c.CultureCode == cultureCode).FirstOrDefault().Value,
+                          
+                           
+                       }).ToList()
+
+                   };
+        return data;
+    }
+
+    public IEnumerable<LPostMenu> GetLocaliezedNameByParent(string parentID, string cultureCode)
+    {
+        var data = from b in _context.Posts.OrderBy(c => c.MenuPosition)
+                   join LTitle in _context.Localizations on b.TitleId equals LTitle.LocalizationSetId
+                   where  b.ParentID==parentID && !b.ShowInMenu
                    && LTitle.CultureCode == cultureCode
                    select new LPostMenu()
                    {
